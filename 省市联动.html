@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="js/jquery-1.7.1.js" type="text/javascript" charset="utf-8"></script>
+    <script>
+        var arr3=[];
+        $(function(){
+            debugger;
+            var  arr=["西安","咸阳","渭南"];
+            var  arr1=["大同","太原"]
+
+            arr3.push(arr);
+            arr3.push(arr1);
+        })
+
+        function selge(obj){
+            debugger;
+            var demo=0;
+            if(obj.val()=='0'){
+                demo=0;
+            }else{
+                demo=1
+            }
+            var option;
+            for(var i=0;i<arr3[demo].length;i++){
+                option +='<option>'+arr3[demo][i]+'</option>'
+            }
+            $("#demo").empty().append(option);
+        }
+    </script>
+</head>
+<body>
+<select onchange="selge($(this))">
+    <option value="0">陕西</option>
+    <option value="1">山西</option>
+
+</select>
+<select id="demo">
+    <option>西安</option>
+    <option>咸阳</option>
+    <option>渭南</option>
+</select>
+</body>
+</html>

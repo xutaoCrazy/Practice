@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="js/jquery-1.7.1.js" type="text/javascript" charset="utf-8"></script>
+    <style>
+        ul{
+            position: relative;
+            height: 29px;
+            width: 461px;
+            padding: 15px;
+            margin: 10px auto;
+            overflow: hidden;
+        }
+       ul li{
+           float: left;
+           list-style: none;
+           padding: 5px 21px;
+       }
+       .bcak {
+           border-bottom: 3px solid #f27b04;
+           width: 74px;
+           height: 0px;
+           z-index: 8;
+           left: 15px;
+           position: absolute;
+           bottom: 0px;
+           padding: 0px!important;
+       }
+    </style>
+    <script>
+
+        $(function(){
+            $("#demo2 li").not(".bcak").mouseover(function(){
+                debugger;
+                var num;
+                num=$(this).index();
+                num=(num*74)+15;
+                $(".bcak").stop().animate({left:num+"px" }, "20");
+            })
+        })
+    </script>
+</head>
+
+<body>
+<div id="demo">
+    <ul  id="demo2">
+        <li>傻逼</li>
+        <li>二傻</li>
+        <li>三傻</li>
+        <li>是傻</li>
+        <li class="bcak"></li>
+    </ul>
+</div>
+
+</body>
+</html>

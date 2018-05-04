@@ -1,0 +1,259 @@
+<%--
+Created by IntelliJ IDEA.
+User: console
+Date: 2017-10-19
+Time: 9:29
+To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ include file="/jsp/common/taglibs.jsp" %>
+<html>
+<head>
+    <title>医生诊台参数</title>
+    <link rel="stylesheet" href="${host }/jsp/paramesetting/css/common_parameters.css"/>
+    <script src="${host}/jsp/paramesetting/js/paramsetting.js" type="text/javascript" charset="utf-8"></script>
+</head>
+<body>
+<div class="commonContain">
+    <div class="person_contain">
+        <div class="person_ul">
+            <ul class="list-inline tab-ul">
+                <li class="tab-active">医生诊台参数</li>
+            </ul>
+        </div>
+        <form group="yszt" class="hidden">
+            <input type='hidden' id='No400030001' name='No400030001'>
+            <input type='hidden' id='No400030002' name='No400030002'>
+            <input type='hidden' id='No400030003' name='No400030003'>
+            <input type='hidden' id='No400030004' name='No400030004'>
+            <input type='hidden' id='No400030005' name='No400030005'>
+            <input type='hidden' id='No400030006' name='No400030006'>
+            <input type='hidden' id='No400030007' name='No400030007'>
+            <input type='hidden' id='No400030008' name='No400030008'>
+            <input type='hidden' id='No400030009' name='No400030009'>
+            <input type='hidden' id='No400030010' name='No400030010'>
+            <input type='hidden' id='No400030011' name='No400030011'>
+            <input type='hidden' id='No400030012' name='No400030012'>
+            <input type='hidden' id='No400030013' name='No400030013'>
+            <input type='hidden' id='No400030014' name='No400030014'>
+            <input type='hidden' id='No400030015' name='No400030015'>
+            <input type='hidden' id='No400030016' name='No400030016'>
+            <input type='hidden' id='No400030017' name='No400030017'>
+            <input type='hidden' id='No400030018' name='No400030018'>
+            <input type='hidden' id='No400030019' name='No400030019'>
+            <input type='hidden' id='No400030020' name='No400030020'>
+            <input type='hidden' id='No400030021' name='No400030021'>
+            <input type='hidden' id='No400030022' name='No400030022'>
+            <input type='hidden' id='No400030023' name='No400030023'>
+            <input type='hidden' id='No400030024' name='No400030024'>
+            <input type='hidden' id='No400030025' name='No400030025'>
+            <input type='hidden' id='No400030026' name='No400030026'>
+            <input type='hidden' id='No400030027' name='No400030027'>
+            <input type='hidden' id='No400030028' name='No400030028'>
+            <input type='hidden' id='No400030029' name='No400030029'>
+            <input type='hidden' id='No400030030' name='No400030030'>
+            <input type='hidden' id='No400030031' name='No400030031'>
+
+
+        </form>
+        <div class="person_table doc_contain">
+            <div class="main-table-container">
+                <table class="table table-striped table-border table-hover pointer ">
+                    <thead></thead>
+                    <tbody>
+                    <tr>
+                        <td><span style="display: block;width: 213px">总检时未检项目自动设为拒检:</span></td>
+                        <td>
+                            <span class="labelSpanDoc">
+                                <label><input type="radio" value="1" name="iNo400030001" targetid="No400030001"/><label>是</label></label>
+                            </span>
+                            <span class="labelSpanDoc">
+                                <label><input type="radio" value="0" name="iNo400030001" targetid="No400030001"/><label>否</label></label>
+                            </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>自动总检时改变体检状态:</td>
+                        <td>
+                            <span class="labelSpanDoc">
+                                <label><input type="radio" value="1" name="iNo400030002" targetid="No400030002"/><label>是</label></label>
+                            </span>
+                            <span class="labelSpanDoc">
+                                <label><input type="radio" value="0" name="iNo400030002" targetid="No400030002"/><label>否</label></label>
+                            </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                            <span class="">
+                                <label>
+                                    <input type="checkbox" targetid="No400030003"/>
+                                    <label style="margin-left:8px;margin-right: 8px">单独处理血压,血压ID(BBX01)</label>
+                                </label>
+                            </span>
+                            <span class=""><input type="text" targetid="No400030004"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>电子文档格式:</td>
+                        <td>
+                            <span class="labelSpanDoc">
+                                <label><input type="radio" value=".jpg" name="iNo400030005" targetid="No400030005"/><label>jpg</label></label>
+                            </span>
+                            <span class="labelSpanDoc">
+                                <label><input type="radio" value=".pdf" name="iNo400030005" targetid="No400030005"/><label>pdf</label></label>
+                            </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>电子保存路径:</td>
+                        <td>
+                            <span class="labelSpanDoc">
+                                <label><input type="checkbox" targetid="No400030006"/><label>动态选择路径</label></label>
+                            </span>
+                            <span class="labelSpanDoc">
+                                <label><input type="checkbox" targetid="No400030007"/><label>默认保存路径</label></label>
+                            </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>电子报告名称:</td>
+                        <td>
+                            <span class="labelSpanDoc">
+                                <label><input type="radio" value="1" name="iNo400030008" targetid="No400030008"/><label>登记号+.jpg/.pdf</label></label>
+                            </span>
+                            <span class="labelSpanDoc">
+                                <label><input type="radio" value="0" name="iNo400030008" targetid="No400030008"/><label>部门+姓名+.jpg/.pdf</label></label>
+                            </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                            <p>
+                                <span class="labelP">
+                                    <label><input type="radio" value="1" name="iNo400030009" targetid="No400030009"/><label>总检结果按科室生成</label></label>
+                                </span>
+                                <span class="labelP">
+                                    <label><input type="radio" value="0" name="iNo400030009" targetid="No400030009"/><label>总检结果按项目生成</label></label>
+                                </span>
+                                <span class="labelP">
+                                    <label><input type="checkbox" targetid="No400030010"/><label>电子报告自动生成压缩包</label></label>
+                                </span>
+                            </p>
+                            <p>
+                                <%-- <span class="labelP">
+                                     <label><input type="checkbox" targetid="No42"/><label>电子报告自动生成压缩包</label></label>
+                                 </span>--%>
+                                <span class="labelP">
+                                    <label><input type="checkbox" targetid="No400030011"/><label>电子报告自动上传到服务器</label></label>
+                                </span>
+                                <span class="labelP">
+                                    <label><input type="checkbox" targetid="No400030012"/><label>个检未收费允许生成体检小结（团检无限制）</label></label>
+                                </span>
+                                <span class="labelP">
+                                    <label><input type="checkbox" targetid="No400030013"/><label>Pacs报告结果默认成影响显示</label></label>
+                                </span>
+                            </p>
+
+                            <p>
+                                <span class="labelP">
+                                    <label><input type="checkbox" targetid="No400030014"/><label>允许修改原始结果</label></label>
+                                </span>
+                                <span class="labelP">
+                                    <label><input type="checkbox" targetid="No400030015"/><label>检验检查结果直接生成小结</label></label>
+                                </span>
+
+                                <span class="labelP">
+                                    <label><input type="checkbox" targetid="No400030016"/><label>我小结的项目允许其他人修改</label></label>
+                                </span>
+                            </p>
+                            <p>
+                                <span class="labelP">
+                                    <label><input type="checkbox" targetid="No400030017"/><label>单独打印图文报告</label></label>
+                                </span>
+                                <span class="labelP">
+                                    <label><input type="checkbox" targetid="No400030018"/><label></label>体检诊断写入体检小结</label>
+                                </span>
+                                <span class="labelP">
+                                    <label><input type="checkbox" targetid="No400030019"/><label>检查类项目正常结果也生成小结</label></label>
+                                </span>
+                            </p>
+
+                            <p>
+                                <span class="labelP">
+                                    <label><input type="checkbox" targetid="No400030020"/><label>检查项目体检小结中包含项目名称</label></label>
+                                </span>
+                                <span class="labelP">
+                                    <label><input type="checkbox" targetid="No400030021"/><label>生成体检小结时自动保存</label></label>
+                                </span>
+                                <span class="labelP">
+                                    <label><input type="checkbox" targetid="No400030022"/><label></label>职业病检查不生成诊断建议</label>
+                                </span>
+                            </p>
+
+
+
+                            <p>
+                                <span class="labelP">
+                                    <label><input type="checkbox" targetid="No400030023"/><label class="labelCheckSpan">不同项目使用不同的小结默认结果</label></label>
+                                </span>
+                                <span class="labelP">
+                                    <label><input type="checkbox" targetid="No400030024"/><label class="labelCheckSpan">有未检查的项目不可以总检</label></label>
+                                </span>
+                                <span class="labelP">
+                                    <label><input type="checkbox" targetid="No400030025"/><label class="labelCheckSpan">开启职检总检医生诊台</label></label>
+                                </span>
+                            </p>
+                            <p>
+                                <span class="labelP">
+                                    <label><input type="checkbox" targetid="No400030026"/><label class="labelCheckSpan">总检结果不允许其他人修改</label></label>
+                                </span>
+                                <span class="labelP">
+                                    <label><input type="checkbox" targetid="No400030027"/><label class="labelCheckSpan">有指标项目未填也可以小结</label></label>
+                                </span>
+                                <span class="labelP">
+                                    <label><input type="checkbox" targetid="No400030028"/><label class="labelCheckSpan">总检是否需要锁定</label></label>
+                                </span>
+                            </p>
+                            <p>
+                                <span class="labelP">
+                                    <label><input type="checkbox" targetid="No400030029"/><label class="labelCheckSpan">医生诊台不显示"保存"</label></label>
+                                </span>
+                                <span style="float: left">
+                                    <label><input type="checkbox" targetid="No400030030"/><label class="labelCheckSpan">不显示没有权限的科室项目(有总检权限的医生除外,即总检医生总是会显示所有科室项目)</label></label>
+                                </span>
+                            </p>
+
+                        </td>
+                    </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+    <div class="person_buttom">
+        <button type="button" class="btn btn-main" onclick="saveParams()">保存</button>
+        <button type="button" class="btn btn-main">取消</button>
+    </div>
+</div>
+
+</body>
+<script>
+    $(function () {
+        $('input').iCheck({
+            checkboxClass: 'icheckbox_square-green',
+            radioClass: 'iradio_square-green',
+            increaseArea: '20%' // optional
+        });
+
+        $("select").select2({
+            language: "zn-CN"
+        });
+    })
+
+</script>
+</html>

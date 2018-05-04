@@ -1,0 +1,279 @@
+function home_surgery(){
+var vaa07= $("#patient_vaa07").val();
+$.ajax({
+async: false,
+cache: false,
+type: 'get',
+data: {vaa07: vaa07},
+url: hostUrl + '/homepagerest/queryInhospitalMoney',
+success: function (data) { //请求成功后处理函数。
+var tmplimg = document.getElementById('surgery_tmp').innerHTML;
+var doTtmplimg = doT.template(tmplimg);
+$('#surgery_table').append(doTtmplimg(data));
+}
+});
+}
+
+/**
+* 手术记录列表
+*/
+function queryCaseHistorySurgeryRecord(){
+var vaa07= $("#patient_vaa07").val();
+$.ajax({
+async : false,
+cache : false,
+type : 'get',
+dataType : "json",
+url : hostUrl + '/homepagerest/queryCaseHistorySurgeryRecord?vaa07='+vaa07,
+success : function(data) { //请求成功后处理函数。
+//加载西医
+$("#surgery_table tbody").html('');
+if(data){
+for(var i=0;i<data.list.length;i++){
+addSurgeryTr();
+$("#surgery_table tbody tr:eq("+i+") td:eq(0)").find("input[name='rab01']").val(data.list[i].rab01);
+$("#surgery_table tbody tr:eq("+i+") td:eq(0)").find("input[type='text']").val(data.list[i].bak05);
+$("#surgery_table tbody tr:eq("+i+") td:eq(1)").find("input[type='text']").val(data.list[i].bak02);
+$("#surgery_table tbody tr:eq("+i+") td:eq(2)").find("input[type='text']").val(data.list[i].rab03);
+$("#surgery_table tbody tr:eq("+i+") td:eq(3)").find("input[type='text']").val(data.list[i].bce03a);
+$("#surgery_table tbody tr:eq("+i+") td:eq(4)").find("input[type='text']").val(data.list[i].bce03b);
+$("#surgery_table tbody tr:eq("+i+") td:eq(5)").find("input[type='text']").val(data.list[i].bce03c);
+$("#surgery_table tbody tr:eq("+i+") td:eq(6)").find("select").val(data.list[i].aab01).trigger("change");
+$("#surgery_table tbody tr:eq("+i+") td:eq(7)").find("input[type='text']").val(data.list[i].bce03d);
+$("#surgery_table tbody tr:eq("+i+") td:eq(8)").find("input[type='text']").val(data.list[i].rab09);
+$("#surgery_table tbody tr:eq("+i+") td:eq(9)").find("select").val(data.list[i].ach01).trigger("change");
+$("#surgery_table tbody tr:eq("+i+") td:eq(10)").find("select").val(data.list[i].abd01).trigger("change");
+$("#surgery_table tbody tr:eq("+i+") td:eq(11)").find("select").val(data.list[i].acz01).trigger("change");
+$("#surgery_table tbody tr:eq("+i+") td:eq(12)").find("input[type='text']").val(data.list[i].bjy01);
+$("#surgery_table tbody tr:eq("+i+") td:eq(13)").find("input[type='text']").val(data.list[i].rab17);
+$("#surgery_table tbody tr:eq("+i+") td:eq(14)").find("input[type='text']").val(data.list[i].rab18);
+}
+}
+}
+});
+}
+
+//手术记录列表
+function addSurgeryTr(){
+debugger;
+var vaa07 = $("#patient_vaa07").val();
+var vae01 = $("#patient_vae01").val();
+var tr = "";
+var td1 = "<td style='width: 220px'><input name='vae01' value='" + vae01 + "' type='hidden' class='rab1' style='width: 220px'><input name='rab01' type='hidden' class='rab1'><input name='vaa07' value='" + vaa07 + "' type='hidden' class='rab1 '><input type='text' name='bak05' data-type='operation' class='surg-input ope-name-input rab1 wid300 validate[required] '><button class='btn btn-white surgery-toggle ope-name-btn' ><span class='glyphicon glyphicon-triangle-bottom'></span></button></td>";//手术名称
+var td2 = "<td><input type='text' name='bak02' class='bak02 rab1' style='width: 70px'></td>";//手术编码
+var td3="<td><input type='text' name='rab03' class='layer-date laydate-icon rab1 wid300 validate[required]' onclick='laydate({istime: true, format: "+ '"YYYY-MM-DD hh:mm:ss"'+"})'/></td>";//手术时间
+var td4 = "<td><input type='text' name='bce03a' class='surg-input ope-man-input rab1 wid300 validate[required]' style='width: 70px'><button class='btn btn-white surgery-toggle ope-man-btn' ><span class='glyphicon glyphicon-triangle-bottom'></span></button></td>";//手术者
+var td5 = "<td><input type='text' name='bce03b' class='surg-input ope-man-input rab1' style='width: 70px'><button class='btn btn-white surgery-toggle ope-man-btn' ><span class='glyphicon glyphicon-triangle-bottom'></span></button></td>";//1助
+var td6 = "<td><input type='text' name='bce03c' class='surg-input ope-man-input rab1' style='width: 70px'><button class='btn btn-white surgery-toggle ope-man-btn' ><span class='glyphicon glyphicon-triangle-bottom'></span></button></td>"; //2助
+var td7 = "<td><select name='aab01' class='rab1' style='width: 70px'><option value=''>请选择</option><option value='0'>0</option><option value='1'>Ⅰ</option><option value='2'>Ⅱ</option><option value='3'>Ⅲ</option></td>";  //切口等级
+var td8 = "<td><input type='text' name='bce03d'  class='surg-input ope-man-input rab1' style='width: 70px'><button class='btn btn-white surgery-toggle ope-man-btn' ><span class='glyphicon glyphicon-triangle-bottom'></span></button></td>";//麻醉医师
+var td9 = "<td><input type='text' name='rab09' class='surg-input ope-anes-input rab1' style='width: 100px;'><button class='btn btn-white surgery-toggle ope-anes-btn' ><span class='glyphicon glyphicon-triangle-bottom'></span></button></td>"; //麻醉方式
+var td10 = "<td><select name='ach01' class='rab1' style='width:70px'><option value=''>请选择</option><option value='1'>1</option><option value='2'>2</option><option value='3'>3</option><option value='4'>4</option></td>";  //手术等级
+var td11 = "<td><select name='abd01' class='rab1' style='width:70px'><option value=''>请选择</option><option value='1'>甲</option><option value='2'>乙</option><option value='3'>丙</option><option value='4'>其他</option></td>";  //愈合等级
+var td12 = "<td><select name='acz01' class='rab1' style='width:70px'><option value='1'>是</option><option value='2'>否</option></td>";  //择期手术
+var td13 = "<td ><input type='text' name='bjy01' class='surg-input ope-posi-input rab1' style='width: 90px'><button class='btn btn-white surgery-toggle ope-posi-btn' ><span class='glyphicon glyphicon-triangle-bottom'></span></button></td>";//操作部位
+var td14="<td><input type='text' name='rab17' class='layer-date laydate-icon rab1' onclick='laydate({istime: true, format: "+ '"YYYY-MM-DD hh:mm:ss"'+"})'/></td>";//手术开始时间
+var td15="<td><input type='text' name='rab18' class='layer-date laydate-icon rab1' onclick='laydate({istime: true, format: "+ '"YYYY-MM-DD hh:mm:ss"'+"})'/></td>"; //手术结束时间
+tr = "<tr>" + td1 + td2 + td3 + td4 + td5 + td6 + td7 + td8 + td9 + td10 + td11 + td12 + td13 + td14 + td15 + "</tr>";
+$("#surgery_table tbody").append(tr);
+$(".ope-man-input").data(opeMan);//给手术人员名字所用input类绑定数据
+$(".ope-name-input").data(opeName);//给手术名称所用input类绑定数据
+$(".ope-posi-input").data(opePosi);//给操作部位所用input类绑定数据
+$(".ope-anes-input").data(opeAnes);//给麻醉方式所用input类绑定数据
+
+$(".ope-man-btn").data(opeMan);//给手术人员名字所用btn类绑定数据
+$(".ope-name-btn").data(opeName);//给手术名称所用btn类绑定数据
+$(".ope-posi-btn").data(opePosi);//给操作部位所用btn类绑定数据
+$(".ope-anes-btn").data(opeAnes);//给麻醉方式所用btn类绑定数据
+
+$("#surgery_table select").select2({
+language:"zh-CN"
+});
+}
+function removeSurgeryTr(){
+$("#surgery_table tbody").find(".tr-bg").remove();
+}
+
+$("#surgery_table tbody").on("click",'tr',function(){
+$(this).addClass("tr-bg").siblings("tr").removeClass("tr-bg");
+});
+$(".diagnosis_drop_content").click(function(e){
+var evt = e||window.event;
+evt.stopPropagation();//阻止自身冒泡事件
+});
+$(document).on("click",function(e){
+$(".diagnosis_drop_content").addClass("hidden");
+});
+//手术记录的数据对象
+//手术名称所用input类ope-name-input
+//手术名称所用btn类ope-name-btn
+var opeName={//手术名称编码
+type:"",
+url1:"/homepagerest/querySurgeryName?start=0&length=20&param=",
+url2:"",
+url3:"",
+val:"",
+mult:false,
+hid1:true,
+hid3:false,
+wid1:100,
+wid2:200,
+wid3:100,
+name:['bak01','bak05','bak02'],
+keyName:['id','名称','编码']
+}
+//手术人员名字所用input类ope-man-input
+//手术人员名字所用btn类ope-man-btn
+var opeMan={//有关人名的数据对象
+type:"",
+url1:"/homepagerest/queryUser?start=0&length=20&param=",
+url2:"",
+url3:"",
+val:"",
+mult:true,
+hid1:true,
+hid3:false,
+wid1:100,
+wid2:100,
+wid3:200,
+name:['bce01','bce03','bck03'],
+keyName:['id','姓名','科室']
+}
+//麻醉方式所用input类ope-anes-input
+//麻醉方式所用btn类ope-anes-btn
+var opeAnes={//麻醉方式的数据对象
+type:"",
+url1:"/homepagerest/queryAnesthesiaType?start=0&length=20&param=",
+url2:"",
+url3:"",
+val:"",
+mult:false,
+hid1:false,
+hid3:true,
+wid1:100,
+wid2:200,
+wid3:100,
+name:['aci01','aci02',''],
+keyName:['id','名称','']
+}
+//操作部位所用input类ope-posi-input
+//操作部位所用btn类ope-posi-btn
+var opePosi={//操作部位的数据对象
+type:"",
+url1:"/homepagerest/queryOperatePlace?start=0&length=20&param=",
+url2:"",
+url3:"",
+val:"",
+mult:false,
+hid1:false,
+hid3:true,
+wid1:100,
+wid2:200,
+wid3:100,
+name:['bjy01','bjy02',''],
+keyName:['id','名称','']
+}
+
+
+$("#surgery_table tbody").on("keyup",".surg-input",function(e){
+if(e.keyCode == 13){
+var thisobj=$(this);
+var top=$(this).position().top;
+var left=$(this).position().left;
+$(".diagnosis_drop_content").removeClass("hidden").css({left:left,top:top+30});
+var data=$(this).data();
+//console.log(data);
+if(data){
+data.val=$(this).val();
+if(data.val==undefined){
+data.val="";
+}
+data.url=data.url1+data.val+data.url2+data.type+data.url3;
+//console.log(hostUrl+data.url);
+var thisobj=$(this);//当前事件对象input
+var tabId="surgery_drop_table";//表格的id
+operationRecordTable(data,thisobj,tabId);
+}
+
+}
+
+})
+
+//按钮加载
+$("#surgery_table tbody").on('click','.surgery-toggle',function(e){
+if($(".diagnosis_drop_content").hasClass("hidden")){
+var evt = e||window.event;
+evt.stopPropagation();
+var thisobj=$(this);
+var top=$(this).siblings(".surg-input").position().top;
+var left=$(this).siblings(".surg-input").position().left;
+$(".diagnosis_drop_content").removeClass("hidden").css({left:left,top:top+30});
+var data=$(this).data();
+if(data){
+data.val=$(this).prev(".surg-input").val();
+if(data.val==undefined){
+data.val="";
+}
+data.url=data.url1+data.val+data.url2+data.type+data.url3;
+//console.log(hostUrl+data.url);
+var thisobj=$(this);//当前事件对象input
+var tabId="surgery_drop_table";//表格的id
+operationRecordTable(data,thisobj,tabId);
+
+}
+
+}else{
+$(".diagnosis_drop_content").addClass("hidden");
+}
+});
+function operationRecordTable(data,thisobj,tabId){//公共加载数据方法
+//var type = "1";
+jQuery('#'+tabId).GridUnload();//清空表格重新加载
+jQuery('#'+tabId).jqGrid( {
+//url : hostUrl + "/homepagerest/queryOutHospitalDiagnose?param="+data.val+"&type="+data.type+"&start=0&length=20",
+url:hostUrl+data.url,
+postData:{},//传给后台的数据
+datatype : "json",
+//width:'500',
+height: 'auto',
+//rowNum: 10,
+//rowList: [10,20,30,40,50],
+scroll: true,
+colModel : [
+{name : data.name[0],label : data.keyName[0],hidden:data.hid1,width:data.wid1},
+{name : data.name[1], label: data.keyName[1],width:data.wid2},
+{name : data.name[2], label: data.keyName[2],hidden:data.hid3,width:data.wid3}
+],
+viewrecords: true,
+//sortname: 'bck01',
+//多选
+multiselect:data.mult,
+jsonReader: {
+page:"page",
+total:"total",
+records:"recordsTotal",
+rows:"rows"
+},
+gridComplete : function() {
+//setlayerpage();
+},onSelectRow : function(rowid,status){
+var selectRows = $('#'+tabId).jqGrid('getRowData', rowid);//获取点击行的数据
+if($(thisobj).hasClass("surg-input")){//判断点击的是按钮还是回车input
+$(thisobj).val(selectRows[data.name[1]]);//将姓名放在横线上
+var datatype=$(thisobj).attr("data-type");
+}else{
+$(thisobj).prev(".surg-input").val(selectRows[data.name[1]]);//将姓名放在横线上
+var datatype=$(thisobj).prev(".surg-input").attr("data-type");
+}
+if(!data.mult){
+$(".diagnosis_drop_content").addClass("hidden");//隐藏下拉框
+}
+if(datatype=='operation'){
+$(thisobj).parent("td").next("td").find(".bak02").val(selectRows[data.name[2]]);//放编码
+}
+
+}
+
+});
+}
+

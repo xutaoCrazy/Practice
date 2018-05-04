@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+
+    <script src="js/jquery-1.7.1.js" type="text/javascript" charset="utf-8"></script>
+    <script>
+        $(function(){
+            debugger;
+            toDecimal2(10.1111,1)
+        })
+
+            debugger;
+            function toDecimal2(val,len) {
+                debugger;
+                var f = parseFloat(val);
+                if (isNaN(f)) {
+                    return false;
+                }
+                var s=val.toString();
+                if(s.indexOf(".")>0){
+                    var f = s.split(".")[1].substring(0,len)
+                    s=s.split(".")[0]+"."+f
+                }
+                var rs = s.indexOf('.');
+                if (rs < 0) {
+                    rs = s.length;
+                    s += '.';
+                }
+                while (s.length <= rs + len) {
+                    s += '0';
+                }
+                return s;
+            }
+
+    </script>
+</head>
+<body>
+<div id="demo"></div>
+</body>
+</html>

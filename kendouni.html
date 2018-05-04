@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <link rel="stylesheet" href="http://kendo.cdn.telerik.com/2015.3.1111/styles/kendo.rtl.min.css"/>
+    <link rel="stylesheet" href="http://kendo.cdn.telerik.com/2015.3.1111/styles/kendo.silver.min.css"/>
+    <link rel="stylesheet" href="http://kendo.cdn.telerik.com/2015.3.1111/styles/kendo.mobile.all.min.css"/>
+
+    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script src="http://kendo.cdn.telerik.com/2015.3.1111/js/kendo.all.min.js"></script>
+</head>
+    <script>
+        $("#addValidDateValue").kendoDatePicker({
+            culture:"zh-CN",
+            format: "yyyy-MM-dd"
+        });
+
+
+
+        function jsGetAge(strBirthday)
+        {
+            var returnAge;
+            var strBirthdayArr=strBirthday.split(".");
+            var birthYear = strBirthdayArr[0];
+            var birthMonth = strBirthdayArr[1];
+            var birthDay = strBirthdayArr[2];
+
+            d = new Date();
+            var nowYear = d.getYear();
+            var nowMonth = d.getMonth() + 1;
+            var nowDay = d.getDate();
+
+            if(nowYear == birthYear)
+            {
+                returnAge = 0;//同年 则为0岁
+            }
+            else
+            {
+                var ageDiff = nowYear - birthYear ; //年之差
+                if(ageDiff > 0)
+                {
+                    if(nowMonth == birthMonth)
+                    {
+                        var dayDiff = nowDay - birthDay;//日之差
+                        if(dayDiff < 0)
+                        {
+                            returnAge = ageDiff - 1;
+                        }
+                        else
+                        {
+                            returnAge = ageDiff ;
+                        }
+                    }
+                    else
+                    {
+                        var monthDiff = nowMonth - birthMonth;//月之差
+                        if(monthDiff < 0)
+                        {
+                            returnAge = ageDiff - 1;
+                        }
+                        else
+                        {
+                            returnAge = ageDiff ;
+                        }
+                    }
+                }
+                else
+                {
+                    returnAge = -1;//返回-1 表示出生日期输入错误 晚于今天
+                }
+            }
+
+            return returnAge;//返回周岁年龄
+
+        }
+
+    </script>
+</head>
+<body>
+<div class="col-md-3" id="dateTwo">
+    <div class="form-group has-feedback">
+        <label class="input-title" for="addStorageValidDate">
+            <span class="important">&lowast;</span>有效期
+        </label>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-md-5 col-lg-4 no-padding-right">
+                    <select name="addStorageValidDate" id="addStorageValidDate" class="form-control no-padding-right" onchange="MAGUGI.companyCustom.changeValidDate(this)">
+                        <option value="1">月卡</option>
+                        <option value="2">季卡</option>
+                        <option value="3">半年卡</option>
+                        <option value="4">年卡</option>
+                        <option value="5">截止日期</option>
+                        <option value="6">不限</option>
+                    </select>
+                </div>
+                <div class="col-md-7 col-lg-8 no-padding-left">
+                    <input type="text" class="form-control" not-null="true" name="addValidDateValue" id="addValidDateValue" disabled>
+                    <span class="form-control-feedback tips-required hide">不能为空</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="js/jquery-1.7.1.js" type="text/javascript" charset="utf-8"></script>
+    <style>
+        .contentLeft{
+            width:160px;
+            min-height:593px;/*替换*/
+            float: left;
+            margin-right:20px;
+            background:#e6e6e6;
+            border:solid 1px #ebebeb;
+        }
+        .contentLeft ul li{
+            width:100%;
+            height:40px;
+            border:solid 1px #ebebeb;
+            cursor: pointer;
+            list-style: none;
+        }
+        .hidden{
+            display: none!important;
+        }
+        .contentLeft ul .child div{
+            height:40px;
+            line-height:40px;
+            text-align:center;
+            width:100%;
+            border-bottom: solid 1px #ebebeb;
+        }
+        .contentLeft ul li .module{
+            width:88px;
+            height:20px;
+            margin:12px 0 0 28px;
+        }
+        .contentLeft ul li .module i{
+            padding-top:2px;
+            height:18px;
+            float: left;
+        }
+
+        .contentLeft ul li .module div{
+            width:22px;
+            height:20px;
+            background:url(../../../img/leftNavIcon.png) no-repeat left;
+            float: left;
+            margin-right:10px;
+        }
+    </style>
+    <script>
+        $(function(){
+            $('.contentLeft ul li').click(function () {
+                debugger;
+                $(this).find(".child").removeClass("hidden")
+                $(this).siblings().find(".child").addClass("hidden");
+            });
+        })
+    </script>
+</head>
+<body>
+<div class="contentLeft">
+    <ul>
+        <li class="asd">
+            <div class="module">
+                <div class="a"></div>
+                <i>采购管理</i>
+            </div>
+            <div class="child hidden">
+                <div><a href=" ">采购管理1</a></div>
+                <div><a href="###">采购管理2</a></div>
+                <div><a href="###">采购管理3</a></div>
+                <div><a href="###">采购管理4</a></div>
+                <div><a href="###">采购管理5</a></div>
+                <div><a href="###">采购管理6</a></div>
+                <div><a href="###">采购管理7</a></div>
+            </div>
+        </li>
+
+
+<li>
+    <div class="module">
+        <div class="b"></div>
+        <i>财务管理</i>
+    </div>
+    <div class="child hidden">
+        <div><a href=" ">采购管理1</a></div>
+        <div><a href="###">采购管理2</a></div>
+        <div><a href="###">采购管理3</a></div>
+        <div><a href="###">采购管理4</a></div>
+        <div><a href="###">采购管理5</a></div>
+        <div><a href="###">采购管理6</a></div>
+        <div><a href="###">采购管理7</a></div>
+    </div>
+</li>
+<li>
+    <div class="module">
+        <div class="c"></div>
+        <i>项目管理</i>
+    </div>
+    <div class="child hidden">
+        <div><a href=" ">采购管理1</a></div>
+        <div><a href="###">采购管理2</a></div>
+        <div><a href="###">采购管理3</a></div>
+        <div><a href="###">采购管理4</a></div>
+        <div><a href="###">采购管理5</a></div>
+        <div><a href="###">采购管理6</a></div>
+        <div><a href="###">采购管理7</a></div>
+    </div>
+</li>
+<li>
+    <div class="module">
+        <div class="d"></div>
+        <i>员工管理</i>
+    </div>
+    <div class="child hidden">
+        <div><a href=" ">采购管理1</a></div>
+        <div><a href="###">采购管理2</a></div>
+        <div><a href="###">采购管理3</a></div>
+        <div><a href="###">采购管理4</a></div>
+        <div><a href="###">采购管理5</a></div>
+        <div><a href="###">采购管理6</a></div>
+        <div><a href="###">采购管理7</a></div>
+    </div>
+</li>
+<li>
+    <div class="module">
+        <div class="e"></div>
+        <i>审批管理</i>
+    </div>
+</li>
+<li>
+    <div class="module">
+        <div class="f"></div>
+        <i>报表管理</i>
+    </div>
+</li>
+<li>
+    <div class="module">
+        <div class="g"></div>
+        <i>库存管理</i>
+    </div>
+</li>
+<li>
+    <div class="module">
+        <div class="h"></div>
+        <i>个人中心</i>
+    </div>
+</li>
+
+</ul>
+</div>
+</body>
+</html>

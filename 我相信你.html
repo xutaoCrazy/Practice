@@ -1,0 +1,47 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+    <title>我想你</title>
+    <script src="js/jquery-1.7.1.js" type="text/javascript" charset="utf-8"></script>
+
+    <script type="text/javascript">
+        var timer; //全局变量
+        function start()
+
+        {
+             timer = setInterval(function(){
+                 var arr=[];
+                 for(var i=0;i<100;i++){
+                     if(i%2==0){
+                         arr.push("我爱你");
+                     }else{
+                         arr.push("你爱我");
+                     }
+                 }
+                 var  demo=arr[Math.round(Math.random()*100)];
+                 $("#demo").html(demo);
+            },10)
+        }
+        //定义函数：停止计时
+        function stop()
+        {
+                debugger;
+            clearInterval(timer);
+            setTimeout(function(){
+                var demo=document.getElementById("demo").innerHTML;
+                document.getElementById("demo").innerHTML="哈哈;还是"+demo;
+                document.getElementById("demo").style.fontSize="100px";
+            },2000)
+        }
+
+    </script>
+</head>
+
+<body>
+<div id="demo" style="text-align: center;font-size: 400px;font-weight: 700">开始</div>
+<div style="text-align: center">
+    <input type="button" onclick="start()" value="相信你" style="height: 50px;width: 100px;font-size: 25px;cursor: pointer" />
+    <input type="button" onclick="stop()" value="停止" style="height: 50px;width: 100px;font-size: 25px;cursor: pointer" />
+</div>
+</body>
+</html>

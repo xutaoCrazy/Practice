@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="js/jquery-1.7.1.js" type="text/javascript" charset="utf-8"></script>
+    <script>
+        $(function(){
+            debugger;
+            var url="http://vip.qq.com/a.php?a=1&b=3&c=4&d=5"//定义参数可以是无限的
+            var arr=url.split("?")[1];//根据？跟个url
+            var arr2=arr[1].split("&");//根据&重新分割参数
+            var jsonarr={};//定义一个json对象放置url  参数
+            for(var i=0;i<arr2.length;i++){//循环将参数放到json里面
+              jsonarr[arr2[i].substring(0,1)]=arr2[i].substring(2,3);
+            }
+
+            function urlarr(obj){
+                debugger;
+                var  arr=obj.split("?")[1];
+                var arr2=arr[1].split("&");
+                var jsonarr={};
+                for(var i=0;i<arr2.length;i++){
+                    jsonarr[arr2[i].substring(0,1)]=arr2[i].substring(2,3);
+                }
+                return jsonarr
+            }
+
+        })
+    </script>
+</head>
+<body>
+
+
+</body>
+</html>

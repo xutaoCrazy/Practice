@@ -1,0 +1,35 @@
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>自定义上传文件样式</title>
+    <style type="text/css">
+        .input-file {
+            overflow:hidden;
+            position:relative;
+        }
+        .input-file input{
+            opacity:0;
+            filter:alpha(opacity=0);
+            font-size:100px;
+            position:absolute;
+            top:0;
+            right:0;
+        }
+    </style>
+</head>
+<body>
+        <input type="text" class="yourClassName" name="filePath" id="filePath" disabled="disabled"/>
+
+        <input type="file" id="txtfilePath" name="txtfilePath" style="display:none;" accept=".zip">
+
+        <input type="button" onclick="txtfilePath.click()" id="fileup" name="fileup"
+
+               class="yourName" value="上传">
+</body>
+</html>
+<script>
+   
+</script>
+
+

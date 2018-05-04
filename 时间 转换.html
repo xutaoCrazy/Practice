@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="js/jquery-1.7.1.js" type="text/javascript" charset="utf-8"></script>
+
+    <script>
+        $(function(){
+            debugger;
+            timeFmatter2(1503712615000);
+        })
+        function timeFmatter2(t){
+            debugger;
+            if(t == null || t == '') return '';
+            var date = new Date(t);
+            return date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate() + ' ' + date.getHours() + ":" + date.getMinutes();
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

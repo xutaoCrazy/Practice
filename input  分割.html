@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="js/jquery-1.7.1.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/cursorPosition.js" type="text/javascript" charset="utf-8"></script>
+    <!--<script src="js/create.js" type="text/javascript" charset="utf-8"></script>-->
+    <!--<script src="js/create2.js" type="text/javascript" charset="utf-8"></script>-->
+</head>
+
+
+    <style type="text/css">
+        #gaoLiang{
+            width:400px;
+            height:50px;
+            font-family:Candara;
+            color:red;
+            font-size:20px;
+            text-align:center;
+            line-height:50px;
+            display:none;/*这个层模式是隐藏的*/
+            border:1px solid red;
+        }
+    </style>
+  <script>
+      $(function(){
+          debugger;
+//      setCursorPosition($("#txt1").val(),2)
+
+          $('#txt1').setCurPos(0,0);
+
+      })
+      function setCursorPosition(elem, index) {
+          var val = elem
+          var len = val.length
+
+          // 超过文本长度直接返回
+          if (len < index) return
+          setTimeout(function() {
+              $("#txt1").focus()
+              if ($("#txt1").setSelectionRange) { // 标准浏览器
+                  $("#txt1").setSelectionRange(index, index)
+              } else { // IE9-
+                  var range = $("#txt1").createTextRange()
+                  range.moveStart("character", -len)
+                  range.moveEnd("character", -len)
+                  range.moveStart("character", index)
+                  range.moveEnd("character", 0)
+                  range.select()
+              }
+          }, 10)
+      }
+  </script>
+</head>
+
+<body>
+<input type="text" id="txt1" value="abcde" onclick="getTxt1CursorPosition()">
+
+</body>
+</html>

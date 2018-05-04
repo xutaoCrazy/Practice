@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="js/jquery-1.7.1.js"></script>
+    <script>
+       window.onresize = function  _doResize() {
+           debugger;
+            var ss = pageSize();
+            var $demoWidth=ss.WinW
+            var $demoHeight=ss.WinH
+           /* $("#listId").jqGrid('setGridWidth', ss.WinW-10).jqGrid('setGridHeight', ss.WinH-200);*/
+
+        }
+
+        function pageSize() {
+            debugger
+
+            var winW, winH;
+
+                winW = $("#demo").outerHeight();
+                winH = $("#demo").outerWidth();
+           // for small pages with total size less then the viewport
+            return {WinW:winW, WinH:winH};
+        }
+
+
+        var flag=true;
+
+        if(flag==true){
+            flag=false;
+            $.ajax({
+                type:'post',
+                url:'http://www.weather.com.cn/data/sk/101110101.html',
+                dataType:'json',
+                success:function(data){
+                    flag=true
+                }
+            });
+        }
+
+    </script>
+</head>
+<body>
+ <div id="demo" style="width:100%;height:100%;text-align: center;border:solid 1px #d8d8d8;padding:20px">
+    我是窗口
+ </div>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="birthday.js" charset="utf-8"></script>
+    <script type="text/javascript" src="js/jquery-1.7.1.js" charset="utf-8"></script>
+    <script>
+
+        $(function () {
+            $.ms_DatePicker({
+                YearSelector: ".sel_year",
+                MonthSelector: ".sel_month",
+                DaySelector: ".sel_day"
+            });
+        });
+    </script>
+
+</head>
+<body>
+            <label> 生日：</label>
+            <select class="sel_year" rel="2000">
+                <option>2014</option>
+                <option>2015</option>
+                <option>2013</option>
+
+            </select> 年
+            <select class="sel_month" rel="2">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+
+            </select> 月
+            <select class="sel_day" rel="14">
+
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+
+            </select> 日
+</body>
+</html>

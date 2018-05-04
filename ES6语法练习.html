@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="js/jquery-1.7.1.js" type="text/javascript" charset="utf-8"></script>
+    <script>
+        $(function(){
+            debugger;
+            var demo2='ceshi';
+            let demo1='ceshilet';
+            demo();
+            function demo(){
+
+                var tmp = 123;
+
+                if (true) {
+                    let tmp;
+                    tmp = 'abc'; // ReferenceError
+                    console.log(tmp);
+                }
+            }
+
+
+
+        })
+    </script>
+</head>
+<body>
+
+</body>
+</html>

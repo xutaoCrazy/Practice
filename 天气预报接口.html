@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>天气预报</title>
+    <style>
+        table {
+            margin-top: 20px;
+            width: 600px;
+            border-collapse: collapse;
+        }
+        td,th{
+            height: 50px;
+            text-align: center;
+            border: 1px solid #CCC;
+        }
+    </style>
+</head>
+<body>
+<input type="text" id="city"/> <a href="javascript:;" id="search">天气查询</a>
+
+    <span class="span"></span>
+    <span class="span2"></span>
+    <span class="span3"></span>
+    <span class="span4"></span>
+    <span class="span5"></span>
+    <span class="span6"></span>
+    <span class="span7"></span>
+<!--<script type="text/template" id="template">
+    <%for(var i = 0 ; i < model.length ; i++){%>
+    <tr>
+        <td><%=model[i].date%></td>
+        <td><img src="<%=model[i].dayPictureUrl%>" alt=""/></td>
+        <td><img src="<%=model[i].nightPictureUrl%>" alt=""/></td>
+        <td><%=model[i].temperature%></td>
+        <td><%=model[i].weather%></td>
+        <td><%=model[i].wind%></td>
+    </tr>
+    <%};%>
+</script>-->
+<script src="js/jquery-1.7.1.js"></script>
+<!--<script src="./js/template-native.js"></script>-->
+<script>
+    $(function(){
+
+        /*
+         * 1.输入城市名
+         * 2，点击的时候发送请求
+         * 3.响应成功渲染页面
+         * */
+     /*   $('#search').on('click',function(){
+              debugger;
+            var city = $('#city').val();
+            $.ajax({
+                type:'get',
+                url:'http://api.map.baidu.com/telematics/v3/weather?output=json&ak=0A5bc3c4fb543c8f9bc54b77bc155724',
+                data:{location:city},
+                dataType:'jsonp',
+                success:function(data){
+                    debugger;
+                    var weather_data = data.results[0].weather_data;
+
+                    var html = template('template',{model:weather_data});
+                    $('tbody').html(html);
+                }
+            });
+        });*/
+        $('#search').on('click',function(){
+            debugger;
+
+            $.ajax({
+                type:'post',
+                url:'http://www.weather.com.cn/data/sk/101110101.html',
+                dataType:'json',
+                success:function(data){
+                    debugger;
+                  var weather_data = data.results[0].weather_data;
+
+                  var html = template('template',{model:weather_data});
+                    $('tbody').html(html);
+                }
+            });
+        })
+
+    });
+/*data.results[0].index[0].title.tipt*/
+
+
+
+</script>
+</body>
+</html>

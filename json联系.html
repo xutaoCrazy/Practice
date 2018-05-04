@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+
+    <script>
+
+
+
+
+        (function(){
+            debugger;
+            debugger;
+            var array = [["标题1","12:00","type"],["标题2","12:10","type"],["标题3","12:20","type"],["标题4","12:30","type"]];
+            if(!array.length)    return null;
+            var i = 0,
+                    len = array.length,
+                    arr = [];
+            for(;i<len;i++){
+                arr.push({"标题":array[i][0],"time":array[i][1],"类别":array[i][2]});
+            }
+            return JSON.stringify(arr);
+        })();
+    </script>
+</head>
+<body>
+
+</body>
+</html>

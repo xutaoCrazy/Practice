@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="js/jquery-1.7.1.js" type="text/javascript" charset="utf-8"></script>
+    <script>
+        $(function(){
+            debugger;
+            //开始时间赋值
+            var ddd = new Date();
+            var day =ddd.getDate();
+            if(ddd.getMonth()<10){
+                var month = "0"+(ddd.getMonth()+1);
+            }
+            if(ddd.getDate()<10){
+                day = "0"+ddd.getDate();
+            }
+            var datew = ddd.getFullYear()+"-"+month+"-"+day;
+            $("#demo1").val(datew);
+            //开始时间赋值结束
+            //结束时间赋值
+            var mydate=new Date(ddd.getFullYear(),ddd.getMonth()+3,ddd.getDate());
+            var days =mydate.getDate();
+            if(mydate.getMonth()<10){
+                var months = "0"+(mydate.getMonth()+1);
+            }
+
+            if(mydate.getDate()<10){
+                days = "0"+mydate.getDate();
+            }
+
+            var datews = mydate.getFullYear()+"-"+months+"-"+days;
+            $("#demo2").val(datews);
+
+
+        })
+    </script>
+</head>
+<body>
+     开始时间<input type="date" id="demo1"/>
+     结束时间<input type="date" id="demo2"/>
+</body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script type="text/javascript" src="js/jquery-1.7.1.js" charset="utf-8"></script>
+</head>
+<body>
+<script ></script>
+<div id="time"></div>
+<script>
+    arr=[1,2,3,4,5,6,7,8,9];
+    i=0;
+    var t=setInterval('show()',2000);
+    function show() {
+        $("#time").append(arr[i]);
+        i=i+1;
+        //如果超过数组长度，清除定时器
+        if(i>arr.length){
+            clearInterval(t)
+        }
+    }
+
+    onkeyup="MedicaLrecordIntLength($(this))"
+
+</script>
+</body>
+</html>
+
+
+/*//判断只能输入64位
+
+function Medicalrecordlength(obj){
+debugger;
+if(obj.length>64){
+layer.tips('输入长度不能大于64','#' + obj.attr("id"));
+obj.val("");
+obj.focus();
+
+}
+
+}
+
+//输入int类型判断
+function MedicaLrecordIntLength(obj){
+debugger;
+
+if((typeof obj === 'number') && (obj % 1 === 0)){
+return
+}else{
+layer.tips('请输入整数','#' + obj.attr("id"));
+obj.val("");
+obj.focus();
+}
+return ;
+}
+//输入长度是18 20
+
+function MedicaLrecordLengthtwenty(obj){
+var MedicaLrecord=obj.attr("id");
+//判断身份证号不能大于18位
+if(MedicaLrecord=='home_vaa15'){
+if(obj.length>18){
+
+layer.tips('身份证号长度不能大于18位','#' + obj.attr("id"));
+obj.val("");
+obj.focus();
+}
+return
+}
+if(obj.length>20){
+
+layer.tips('长度不能大于20位','#' + obj.attr("id"));
+obj.val("");
+obj.focus();
+return
+}
+
+}
+
+//输入长度是128
+
+function MedicaLrecordLengthtwentyeight(obj){
+if(obj.length>128){
+layer.tips('长度不能大于128位','#' + obj.attr("id"));
+obj.val("");
+obj.focus();
+return
+
+}
+
+}
+
+
+function MedicaLrecordNumberLength(obj){
+
+if((typeof obj === 'number')){
+return
+}else{
+layer.tips('请输入数字','#' + obj.attr("id"));
+obj.val("");
+obj.focus();
+}
+return ;
+}
+
+*/

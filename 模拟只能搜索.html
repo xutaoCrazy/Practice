@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="js/jquery-1.7.1.js" type="text/javascript" charset="utf-8"></script>
+
+    <style>
+        .dempxia{
+            position: absolute;
+            border: solid 1px #d8d8d8;
+            width: 200px;
+            top: 35px;
+            display: none;
+            /*height: 200px;*/
+        }
+
+    </style>
+    <script>
+        $(function(){
+            debugger;
+            $("#inputJson").on("input",function(){
+                debugger;
+                $("#uljson").empty();
+                var valuejson=$(this).val()
+                if(valuejson==""){
+                    $(".dempxia").hide()
+                    return
+                }
+                $.ajax({
+                    async: false,
+                    cache: false,
+                    type: 'get',
+                    dataType: "json",
+                    url:'json/package.json',
+                    success: function (data) {
+                        alert(123);
+                        debugger;
+                        for(var i=0;i<data.length;i++){
+
+                            if(data[i].indexOf(valuejson)>=0 && valuejson!=""){
+                                $(".dempxia").show()
+                                var str2 = data[i].replace(valuejson,$("#soanjson").html() );
+                                $("#uljson").append('<li>'+data[i]+'</li>');
+
+
+                            }
+
+                        }
+                    }
+                })
+            })
+        })
+        function demo(){
+            debugger;
+            $("#uljson").empty();
+            var valuejson=$("#inputJson").val()
+            if(valuejson==""){
+                $(".dempxia").hide()
+                return
+            }
+            $.ajax({
+                async: false,
+                cache: false,
+                type: 'get',
+                dataType: "json",
+                url:'json/package.json',
+                success: function (data) {
+                    debugger;
+                    for(var i=0;i<data.length;i++){
+
+                        if(data[i].indexOf(valuejson)>=0 && valuejson!=""){
+                            $(".dempxia").show()
+                            var str2 = data[i].replace(valuejson,$("#soanjson").html() );
+                            $("#uljson").append('<li>'+data[i]+'</li>');
+
+
+                        }
+
+                    }
+                }
+            })
+        }
+    </script>
+</head>
+<body>
+<div class="demo" style="position: relative">
+    <input type="text" style="width: 200px;height: 30px; "id="inputJson">
+    <div class="dempxia " >
+        <ul id="uljson"></ul>
+    </div>
+    <button type="button" onclick="demo()">点击加载</button>
+    <span id="soanjson" class="hidden">你是猪吗</span>
+</div>
+</body>
+</html>

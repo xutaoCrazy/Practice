@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="js/jquery-1.7.1.js" type="text/javascript" charset="utf-8"></script>
+    <style>
+        body{text-align: center}
+        .demo1-bg1{
+            width: 100px;
+            height: 100px;
+            display: -webkit-box;
+            -webkit-box-pack: center;
+            -webkit-box-align: center;
+            margin: 50px auto;
+            background: #fff;
+            border-radius: 50%;
+            box-shadow: 0 0 0 10px red inset;
+        }
+        .demo1-bg2-1,.demo1-bg2-2{
+            position: relative;
+            margin: 0;
+            padding: 0;
+            -webkit-box-flex: 1;
+            height: 80px;
+            background: #fff;
+            border: 10px solid grey;
+        }
+        .demo1-bg2-1{
+            border-radius: 50px 0 0 50px;
+            border-color: grey transparent grey grey;
+            transform-origin: 100% 50%;
+            z-index: 1;
+        }
+        .demo1-bg2-2{
+            border-radius: 0 50px 50px 0;
+            border-color: grey grey grey transparent;
+            transform-origin: 0 50%;
+            z-index: 2;
+        }
+    </style>
+    <script>
+        var muns=1
+        var interval
+        $(function(){
+           interval=setInterval("rotateCircle()",100);
+        })
+        function rotateCircle () {
+            debugger;
+
+            muns++
+            if(muns>=80){
+                clearInterval(interval);
+            }
+
+            var val = muns;
+            val = Math.max(0,val);
+            val = Math.min(100,val);
+            if (val <= 50){
+                $("#J_bg2_2").css({"transform":"rotate(" + 180 * val * 2 / 100 + "deg)"});
+                $("#J_bg2_2").css({"borderColor":"grey grey grey transparent"});
+                $("#J_bg2_1").css({"transform":"rotate(0deg)"});
+            }else{
+                $("#J_bg2_2").css({"transform":"rotate(0deg)"});
+                $("#J_bg2_2").css({"borderColor":"red red red transparent"});
+                $("#J_bg2_1").css({"transform":"rotate(" + 180 * (val - 50) * 2 / 100 + "deg)"});
+            }
+        }
+    </script>
+</head>
+<body>
+<div class="demo1-bg1">
+    <div id="J_bg2_1" class="demo1-bg2-1"></div>
+    <div id="J_bg2_2" class="demo1-bg2-2"></div>
+</div>
+</body>
+</html>

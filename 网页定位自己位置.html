@@ -1,0 +1,258 @@
+<!chiTYPE html>
+<%@ page contentType="text/html;charset=UTF-8" %>
+<%@ include file="/jsp/common/taglibs.jsp" %>
+
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title></title>
+
+    <!-- z-tree控件 -->
+    <link rel="stylesheet" href="${host }/js/ztree/zTreeStyle/zTreeStyle.css"/>
+    <script src="${host }/js/ztree/jquery.ztree.all.js" type="text/javascript" charset="utf-8"></script>
+    <link rel="stylesheet" href="${host }/jsp/Chiefphy/css/chief_physician.css"/>
+    <script src="${host }/jsp/Chiefphy/js/chief_physician.js" type="text/javascript" charset="utf-8"></script>
+</head>
+<body>
+
+<div id="chi_contation">
+    <%--左侧--%>
+    <div id="chi_left">
+        <%--搜索框--%>
+        <div class="chi_search">
+            <div class="inline-block  form-group has-feedback form-group-content"
+                 style="width:209px;float: left;margin-bottom: 0px!important">
+                <input placeholder="请输入关键字" class="form-control form-control-ipt" type="text" style="width:206px;"/>
+                <span class="glyphicon glyphicon-remove glyphicon-remove-btn form-control-feedback hidden"></span>
+                <button class="btn btn-white" type="button" id="search_btn" onclick="searchTreeByName(this)"
+                        style="border-left:none;padding-right: 10px;padding-left: 10px;display: table-cell;position: absolute;top: 0px;right: -32px;">
+                    <span class="glyphicon glyphicon-search">查询</span>
+                </button>
+
+            </div>
+        </div>
+        <%--待检客户  已检客户--%>
+        <div class="chi_left_table">
+            <div class="chi_ul">
+                <ul class="list-inline tab-ul chi_ul_li">
+                    <li class="tab-active">待检客户</li>
+                    <li>已检客户</li>
+                </ul>
+                <button type="button" class="btn btn-main" style="float: right;">查询</button>
+            </div>
+            <div class="chi_table">
+                <div class="chi_table_first">
+                    <div class="main-table-container">
+                        <table id="" class="table table-striped table-border table-hover pointer ">
+                            待检客户
+                        </table>
+                    </div>
+                </div>
+                <div class="chi_table_first hidden">
+                    <div class="main-table-container">
+                        <table id="" class="table table-striped table-border table-hover pointer ">
+                            已检客户
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+    </div>
+    <%--右侧--%>
+    <div id="chi_right">
+        <div class="chi_container">
+            <div class="chi_container_header">
+                <div class="chi_input col-md-12">
+                    <div class="chi_div_li ">
+                        <span>姓名:</span>
+                        <input type="text">
+                    </div>
+                    <div class="chi_div_li">
+                        <span>性别:</span>
+                        <input type="text">
+                    </div>
+                    <div class="chi_div_li">
+                        <span>年龄:</span>
+                        <input type="text">
+                    </div>
+                    <div class="chi_div_button">
+                        <span class="caret"></span><span id="chi_more">更多</span>
+                    </div>
+                </div>
+                <div class="chi_input col-md-12 chi_hidden hidden">
+                    <div class="chi_div_li ">
+                        <span>体检登记号:</span>
+                        <input type="text">
+                    </div>
+                    <div class="chi_div_li">
+                        <span>客户档案号:</span>
+                        <input type="text">
+                    </div>
+                    <div class="chi_div_li">
+                        <span>手环编号:</span>
+                        <input type="text">
+                    </div>
+                </div>
+                <div class="chi_input col-md-12 chi_hidden hidden">
+                    <div class="chi_div_li ">
+                        <span>身份证号:</span>
+                        <input type="text">
+                    </div>
+                    <div class="chi_div_li">
+                        <span>状态:</span>
+                        <input type="text">
+                    </div>
+                    <div class="chi_div_li">
+                        <span>出生日期:</span>
+                        <input type="text">
+                    </div>
+                </div>
+            </div>
+            <div class="chi_container_footer">
+                <div class="chi_examination">
+                    <div class="chi_ul">
+                        <ul class="list-inline tab-ul chi-ul_ex">
+                            <li class="tab-active">总检结果</li>
+                            <li>本次检查结果</li>
+                            <li>本次未检验项目</li>
+                            <li>历史结果对比</li>
+                        </ul>
+                    </div>
+                    <div class="chi_Result">
+                        <div class="chi_again_tab ">
+                            <div class="chi_again">
+                                <button type="button" class="btn btn-main">重新总检</button>
+                                <button type="button" class="btn btn-main">取消总检</button>
+                            </div>
+                            <div class="chi_again_footer">
+                                <div class="chi_tablef_first">
+                                    <div class="chi_container">
+                                        <div class="main-table-container" style="overflow-y: auto!important;overflow-x: hidden!important;">
+                                            <table id="chi_table" class="table table-striped table-border table-hover pointer ">
+                                                <thead>
+                                                <tr>
+                                                    <th>诊断名称</th>
+                                                    <th>来源项目</th>
+                                                    <th>诊断建议</th>
+                                                    <th>疾病</th>
+                                                    <th>常见</th>
+                                                    <th>重大阳性</th>
+                                                    <th>疾病名称</th>
+                                                    <th>异常结果</th>
+                                                    <th>操作</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <tr>
+                                                    <td>阻生齿</td>
+                                                    <td>口腔检查</td>
+                                                    <td>少食天使早晚刷牙</td>
+                                                    <td><input type="checkbox"></td>
+                                                    <td><input type="checkbox"></td>
+                                                    <td><input type="checkbox"/> </td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td><span onclick="deltables($(this))" style="color: #0494d3">删除</span></td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+
+                                    <%--分页--%>
+                                    <div class="main-content-page" style="line-height: 40px;color: #0494d3">
+                                        <span id="add_New_first">+新增诊断</span>
+                                    </div>
+
+                                </div>
+                                 <div class="chi_tablef_second">
+                                    <div class="chi_container">
+                                        <div class="main-table-container" style="overflow-y: auto!important;;overflow-x: hidden!important;">
+                                        <table id="" class="table table-striped table-border table-hover pointer ">
+                                            <table id="chi_check" class="table table-striped table-border table-hover pointer ">
+                                                <thead>
+                                                <tr>
+                                                    <th>序号</th>
+                                                    <th>项目</th>
+                                                    <th>小结</th>
+                                                    <th>建议</th>
+                                                    <th>操作</th>
+
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <tr>
+                                                    <td><span class="sort">1</span></td>
+                                                    <td>口腔检查</td>
+                                                    <td>少食天使早晚刷牙</td>
+                                                    <td><input type="checkbox"></td>
+                                                    <td><span onclick="deltable($(this))" style="color: #0494d3">删除</span></td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="main-content-page" style="line-height: 40px;color: #0494d3">
+                                    <span id="add_New">+新增诊断</span>
+                                </div>
+                            </div>
+                                 <div class="chi_tablef_advise">
+                                <div class="chi_input_left">
+                                    <div class="chi_input_span">
+                                        <span style="display: block; width: 63px;">总检:</span>
+                                    </div>
+                                    <div class="chi_input_div">
+                                        <textarea class="chi_input_txt"></textarea>
+                                    </div>
+
+                                </div>
+                                <div class="chi_input_right">
+                                    <div class="chi_input_span">
+                                        <span style="display: block; width: 63px;">诊断建议:</span>
+                                    </div>
+                                    <div class="chi_input_div">
+                                        <textarea class="chi_input_txt"></textarea>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="chi_input_footer">
+                            <div class="chi_fote_li ">
+                                <span>体检结论:</span>
+                                <input type="text">
+                            </div>
+                            <div class="chi_fote_li">
+                                <span>总检状态:</span>
+                                <input type="text">
+                            </div>
+                            <div class="chi_fote_li">
+                                <span>体检评分:</span>
+                                <input type="text">
+                            </div>
+                            <div class="chi_fote_li">
+                                <span>复查时间:</span>
+                                <input type="text">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="showMeniuBtn">
+        <button type="button" id="" class="btn btn-main" onclick="zrteeAdd()">保存</button>
+        <button type="button" class="btn btn-white" onclick="layerClose('')">完成</button>
+        <button type="button" class="btn btn-white" onclick="layerClose('')">预览体检报告</button>
+    </div>
+</div>
+
+</div>
+</body>
+
+</html>

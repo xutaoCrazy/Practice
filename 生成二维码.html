@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script type="text/javascript" src="http://cdn.staticfile.org/jquery/1.11.1/jquery.min.js"></script>
+    <!-- jquery-qrcode -->
+    <script type="text/javascript" src="http://cdn.staticfile.org/jquery.qrcode/1.0/jquery.qrcode.min.js"></script>
+    <script>
+        /**
+         * 生成二维码
+         * text：待生成文字
+         * type：中文还是英文，cn为中文
+         * render：展示方式，table为表格方式
+         * width：宽度
+         * height：高度
+         * 注：需要引入<@jsfile 'qrcode'/>
+         */
+        $.fn.qcode = function(options){
+            if(options){
+                var opt = {};
+                if(typeof options == 'string'){
+                    opt.text = options;
+                }else{
+                    if(options.text) opt.text = options.text;
+                    if(options.type && options.type == 'ch') opt.text = qcodetochar(opt.text);
+                    if(options.render && options.render == 'table') opt.render = options.render;
+                    if(options.width) opt.width = options.width;
+                    if(options.height) opt.height = options.height;
+                }
+
+                $(this).qrcode(opt);
+            }
+        };
+        $(function(){
+            debugger;
+            $("#demo").qrcode("www.baidu.com");
+        })
+    </script>
+</head>
+<body>
+<div id="demo" style="width: 256px;height: 256px;border:solid 1px #d8d8d8"></div>
+</body>
+</html>

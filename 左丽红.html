@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="js/jquery-1.7.1.js" type="text/javascript" charset="utf-8"></script>
+    <script>
+        $(function(){
+            debugger;//			debugger;
+            var aa=[];
+            var demoaa=[];
+            var str="转让:1，普通交易:2";
+            var arr = str.split("，");
+            for(var i=0;i<arr.length;i++){
+                aa.push(arr[i].split(":"));
+                demoaa.push(aa[i][0])
+            }
+            var xutao=demoaa.join(",");
+            document.write(xutao);
+        })
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

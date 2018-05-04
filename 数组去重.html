@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="js/jquery-1.7.1.js" type="text/javascript" charset="utf-8"></script>
+    <script>
+        $(function(){
+            var arr = ["a","b","c","c","ab","d","ab","d","c"];
+            arr.deleteEle();
+        });
+
+        Array.prototype.deleteEle=function(){
+            debugger
+            var newArr = this;
+            var arrIndex=[];
+            for (var i=newArr.length-1; i>=0; i--)
+            {
+                var targetNode = newArr[i];
+                for (var j=0; j<i; j++)
+                {
+                    if(targetNode == newArr[j]){
+                        arrIndex.push(i);
+                        arrIndex.push(j);
+                    }
+                }
+            }
+            return arrIndex;
+        }
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

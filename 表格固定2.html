@@ -1,0 +1,77 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <style type='text/css'>
+        body{
+            width:140px;
+            height:200px;
+            margin:160px auto;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <div style="overflow:auto;height:209px;width:140px;position:relative;border-bottom:1px solid #333" id="tb">
+        <table border="1" id="tbl"><tr><td colspan=2 style="width:114px;">sdfsdfdf</td></tr><tr><td>sdfsdfs1</td><td><img src='images/close.gif' /></td></tr><tr><td>sdfsdfs2</td><td><img src='images/close.gif' /></td></tr><tr><td>sdfsdfs3</td><td><img src='images/close.gif' /></td></tr><tr><td>sdfsdfs4</td><td><img src='images/close.gif' /></td></tr><tr><td>sdfsdfs5</td><td><img src='images/close.gif' /></td></tr><tr><td>sdfsdfs6</td><td><img src='images/close.gif' /></td></tr><tr><td>sdfsdfs7</td><td><img src='images/close.gif' /></td></tr><tr><td>sdfsdfs8</td><td><img src='images/close.gif' /></td></tr><tr><td>sdfsdfs9</td><td><img src='images/close.gif' /></td></tr><tr><td>sdfsdf10</td><td><img src='images/close.gif' /></td></tr><tr><td>sdfsdf11</td><td><img src='images/close.gif' /></td></tr><tr><td>sdfsdf12</td><td><img src='images/close.gif' /></td></tr></table>
+    </div>
+    <table border="1" id="aaa" style="position:absolute;top:160px;background:#ffffff;"><tr><td colspan=2 style="width:114px">sdfsdfdf</td></tr></table>
+</div>
+</body>
+</html>
+<script type='text/javascript'>
+
+    onload = init;
+    function init(){
+        var imgs = document.getElementById("tb").getElementsByTagName("img");
+        for(var i=0;i<imgs.length;i++){
+            imgs[i].onclick = changeSp;
+        }
+    }
+    function changeSp(){
+        if(this.flg){
+            this.flg = false;
+            this.src = "images/close.gif";
+        }else{
+            this.flg = true;
+            this.src = "images/open.gif";
+        }
+        var imgs = document.getElementById("tb").getElementsByTagName("img");
+        for(var i=0;i<imgs.length;i++){
+            if(!imgs[i].flg){
+                document.getElementById("tbl").tBodies[0].insertBefore(this.parentNode.parentNode, imgs[i].parentNode.parentNode);
+                break;
+            }
+            imgs[i].onclick = changeSp;
+        }
+        updataSld();
+    }
+    function updataSld(){
+        var imgs = document.getElementById("tb").getElementsByTagName("img");
+        document.getElementById("aaa").tBodies[0].innerText ? document.getElementById("aaa").tBodies[0].innerText= "" :document.getElementById("aaa").tBodies[0].innerHTML ="";
+        var tr0 = document.getElementById("tbl").tBodies[0].rows[0].cloneNode(true);
+        tr0.style.background = "#ffffff";
+        document.getElementById("aaa").tBodies[0].appendChild(tr0);
+        for(var i=0;i<imgs.length;i++){
+            if(imgs[i].flg){
+                var a = imgs[i].parentNode.parentNode.cloneNode(true);
+                a.value = imgs[i];
+                document.getElementById("aaa").tBodies[0].appendChild(a);
+                a.lastChild.firstChild.onclick=(function(a){
+                    return function(){
+                        var j=0;
+                        a.value.src = "images/close.gif";
+                        a.value.flg = false;
+                        document.getElementById("aaa").tBodies[0].removeChild(a);
+                        var imgs = document.getElementById("tb").getElementsByTagName("img");
+                        for(var i=0;i<imgs.length;i++){
+                            if(imgs[i].flg){
+                                j++;
+                            }
+                        }
+                        document.getElementById("tbl").tBodies[0].insertBefore(a.value.parentNode.parentNode, imgs[j+1].parentNode.parentNode);
+                    }
+                })(a);
+            }
+        }
+    }
+</script>

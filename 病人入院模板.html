@@ -1,0 +1,1493 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+
+{{#
+var xianshi;
+var bianji;
+var bitian;
+var huiyuanxianshi;
+var danweixianshi;
+var crmxianshi;
+var hukoudizhi;
+var chushengdizhi;
+var validate;
+var yibaoxianshi;
+var jiguandizhi;
+var lianxirenxinxi;
+function setpagefield(name){
+if(d["map"]["info"+name+"_xianshi"]==1){
+xianshi = "info-group-item " +name ;
+}else{
+xianshi = "info-group-item hidden " +name;
+}
+
+if(name=='10010400451'){
+xianshi += xianshi + " rysj";
+}
+
+if(d["map"]["info"+name + "_kebianji"]==1){
+bianji = "canedit"+name;
+}else{
+bianji = "";
+}
+
+
+if(d["map"]["info"+ name+ "_bitie"]==1){
+bitian = "*";
+validate='validate[required]';
+
+}else{
+bitian = "";
+validate="";
+}
+
+
+}
+function setpagetitle(){
+$(".crm-info").addClass("hidden");
+$(".medinsur-info").addClass("hidden");
+/*隐藏户口地址信息的标头*/
+if(d["map"]["info10010400468_xianshi"]==1 ||  d["map"]["info10010400469_xianshi"]==1  || d["map"]["info10010400470_xianshi"]==1  || d["map"]["info10010400422_xianshi"]==1  || d["map"]["info10010400420_xianshi"]==1 || d["map"]["info10010400459_xianshi"]==1){
+hukoudizhi="info-group-title hukoudizhi";
+}else{
+hukoudizhi="info-group-title hidden hukoudizhi";
+}
+/*隐藏出生地址信息的标头*/
+if(d["map"]["info10010400471_xianshi"]==1 ||  d["map"]["info10010400472_xianshi"]==1  || d["map"]["info10010400473_xianshi"]==1  || d["map"]["info10010400460_xianshi"]==1){
+chushengdizhi="info-group-title chushengdizhi";
+}else{
+chushengdizhi="info-group-title chushengdizhi hidden";
+}
+/*隐藏单位信息的标头*/
+
+if(d["map"]["info10010400425_xianshi"]==1 ||  d["map"]["info10010400454_xianshi"]==1  || d["map"]["info10010400426_xianshi"]==1  || d["map"]["info10010400427_xianshi"]==1 || d["map"]["info10010400428_xianshi"]==1 || d["map"]["info10010400429_xianshi"]==1){
+danweixianshi="info-group-title danweixinxi";
+}else{
+danweixianshi="info-group-title danweixinxi hidden";
+}
+/*隐藏会员信息*/
+if(d["map"]["info10010400464_xianshi"]==1){
+huiyuanxianshi="member-info";
+}else{
+huiyuanxianshi="member-info hidden";
+}
+/*隐藏医保信息*/
+if(d["map"]["info10010400484_xianshi"]==1||d["map"]["info10010400485_xianshi"]==1||d["map"]["info10010400486_xianshi"]==1||
+d["map"]["info10010400487_xianshi"]==1||d["map"]["info1001040041_xianshi"]==1||d["map"]["info10010400488_xianshi"]==1||
+d["map"]["info10010400489_xianshi"]==1||d["map"]["info10010400490_xianshi"]==1||d["map"]["info10010400491_xianshi"]==1||
+d["map"]["info10010400492_xianshi"]==1||d["map"]["info10010400493_xianshi"]==1||d["map"]["info10010400494_xianshi"]==1||d["map"]["info10010400495_xianshi"]==1){
+yibaoxianshi="info-group-title yibaoxianshi";
+}else{
+yibaoxianshi="info-group-title yibaoxianshi hidden";
+}
+/*籍贯地址*/
+if(d["map"]["info10010400474_xianshi"]==1 ||  d["map"]["info10010400475_xianshi"]==1  || d["map"]["info10010400461_xianshi"]==1  || d["map"]["info10010400417_xianshi"]==1 || d["map"]["info10010400418_xianshi"]==1 || d["map"]["info10010400419_xianshi"]==1){
+jiguandizhi="info-group-title jiguandizhi";
+}else{
+jiguandizhi="info-group-title jiguandizhi hidden";
+}
+/*联系人信息*/
+if(d["map"]["info10010400465_xianshi"]==1 ||  d["map"]["info10010400430_xianshi"]==1  || d["map"]["info10010400431_xianshi"]==1  || d["map"]["info10010400432_xianshi"]==1 || d["map"]["info10010400482_xianshi"]==1 || d["map"]["info10010400433_xianshi"]==1){
+lianxirenxinxi="info-group-title lianxirenxinxi";
+}else{
+lianxirenxinxi="info-group-title lianxirenxinxi hidden";
+}
+}
+}}
+
+{{# setpagetitle(); }}
+<!--基本信息-->
+<div class="basic-info containerpatientbox">
+    <div class="info-title-container">
+        <div class="info-title">基本信息</div>
+        <div class="info-line">
+            <hr />
+        </div>
+    </div>
+    <div class="basic-info-content form-inline">
+        <div class="info-group info-group-s info-group-horizontal  yibaoxinxi containerpatient">
+            <label class="{{yibaoxianshi}}" style="margin-top: 15px;">医保信息</label>
+            <ul class="info-group-list list-unstyled">
+
+                {{# setpagefield("10010400484")}}
+                <li class="{{xianshi}} li_1">
+                    <div class="info-group-item-title">
+                        <span class="info-required">{{bitian}}</span><span>保险机构</span>
+                    </div>
+                    <div class="info-group-item-input">
+                        <select   class="{{validate}} inListInput form-input key_1" data-key="key_1" id="iaa01" name="iaa01" onchange="loadiai1(this);"></select>
+                    </div>
+                </li>
+                {{# setpagefield("10010400485")}}
+                <li class="{{xianshi}} li_2">
+                    <div class="info-group-item-title">
+                        <span class="info-required">{{bitian}}</span><span>分管机构</span>
+                    </div>
+                    <div class="info-group-item-input">
+                        <input type="text" class="{{validate}} form-input key_2 inListInput" data-key="key_2" id="iab02" name="iab02"/>
+                    </div>
+                </li>
+                {{# setpagefield("10010400486")}}
+                <li class="{{xianshi}} li_3">
+                    <div class="info-group-item-title">
+                        <span class="info-required">{{bitian}}</span><span>医疗类别</span>
+                    </div>
+                    <div class="info-group-item-input">
+                        <select  class="{{validate}} form-input key_3 inListInput" data-key="key_3" id="iai01" name="iai01"></select>
+
+                    </div>
+                </li>
+                {{# setpagefield("10010400487")}}
+                <li class="{{xianshi}} li_4">
+                    <div class="info-group-item-title">
+                        <span class="info-required">{{bitian}}</span><span>保险卡号</span>
+                    </div>
+                    <div class="info-group-item-input">
+                        <input type="text" class="{{validate}} form-input key_4 inListInput" data-key="key_4" id="iak04" name="iak04"/>
+                    </div>
+                </li>
+                {{# setpagefield("1001040041")}}
+                <li class="{{xianshi}} li_5">
+                    <div class="info-group-item-title">
+                        <span class="info-required">{{bitian}}</span><span>医保号</span>
+                    </div>
+                    <div class="info-group-item-input">
+                        <input class="{{validate}} form-input key_5 inListInput" data-key="key_5"  type="text"  id="iak05" name="iak05"/>
+                        <input type="hidden"  id="iar25" name="iar25"/>
+                        <input  type="hidden"  id="iar41" name="iar41"/>
+                        <input  type="hidden"  id="iai03_1" name="iai03_1"/>
+                    </div>
+                </li>
+                {{# setpagefield("10010400488")}}
+                <li class="{{xianshi}} li_6">
+                    <div class="info-group-item-title">
+                        <span class="info-required">{{bitian}}</span><span>人员类别</span>
+                    </div>
+                    <div class="info-group-item-input">
+                        <input type="text" class="{{validate}} form-input key_6 inListInput" data-key="key_6"  id="iar43" name="iar43"/>
+                    </div>
+                </li>
+                {{# setpagefield("10010400489")}}
+                <li class="{{xianshi}} li_7">
+                    <div class="info-group-item-title">
+                        <span class="info-required">{{bitian}}</span><span>险类名称</span>
+                    </div>
+                    <div class="info-group-item-input">
+                        <select  class="{{validate}} form-input key_7 inListInput" data-key="key_7" id="iar19" name="iar19"></select>
+                    </div>
+                </li>
+                {{# setpagefield("10010400490")}}
+                <li class="{{xianshi}} li_8">
+                    <div class="info-group-item-title">
+                        <span class="info-required">{{bitian}}</span><span>社保登记员</span>
+                    </div>
+                    <div class="info-group-item-input">
+                        <input type="text" class="{{validate}} form-input key_8 inListInput" data-key="key_8" id="iar10" name="iar10"/>
+                    </div>
+                </li>
+                {{# setpagefield("10010400491")}}
+                <li class="{{xianshi}} li_9">
+                    <div class="info-group-item-title">
+                        <span class="info-required">{{bitian}}</span><span>就业状态</span>
+                    </div>
+                    <div class="info-group-item-input">
+                        <input type="text" class="{{validate}} form-input key_9 inListInput" data-key="key_9" id="iar15" name="iar15"/>
+                    </div>
+                </li>
+                {{# setpagefield("10010400492")}}
+                <li class="{{xianshi}} li_10">
+                    <div class="info-group-item-title">
+                        <span class="info-required">{{bitian}}</span><span>医保疾病名称</span>
+                    </div>
+                    <div class="info-group-item-input">
+                        <input type="text"  class="{{validate}} form-input key_10 inListInput" data-key="key_10" id="iad04" name="iad04" />
+                    </div>
+                </li>
+                {{# setpagefield("10010400493")}}
+                <li class="{{xianshi}} li_11">
+                    <div class="info-group-item-title">
+                        <span class="info-required">{{bitian}}</span><span>医保疾病编码</span>
+                    </div>
+                    <div class="info-group-item-input">
+                        <input type="text" class="{{validate}} form-input key_11 inListInput" data-key="key_11" id="iad03" name="iad03"/>
+                    </div>
+                </li>
+                {{# setpagefield("10010400494")}}
+                <li class="{{xianshi}} li_12">
+                    <div class="info-group-item-title">
+                        <span class="info-required">{{bitian}}</span><span>账户余额</span>
+                    </div>
+                    <div class="info-group-item-input">
+                        <input type="text" class="{{validate}} form-input key_12 inListInput" data-key="key_12" id="iar33" name="iar33"/>
+                    </div>
+                </li>
+                {{# setpagefield("10010400495")}}
+                <li class="{{xianshi}} li_13">
+                    <div class="info-group-item-title">
+                        <span class="info-required">{{bitian}}</span><span>住院起付线</span>
+                    </div>
+                    <div class="info-group-item-input">
+                        <input type="text" class="{{validate}} form-input key_13 inListInput" data-key="key_13" id="iar35" name="iar35"/>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="info-group info-group-s info-group-horizontal containerpatient">
+
+            <label class="info-group-title" style="margin-top: 20px;">个人信息</label>
+            <ul class="info-group-list list-unstyled">
+                <li class="info-group-item li_14">
+                    <div class="info-group-item-title">
+                        <span>检索</span>
+                    </div>
+                    <div class="info-group-item-input">
+                        <input class="form-input wid135 drop-toggle-input key_14 inListInput" data-key="key_14" id="searchbase" name="searchbase"  type="text" style="width:150px !important;vertical-align: middle;"/>
+                        <span class="input-group-addon  drop-toggle-btn" data-id="searchbase"  style="width:30px;height:30px;display:inline-block;border-radius: 0px;cursor: pointer;position: relative;top:-30px;left:149px"/>
+                        <span class="glyphicon glyphicon-search" style="right: 3px;position:relative;left:123px;top:-25px;"></span>
+
+                        </span>
+                    </div>
+                </li>
+                {{# setpagefield("10010400453")}}
+                <li class="{{xianshi}} li_15">
+                    <div class="info-group-item-title">
+                        <span class="info-required">{{bitian}}</span> <span>预约号</span>
+                    </div>
+                    <div class="info-group-item-input">
+                        <input  class="{{validate}} key_15 inListInput" data-key="key_15"  type="text" id="scf01" name="scf01"/>
+                    </div>
+                </li>
+                {{# setpagefield("1001040042222")}}
+                <li class="{{xianshi}} li_16">
+                    <div class="info-group-item-title">
+                        <span class="info-required">{{bitian}}</span> <span>住院号</span>
+                    </div>
+                    <div class="info-group-item-input">
+                        <input  class="{{validate}} key_16 inListInput" data-key="key_16"  type="text" id="vaa04" name="vaa04" readonly="readonly"/>
+                    </div>
+                </li>
+                {{# setpagefield("10010400479")}}
+                <li class="{{xianshi}} li_17">
+                    <div class="info-group-item-title">
+                        <span class="info-required">{{bitian}}</span> <span>姓名</span>
+                    </div>
+                    <div class="info-group-item-input">
+                        <input class="form-input {{validate}} key_17 inListInput" data-key="key_17" type="text" name="vaa05" id="vaa05" autocomplete="off"/>
+                        <input id="vae04" name="vae04" type="hidden" />
+                        <input id="vae44" name="vae44" type="hidden" /> <input
+                            id="bce03e" name="bce03e" type="hidden"/> <input
+                            id="diagid" name="diagid" type="hidden" value="1" />
+                        <!-- 前就诊号(针对再入院情况) -->
+                        <input id="empid" name="empid" type="hidden"  /> <input
+                            id="empdept" name="empdept" type="hidden" value="2" /> <input
+                            id="faa01" name="faa01" type="hidden" value="0" /> <input
+                            id="empcode" name="empcode" type="hidden"/> <input
+                            name="empname" type="hidden"  />
+                        <input id="workstation" name="workstation" type="hidden"
+                               value="1" />
+                        <!-- 工作站模式 1=病人管理 2=护士工作站  -->
+                        <input id="wardnolen" name="wardnolen" type="hidden"
+                               value="9" />  <input id="wardnopre"
+                                                    name="wardnopre" type="hidden" value="YYYY" /> <input
+                            id="vaa01" name="vaa01" type="hidden" value="0"/>
+                        <input id="vae01" name="vae01" type="hidden" value="0"/>
+                        <input id="vbu01" name="vbu01" type="hidden" value="0"/>
+                        <input id="vbl01" name="vbl01" type="hidden" value="0"/>
+                        <input id="vbo01" name="vbo01" type="hidden" value="0"/>
+                        <input id="iar01" name="iar01" type="hidden" value="0"/>
+                        <input id="acf01" name="acf01" type="hidden" value="2"/>
+                    </div>
+                </li>
+                {{# setpagefield("1001040043")}}
+                <li class="{{xianshi}} li_18">
+                    <div class="info-group-item-title">
+                        <span class="info-required">{{bitian}}</span> <span>身份证号</span>
+                    </div>
+                    <div class="info-group-item-input">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <input id="vaa15"
+                                       onblur="idCardNoUtil.checkIdCardNo(this.value);"   name="vaa15" class="{{validate}} key_18 inListInput" data-key="key_18" type="text"/>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                {{# setpagefield("1001040044")}}
+                <li class="{{xianshi}} li_19">
+                    <div class="info-group-item-title">
+                        <span class="info-required">{{bitian}}</span> <span>其他证件</span>
+                    </div>
+                    <div class="info-group-item-input">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <input id="vaa16" name="vaa16" class="{{validate}} key_19 inListInput" data-key="key_19" type="text"/>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                {{# setpagefield("1001040045")}}
+                <li class="{{xianshi}}">
+                    <div class="info-group-item-title">
+                        <span class="info-required">{{bitian}}</span> <span>性别</span>
+                    </div>
+                    <div class="info-group-item-input">
+                        <input name="abw02" id="abw02" type="hidden" /> <label
+                            class="radio-inline"> <input type="radio"
+                                                         name="abw01" id="abw01" value="1" />男
+                    </label> <label class="radio-inline"> <input type="radio"
+                                                                 name="abw01" id="abw01" value="2" checked="checked"/>女
+                    </label>
+                    </div>
+                </li>
+                {{# setpagefield("1001040046")}}
+                <li class="{{xianshi}} li_20">
+                    <div class="info-group-item-title">
+                        <span class="info-required">{{bitian}}</span> <span>出生日期</span>
+                    </div>
+                    <div class="info-group-item-input">
+                        <div class="form-group">
+
+                            <input  id="vaa12" name="vaa12" type="text"
+                                    class="{{validate}} key_20 inListInput" data-key="key_20" onblur="handsOn($(this))" />
+
+                        </div>
+                    </div>
+                </li>
+                {{# setpagefield("10010400480")}}
+                <li class="{{xianshi}} li_21">
+                    <div class="info-group-item-title">
+                        <span class="info-required">{{bitian}}</span> <span>年龄</span>
+                    </div>
+                    <div class="info-group-item-input">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <input id="vae46" name="vae46" class="{{validate}} key_21 form-control-ipt inListInput" style="width:50%!important;position:relative;top:1px" data-key="key_21" onkeyup="this.value=this.value.replace(/\D/g,'')"
+                                       type="text" oninput="getBirthDayByAge(this);"/>
+
+                                <select name="aau01" id="aau01" class="input-group-addon"  class="{{bianji}} inListInput" style='width:50%;'><!--onchange="getBirthDayByAge();"   -->
+                                    <option value="Y">岁</option>
+                                    <option value="M">月</option>
+                                    <option value="W">周</option>
+                                    <option value="D">天</option>
+                                    <option value="H">小时</option>
+                                    <option value="N">分</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+
+                {{# setpagefield("1001040047")}}
+                <li class="{{xianshi}} li_22">
+                    <div class="info-group-item-title">
+                        <span class="info-required">{{bitian}}</span> <span>血型</span>
+                    </div>
+                    <div class="info-group-item-input">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <select name="abl01" id="abl01"  class="{{validate}} key_22 inListInput" data-key="key_22" style="width:180px;">
+                                    <option value="">请选择</option>
+                                </select>
+
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                {{# setpagefield("1001040048")}}
+                <li class="{{xianshi}} li_23">
+                    <div class="info-group-item-title">
+                        <span class="info-required">{{bitian}}</span> <span>婚姻状况</span>
+                    </div>
+                    <div class="info-group-item-input">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <select name=ack01 id="ack01" class="{{validate}} key_23 inListInput " data-key="key_23" style="width:180px;">
+                                    <option value="">请选择</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                {{# setpagefield("1001040049")}}
+                <li class="{{xianshi}} li_24">
+                    <div class="info-group-item-title">
+                        <span class="info-required">{{bitian}}</span> <span>国籍</span>
+                    </div>
+                    <div class="info-group-item-input">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <select name=acc02 id="acc02" class="{{validate}} key_24 inListInput" data-key="key_24" style="width:180px;">
+                                    <option value="">请选择</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                {{# setpagefield("10010400410")}}
+                <li class="{{xianshi}} li_25">
+                    <div class="info-group-item-title">
+                        <span class="info-required">{{bitian}}</span> <span>学历</span>
+                    </div>
+                    <div class="info-group-item-input">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <select name=aay02 id="aay02" onclick="addaay02()" class="{{validate}} key_25 inListInput" data-key="key_25" style="width:180px;">
+                                    <option value="">请选择</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                {{# setpagefield("10010400411")}}
+                <li class="{{xianshi}} li_26">
+                    <div class="info-group-item-title">
+                        <span class="info-required">{{bitian}}</span> <span>民族</span>
+                    </div>
+                    <div class="info-group-item-input">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <select name=abq02 id="abq02" class="{{validate}} key_26 inListInput" data-key="key_26" style="width:180px;">
+                                    <option value="">请选择</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                {{# setpagefield("10010400412")}}
+                <li class="{{xianshi}} li_27">
+                    <div class="info-group-item-title">
+                        <span class="info-required">{{bitian}}</span> <span>身份</span>
+                    </div>
+                    <div class="info-group-item-input">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <select name=acm02 id="acm02" class="{{validate}} key_27 inListInput" data-key="key_27" style="width:180px;">
+                                    <option value="">请选择</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                {{# setpagefield("10010400413")}}
+                <li class="{{xianshi}} li_28">
+                    <div class="info-group-item-title">
+                        <span class="info-required">{{bitian}}</span> <span>职业</span>
+                    </div>
+                    <div class="info-group-item-input">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <select name=aat02 id="aat02"  class="{{validate}} key_28 inListInput" data-key="key_28" style="width:180px;">
+                                    <option value="">请选择</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                {{# setpagefield("10010400481")}}
+                <li class="{{xianshi}} li_29">
+                    <div class="info-group-item-title">
+                        <span class="info-required">{{bitian}}</span> <span>病人类别</span>
+                    </div>
+                    <div class="info-group-item-input">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <select name="bdp02" id="bdp02" class="{{validate}} key_29 inListInput" data-key="key_29" onchange="loadabc02(this);" style="width:180px;">
+                                    <option value="">请选择</option>
+                                </select>
+
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                {{# setpagefield("10010400414")}}
+                <li class="{{xianshi}} li_30">
+                    <div class="info-group-item-title">
+                        <span class="info-required">{{bitian}}</span> <span>费别</span>
+                    </div>
+                    <div class="info-group-item-input">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <input name="abc02" id="abc02" class="{{validate}} key_30 inListInput" data-key="key_30" type="text" readonly="readonly"/>
+
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                {{# setpagefield("10010400415")}}
+                <li class="{{xianshi}} li_31">
+                    <div class="info-group-item-title">
+                        <span class="info-required">{{bitian}}</span> <span>医疗付款</span>
+                    </div>
+                    <div class="info-group-item-input">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <!-- <input name="abj01" id="abj01" type="hidden"/>	 -->
+                                <select name="abj01" id="abj01" class="{{validate}} key_31 inListInput" data-key="key_31" style="width:180px;">
+                                    <option value="">请选择</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                {{# setpagefield("10010400455")}}
+                <li class="{{xianshi}} li_32">
+                    <div class="info-group-item-title">
+                        <span class="info-required">{{bitian}}</span> <span>身高</span>
+                    </div>
+                    <div class="info-group-item-input">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <input name="vae91" id="vae91" class="{{validate}} key_32 inListInput" data-key="key_32" type="text"/>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                {{# setpagefield("10010400456")}}
+                <li class="{{xianshi}} li_33">
+                    <div class="info-group-item-title">
+                        <span class="info-required">{{bitian}}</span> <span>体重</span>
+                    </div>
+                    <div class="info-group-item-input">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <input name="vae89" id="vae89" class="{{validate}}  key_33 inListInput" data-key="key_33" type="text"/>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                {{# setpagefield("10010400457")}}
+                <li class="{{xianshi}} li_34">
+                    <div class="info-group-item-title" style="width: 115px;margin-left: -10px;">
+                        <span class="info-required">{{bitian}}</span> <span>新生儿出生体重</span>
+                    </div>
+                    <div class="info-group-item-input">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <input name="vae90" id="vae90" class="{{validate}}  key_34 inListInput" data-key="key_34" type="text"/>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                {{# setpagefield("10010400458")}}
+                <li class="{{xianshi}} li_35">
+                    <div class="info-group-item-title">
+                        <span class="info-required">{{bitian}}</span> <span>健康卡号</span>
+                    </div>
+                    <div class="info-group-item-input">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <input id="vaa82" name="vaa82" onkeyup="this.value=this.value.replace(/\D/g,'')"
+                                       class="{{validate}} key_35" data-key="key_35 inListInput" type="text"/>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                {{# setpagefield("10010400459")}}
+                <li class="{{xianshi}} li_36">
+                    <div class="info-group-item-title">
+                        <span class="info-required">{{bitian}}</span> <span>转院医疗机构</span>
+                    </div>
+                    <div class="info-group-item-input">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <input id="vae92" name="vae92" class="{{validate}} key_36 inListInput" data-key="key_36" type="text"/>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                {{# setpagefield("10010400476")}}
+
+                <li class="{{xianshi}} li_37">
+                    <div class="info-group-item-title">
+                        <span class="info-required">{{bitian}}</span> <span>补充费用总额</span>
+                    </div>
+                    <div class="info-group-item-input">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <input id="vbm11" name="vbm11" class="{{validate}}  key_37 inListInput" data-key="key_37" type="text"/>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <!-- <div class="info-group info-group-s info-group-horizontal">
+            <label class="info-group-title">家庭地址</label>
+            </div> -->
+
+        <div class="info-group info-group-s info-group-horizontal containerpatient">
+            <label class="info-group-title">现住址</label>
+            <ul class="info-group-list list-unstyled">
+                {{# setpagefield("10010400423")}}
+                <li class="{{xianshi}} li_38">
+                    <div class="info-group-item-title">
+                        <span class="info-required">{{bitian}}</span> <span>省(区.县)</span>
+                    </div>
+                    <div class="info-group-item-input">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <select name="vae60" id="vae60" class="{{validate}}  key_38 inListInput" data-key="key_38" onchange="addvae61(this);" style="width:180px;"  autocmplete="off">
+                                    <option value="">请选择</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                {{# setpagefield("10010400424")}}
+                <li class="{{xianshi}} li_39">
+                    <div class="info-group-item-title">
+                        <span class="info-required">{{bitian}}</span> <span>市</span>
+                    </div>
+                    <div class="info-group-item-input">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <select id="vae61" name="vae61" class="{{validate}} key_39 inListInput" data-key="key_39" onchange="addvct41(this);" style="width:180px;">
+                                    <option value="">请选择</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                {{# setpagefield("10010400466")}}
+                <li class="{{xianshi}} li_40">
+                    <div class="info-group-item-title">
+                        <span class="info-required">{{bitian}}</span> <span>县</span>
+                    </div>
+                    <div class="info-group-item-input">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <select id="vct41" name="vct41"  class="{{validate}}  key_40 inListInput" data-key="key_40" style="width:180px;">
+                                    <option value="">请选择</option>
+                                </select>
+
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                {{# setpagefield("10010400467")}}
+                <li class="{{xianshi}} li_41">
+                    <div class="info-group-item-title">
+                        <span class="info-required">{{bitian}}</span> <span>邮编</span>
+                    </div>
+                    <div class="info-group-item-input">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <input id="vct42" name="vct42" class="{{validate}} key_41 inListInput" data-key="key_41" type="text"/>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                {{# setpagefield("10010400416")}}
+                <li class="{{xianshi}} li_42">
+                    <div class="info-group-item-title">
+                        <span class="info-required">{{bitian}}</span> <span>现住址</span>
+                    </div>
+                    <div class="info-group-item-input">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <input style="display:none">
+                                <input id="vae62" name="vae62" class="{{validate}} key_42 inListInput" data-key="key_42" type="text" autocomplete="off"/> <input id="abu01"
+                                                                                                                                                                 name="abu01" type="hidden" />
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="info-group info-group-s info-group-horizontal containerpatient" >
+            <label class="{{hukoudizhi}}">户口地址</label>
+            <ul class="info-group-list list-unstyled">
+                {{# setpagefield("10010400468")}}
+                <li class="{{xianshi}} li_43">
+                    <div class="info-group-item-title">
+                        <span class="info-required">{{bitian}}</span> <span>省(区.县)</span>
+                    </div>
+                    <div class="info-group-item-input">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <select name="vct37" id="vct37" onchange="addvct38(this);" class="{{validate}} key_43 inListInput" data-key="key_43" style="width:180px;">
+                                    <option value="">请选择</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                {{# setpagefield("10010400469")}}
+                <li class="{{xianshi}} li_44">
+                    <div class="info-group-item-title">
+                        <span class="info-required">{{bitian}}</span> <span>市</span>
+                    </div>
+                    <div class="info-group-item-input">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <select name="vct38" id="vct38" onchange="addvct39(this);" class="{{validate}} key_44 inListInput"  data-key="key_44" style="width:180px;">
+                                    <option value="">请选择</option>
+                                </select>
+
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                {{# setpagefield("10010400470")}}
+                <li class="{{xianshi}} li_45">
+                    <div class="info-group-item-title">
+                        <span class="info-required">{{bitian}}</span> <span>县</span>
+                    </div>
+                    <div class="info-group-item-input">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <select name="vct39" id="vct39" class="{{validate}} key_45" data-key="key_45 inListInput" style="width:180px;">
+                                    <option value="">请选择</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                {{# setpagefield("10010400422")}}
+                <li class="{{xianshi}} li_46">
+                    <div class="info-group-item-title">
+                        <span class="info-required">{{bitian}}</span> <span>邮编</span>
+                    </div>
+                    <div class="info-group-item-input">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <input id="vae58" name="vae58" class="{{validate}} key_46" data-key="key_46 inListInput" type="text"/>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                {{# setpagefield("10010400420")}}
+                <li class="{{xianshi}} li_47">
+                    <div class="info-group-item-title">
+                        <span class="info-required">{{bitian}}</span> <span>地址</span>
+                    </div>
+                    <div class="info-group-item-input">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <input id="vae57" name="vae57" class="{{validate}}  key_47" data-key="key_47 inListInput" type="text"/>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                {{# setpagefield("10010400459")}}
+                <li class="{{xianshi}} li_48">
+                    <div class="info-group-item-title">
+                        <span class="info-required">{{bitian}}</span> <span>电话</span>
+                    </div>
+                    <div class="info-group-item-input">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <input id="vae59" name="vae59" onkeyup="this.value=this.value.replace(/\D/g,'')"
+                                       class="{{validate}}  key_48 inListInput" data-key="key_48" type="text"/>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="info-group info-group-s info-group-horizontal containerpatient">
+            <label class="{{chushengdizhi}}">出生地址</label>
+            <ul class="info-group-list list-unstyled">
+                {{# setpagefield("10010400471")}}
+                <li class="{{xianshi}} li_49">
+                    <div class="info-group-item-title">
+                        <span class="info-required">{{bitian}}</span> <span>省(区.县)</span>
+                    </div>
+                    <div class="info-group-item-input">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <select name="vct32" id="vct32" class="{{validate}}  key_49 inListInput" data-key="key_49" onchange="addvct33(this);" style="width:180px;">
+                                    <option value="">请选择</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                {{# setpagefield("10010400472")}}
+                <li class="{{xianshi}} li_50">
+                    <div class="info-group-item-title">
+                        <span class="info-required">{{bitian}}</span> <span>市</span>
+                    </div>
+                    <div class="info-group-item-input">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <select name="vct33" id="vct33" onchange="addvct34(this);" class="{{validate}}  key_50 inListInput" data-key="key_50" style="width:180px;">
+                                    <option value="">请选择</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                {{# setpagefield("10010400473")}}
+                <li class="{{xianshi}} li_51">
+                    <div class="info-group-item-title">
+                        <span class="info-required">{{bitian}}</span> <span>县</span>
+                    </div>
+                    <div class="info-group-item-input">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <select name="vct34" id="vct34" class="{{validate}} key_51 inListInput" data-key="key_51" style="width:180px;">
+                                    <option value="">请选择</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                {{# setpagefield("10010400460")}}
+                <li class="{{xianshi}} li_52">
+                    <div class="info-group-item-title">
+                        <span class="info-required">{{bitian}}</span> <span>出生地址</span>
+                    </div>
+                    <div class="info-group-item-input">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <input id="vaa20" name="vaa20" class="{{validate}} key_52 inListInput" data-key="key_52" type="text"/>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="info-group info-group-s info-group-horizontal containerpatient">
+            <label class="{{jiguandizhi}}">籍贯地址</label>
+            <ul class="info-group-list list-unstyled">
+                {{# setpagefield("10010400474")}}
+                <li class="{{xianshi}} li_53">
+                    <div class="info-group-item-title">
+                        <span class="info-required">{{bitian}}</span> <span>省(区.县)</span>
+                    </div>
+                    <div class="info-group-item-input">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <select name="vct35" id="vct35"  class="{{validate}} key_53 inListInput" data-key="key_53" onchange="addvct36(this);" style="width:180px;">
+                                    <option value="">请选择</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                {{# setpagefield("10010400475")}}
+                <li class="{{xianshi}} li_54">
+                    <div class="info-group-item-title">
+                        <span class="info-required">{{bitian}}</span> <span>市</span>
+                    </div>
+                    <div class="info-group-item-input">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <select name="vct36" id="vct36" class="{{validate}} key_54 inListInput" data-key="key_54" style="width:180px;">
+                                    <option value="">请选择</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                {{# setpagefield("10010400461")}}
+                <li class="{{xianshi}} li_55">
+                    <div class="info-group-item-title">
+                        <span class="info-required">{{bitian}}</span> <span>籍贯</span>
+                    </div>
+                    <div class="info-group-item-input">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <input id="vaa25" name="vaa25" class="{{validate}} key_55 inListInput" data-key="key_55" type="text"/>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                {{# setpagefield("10010400417")}}
+                <li class="{{xianshi}} li_56">
+                    <div class="info-group-item-title">
+                        <span class="info-required">{{bitian}}</span> <span>家庭电话</span>
+                    </div>
+                    <div class="info-group-item-input">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <input id="vae63" name="vae63" class="{{validate}} key_56 inListInput" data-key="key_56" type="text"/>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                {{# setpagefield("10010400418")}}
+                <li class="{{xianshi}} li_57">
+                    <div class="info-group-item-title">
+                        <span class="info-required">{{bitian}}</span> <span>电子邮箱</span>
+                    </div>
+                    <div class="info-group-item-input">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <input id="vae65" name="vae65" class="{{validate}} key_57 inListInput" data-key="key_57" type="text"/>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                {{# setpagefield("10010400419")}}
+                <li class="{{xianshi}} li_58">
+                    <div class="info-group-item-title">
+                        <span class="info-required">{{bitian}}</span> <span>移动电话</span>
+                    </div>
+                    <div class="info-group-item-input">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <input id="vae64" name="vae64" class="{{validate}} key_58 inListInput" data-key="key_58" onkeyup="this.value=this.value.replace(/\D/g,'')"
+                                       type="text"/>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="info-group info-group-s info-group-horizontal containerpatient">
+            <label class="{{danweixianshi}}">单位信息</label>
+            <ul class="info-group-list list-unstyled">
+                {{# setpagefield("10010400425")}}
+                <li class="{{xianshi}} li_59">
+                    <div class="info-group-item-title">
+                        <span class="info-required">{{bitian}}</span> <span>工作单位</span>
+                    </div>
+                    <div class="info-group-item-input">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <input id="baq01" name="baq01" class="form-input" type="hidden"/>
+                                <input id="baq02" name="baq02" type="hidden"/>
+                                <input id="baq03" name="baq03" type="text" class="{{validate}} key_59 inListInput" data-key="key_59" autocomplete="off"/>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                {{# setpagefield("10010400454")}}
+                <li class="{{xianshi}} li_60">
+                    <div class="info-group-item-title">
+                        <span class="info-required">{{bitian}}</span> <span>单位地址</span>
+                    </div>
+                    <div class="info-group-item-input">
+                        <input  class="{{validate}} key_60 inListInput" data-key="key_60" id="vae56" name="vae56" type="text"/>
+                    </div>
+                </li>
+                {{# setpagefield("10010400426")}}
+                <li class="{{xianshi}} li_61">
+                    <div class="info-group-item-title">
+                        <span>单位邮编</span>
+                    </div>
+                    <div class="info-group-item-input">
+                        <input  class="{{validate}} key_61 inListInput" data-key="key_61" id="vaa50" name="vaa50" type="text"/>
+                    </div>
+                </li>
+                {{# setpagefield("10010400427")}}
+                <li class="{{xianshi}} li_62">
+                    <div class="info-group-item-title">
+                        <span class="info-required">{{bitian}}</span> <span>单位电话</span>
+                    </div>
+                    <div class="info-group-item-input">
+                        <input  class="{{validate}} key_62 inListInput" data-key="key_62" onkeyup="this.value=this.value.replace(/\D/g,'')"
+                                id="vae55" name="vae55" type="text"/>
+                    </div>
+                </li>
+                {{# setpagefield("10010400428")}}
+                <li class="{{xianshi}} li_63">
+                    <div class="info-group-item-title">
+                        <span class="info-required">{{bitian}}</span> <span>单位开户行</span>
+                    </div>
+                    <div class="info-group-item-input">
+                        <input  class="{{validate}} key_63 inListInput" data-key="key_63" id="vaa51" name="vaa51" type="text"/>
+                    </div>
+                </li>
+                {{# setpagefield("10010400429")}}
+                <li class="{{xianshi}} li_64">
+                    <div class="info-group-item-title">
+                        <span class="info-required">{{bitian}}</span> <span>单位账户</span>
+                    </div>
+                    <div class="info-group-item-input">
+                        <input  class="{{validate}} key_64 inListInput" data-key="key_64" id="vaa52" name="vaa52" type="text"/>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="info-group info-group-s info-group-horizontal containerpatient">
+            <label class="{{lianxirenxinxi}}">联系人信息</label>
+            <ul class="info-group-list list-unstyled">
+                {{# setpagefield("10010400465")}}
+                <li class="{{xianshi}} li_65">
+                    <div class="info-group-item-title">
+                        <span class="info-required">{{bitian}}</span> <span>联系人姓名</span>
+                    </div>
+                    <div class="info-group-item-input">
+                        <input id="vae68" name="vae68" class="{{validate}} key_65 inListInput" data-key="key_65" type="text"/>
+                    </div>
+                </li>
+                {{# setpagefield("10010400430")}}
+                <li class="{{xianshi}} li_66">
+                    <div class="info-group-item-title">
+                        <span class="info-required">{{bitian}}</span> <span>联系人电话</span>
+                    </div>
+                    <div class="info-group-item-input">
+                        <input name="vae71" id="vae71" onkeyup="this.value=this.value.replace(/\D/g,'')"
+                               class="{{validate}} key_66 inListInput" data-key="key_66" type="text"/>
+                    </div>
+                </li>
+                {{# setpagefield("10010400431")}}
+                <li class="{{xianshi}} li_67">
+                    <div class="info-group-item-title">
+                        <span class="info-required">{{bitian}}</span> <span>联系人地址</span>
+                    </div>
+                    <div class="info-group-item-input">
+                        <input name="vae70" id="vae70" class="{{validate}} key_67 inListInput" data-key="key_67" type="text"/>
+                    </div>
+                </li>
+                {{# setpagefield("10010400432")}}
+                <li class="{{xianshi}} li_68">
+                    <div class="info-group-item-title">
+                        <span class="info-required">{{bitian}}</span> <span>联系人关系</span>
+                    </div>
+                    <div class="info-group-item-input">
+                        <select id="aaz02" name="aaz02" class="{{validate}} key_68 inListInput" data-key="key_68" style="width:180px;">
+                            <option value="">请选择</option>
+                        </select>
+                    </div>
+                </li>
+                {{# setpagefield("10010400482")}}
+                <li class="{{xianshi}} li_69">
+                    <div class="info-group-item-title">
+                        <span class="info-required">{{bitian}}</span> <span>监护人</span>
+                    </div>
+                    <div class="info-group-item-input">
+                        <input id="vae67" name="vae67" class="{{validate}} key_69 inListInput" data-key="key_69" type="text"/>
+                    </div>
+                </li>
+                {{# setpagefield("10010400433")}}
+                <li class="{{xianshi}} li_70">
+                    <div class="info-group-item-title">
+                        <span class="info-required">{{bitian}}</span> <span>担保人</span>
+                    </div>
+                    <div class="info-group-item-input">
+                        <input id="vae86" name="vae86" class="{{validate}} key_70 inListInput" data-key="key_70" type="text"/>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!--住院信息-->
+<div class="in-hospital ">
+    <div class="info-title-container">
+        <div class="info-title">住院信息</div>
+        <div class="info-line">
+            <hr />
+        </div>
+    </div>
+    <div class="hospital-info-content">
+        <div class="basic-info-content form-inline" style="padding-top: 17px;">
+            <div class="info-group info-group-s info-group-horizontal">
+                <ul class="info-group-list list-unstyled">
+                    {{# setpagefield("10010400435")}}
+                    <li class="{{xianshi}} li_71">
+                        <div class="info-group-item-title">
+                            <span class="info-required">{{bitian}}</span> <span>入院科室</span>
+                        </div>
+                        <div class="info-group-item-input">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <input name="bck01b" id="bck01b" type="hidden" /> <input
+                                        name="indept" id="indept" class="{{validate}} key_71 inListInput" data-key="key_71" type="text" autocomplete="off"/>
+
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    {{# setpagefield("10010400434")}}
+                    <li class="{{xianshi}} li_72">
+                        <div class="info-group-item-title">
+                            <span class="info-required">{{bitian}}</span> <span>入院病区</span>
+                        </div>
+                        <div class="info-group-item-input">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <input name="bck01a" id="bck01a" type="hidden" /><input
+                                        name="inward" id="inward" class="{{validate}} key_72 inListInput" data-key="key_72" type="text"/>
+
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    {{# setpagefield("10010400436")}}
+                    <li class="{{xianshi}} li_73">
+                        <div class="info-group-item-title">
+                            <span class="info-required">{{bitian}}</span> <span>入院次数</span>
+                        </div>
+                        <div class="info-group-item-input">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <input id="vae19" type="text" name="vae19" onkeyup="this.value=this.value.replace(/\D/g,'')"
+                                           value="1" class="{{validate}} key_73 inListInput" data-key="key_73"/>
+
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    {{# setpagefield("10010400438")}}
+                    <li class="{{xianshi}} li_74">
+                        <div class="info-group-item-title">
+                            <span class="info-required">{{bitian}}</span> <span>护理等级</span>
+                        </div>
+                        <div class="info-group-item-input">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <select id="aag01" name="aag01" class="{{validate}} key_74 inListInput" data-key="key_74" style="width:180px;">
+                                        <option value="">请选择</option>
+                                    </select>
+
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    {{# setpagefield("10010400439")}}
+                    <li class="{{xianshi}} li_75">
+                        <div class="info-group-item-title">
+                            <span class="info-required">{{bitian}}</span> <span>门诊医师</span>
+                        </div>
+                        <div class="info-group-item-input">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <input name="bce03a" id="bce03a" class="{{validate}} key_75 inListInput" data-key="key_75" type="text" autocomplete="off"/> <input name="bce01a"
+                                                                                                                                                                       id="bce01a" type="hidden"  />
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    {{# setpagefield("10010400441")}}
+                    <li class="{{xianshi}} li_76">
+                        <div class="info-group-item-title">
+                            <span class="info-required">{{bitian}}</span> <span>住院医师</span>
+                        </div>
+                        <div class="info-group-item-input">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <input name="bce03c" id="bce03c" class="{{validate}} key_76 inListInput" data-key="key_76" type="text"/>
+                                    <input name="bce01c" id="bce01c" type="hidden" />
+                                    <input name="bce02c" id="bce02c" type="hidden" />
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    {{# setpagefield("10010400442")}}
+                    <li class="{{xianshi}} li_77">
+                        <div class="info-group-item-title">
+                            <span class="info-required">{{bitian}}</span> <span>主治医师</span>
+                        </div>
+                        <div class="info-group-item-input">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <input name="vam31" id="vam31" class="{{validate}} key_77 inListInput" data-key="key_77" type="text"/>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    {{# setpagefield("10010400443")}}
+                    <li class="{{xianshi}} li_78">
+                        <div class="info-group-item-title">
+                            <span class="info-required">{{bitian}}</span> <span>主任医师</span>
+                        </div>
+                        <div class="info-group-item-input">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <input name="vam27" id="vam27" class="{{validate}} key_78 inListInput" data-key="key_78" type="text"/>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    {{# setpagefield("10010400444")}}
+                    <li class="{{xianshi}} li_79">
+                        <div class="info-group-item-title">
+                            <span class="info-required">{{bitian}}</span> <span>门诊诊断</span>
+                        </div>
+                        <div class="info-group-item-input">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <input name="bak05a" id="bak05a" class="{{validate}} key_79 inListInput" data-key="key_79" type="text"/><input name="bak01a" id="bak01a" type="hidden"/><input name="vao01a" id="vao01a" type="hidden"/>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    {{# setpagefield("10010400445")}}
+                    <li class="{{xianshi}} li_80">
+                        <div class="info-group-item-title">
+                            <span class="info-required">{{bitian}}</span> <span>中医诊断</span>
+                        </div>
+                        <div class="info-group-item-input">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <input name="bak05b" id="bak05b"  class="{{validate}} key_80 inListInput" data-key="key_80" type="text"/><input name="bak01b" id="bak01b"   type="hidden" /><input name="vao01b" id="vao01b" type="hidden"/>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    {{# setpagefield("10010400446")}}
+                    <li class="{{xianshi}} li_81">
+                        <div class="info-group-item-title">
+                            <span class="info-required">{{bitian}}</span> <span>入院诊断</span>
+                        </div>
+                        <div class="info-group-item-input">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <input name="bak05c" id="bak05c"  class="{{validate}} key_81 inListInput" data-key="key_81" type="text"/><input name="bak01c" id="bak01c"  type="hidden"/><input name="vao01c" id="vao01c" type="hidden"/>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    {{# setpagefield("10010400447")}}
+                    <li class="{{xianshi}} li_82">
+                        <div class="info-group-item-title">
+                            <span class="info-required">{{bitian}}</span> <span>入院方式</span>
+                        </div>
+                        <div class="info-group-item-input">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <select id="abr01" name="abr01" class="{{validate}}  key_82 inListInput" data-key="key_82" style="width:180px;">
+                                        <option value="">请选择</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    {{# setpagefield("10010400448")}}
+                    <li class="{{xianshi}} li_83">
+                        <div class="info-group-item-title">
+                            <span class="info-required">{{bitian}}</span> <span>入院待遇</span>
+                        </div>
+                        <div class="info-group-item-input">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <select id="abz02" name="abz02" class="{{validate}}  key_83 inListInput" data-key="key_83" style="width:180px;">
+                                        <option value="">请选择</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    {{# setpagefield("10010400449")}}
+                    <li class="{{xianshi}} li_84">
+                        <div class="info-group-item-title">
+                            <span class="info-required">{{bitian}}</span> <span>入院病况</span>
+                        </div>
+                        <div class="info-group-item-input">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <select id="abo01" name="abo01" class="{{validate}}  key_84 inListInput" data-key="key_84" style="width:180px;">
+                                        <option value="">请选择</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    {{# setpagefield("10010400450")}}
+                    <li class="{{xianshi}} li_85">
+                        <div class="info-group-item-title">
+                            <span class="info-required">{{bitian}}</span> <span>住院目的</span>
+                        </div>
+                        <div class="info-group-item-input">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <select name="abk02" id="abk02"  class="{{validate}} key_85 inListInput" data-key="key_85" style="width:180px;">
+                                        <option value="">请选择</option>
+                                    </select>
+
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    {{# setpagefield("10010400483")}}
+                    <li class="{{xianshi}} li_86">
+                        <div class="info-group-item-title">
+                            <span class="info-required">{{bitian}}</span> <span>了解途径</span>
+                        </div>
+                        <div class="info-group-item-input">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <select name="bdx02" id="bdx02" class="{{validate}}  key_86 inListInput" data-key="key_86" style="width:180px;">
+                                        <option value="">请选择</option>
+                                    </select>
+
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    {{# setpagefield("10010400451")}}
+                    <li class="{{xianshi}} li_87">
+                        <div class="info-group-item-title">
+                            <span class="info-required">{{bitian}}</span> <span id="info10010400451_text">入院时间</span>
+                        </div>
+                        <div class="info-group-item-input">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <input  class="{{validate}}  key_87 inListInput" data-key="key_87"
+                                            id="vae11" name="vae11"
+                                            onclick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})"
+                                            value=""/>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="info-group-item li_88 hidden">
+                        <div class="info-group-item-title">
+                            <span class="info-required">{{bitian}}</span> <span>有效时间</span>
+                        </div>
+                        <div class="info-group-item-input">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <input  class="{{validate}}  key_88 inListInput" data-key="key_88"
+                                            id="vae88" name="vae88"
+                                            onclick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'}).skin('spring')"
+                                            value="9999-12-30 00:00:00"/>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    {{# setpagefield("10010400452")}}
+                    <li class="{{xianshi}} li_89">
+                        <div class="info-group-item-title">
+                            <span class="info-required">{{bitian}}</span> <span>备注</span>
+                        </div>
+                        <div class="info-group-item-input">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <input name="vae83" id="vae83"   class="{{validate}}  key_89 inListInput" data-key="key_89" type="text"/>
+
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+</div>
+<div class="medinsur-info hidden">
+    <div class="info-title-container">
+        <div class="info-title">医保附加信息</div>
+        <div class="info-line">
+            <hr />
+        </div>
+    </div>
+    <div class="hospital-info-content form-inline">
+        <div class="info-group info-group-s info-group-horizontal">
+            <ul class="info-group-list list-unstyled">
+                <li class="info-group-item ">
+                    <div class="info-group-item-title">
+                        <span class="info-required">{{bitian}}</span> <span>是否公务员</span>
+                    </div>
+                    <div class="info-group-item-input">
+                        <div class="form-group">
+                            <input type="checkbox" />
+                        </div>
+                    </div>
+                </li>
+                <li class="info-group-item">
+                    <div class="info-group-item-title">
+                        <span class="info-required">{{bitian}}</span> <span>当前住院次数</span>
+                    </div>
+                    <div class="info-group-item-input">
+                        <input  class="{{validate}}" type="text"/>
+                    </div>
+                </li>
+                <li class="info-group-item">
+                    <div class="info-group-item-title">
+                        <span class="info-required">{{bitian}}</span>  <span>医保特病名称</span>
+                    </div>
+                    <div class="info-group-item-input">
+                        <input  class="{{validate}}" type="text"/>
+                    </div>
+                </li>
+                <li class="info-group-item">
+                    <div class="info-group-item-title">
+                        <span class="info-required">{{bitian}}</span> <span>医保特病编码</span>
+                    </div>
+                    <div class="info-group-item-input">
+                        <input  class="{{validate}}" type="text"/>
+                    </div>
+                </li>
+                <li class="info-group-item">
+                    <div class="info-group-item-title">
+                        <span class="info-required">{{bitian}}</span> <span>工伤证号</span>
+                    </div>
+                    <div class="info-group-item-input">
+                        <input  class="{{validate}}" type="text"/>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="info-group info-group-s info-group-horizontal">
+            <ul class="info-group-list list-unstyled">
+                <li class="info-group-item">
+                    <div class="info-group-item-title">
+                        <span class="info-required">{{bitian}}</span> <span>民政号</span>
+                    </div>
+                    <div class="info-group-item-input">
+                        <input class="{{validate}}" type="text"/>
+                    </div>
+                </li>
+                <li class="info-group-item info-group-item-g">
+                    <div class="info-group-item-title">
+                        <span class="info-required">{{bitian}}</span> <span>转诊单号</span>
+                    </div>
+                    <div class="info-group-item-input">
+                        <input  class="{{validate}}" type="text"/>
+                    </div>
+                </li>
+                <li class="info-group-item info-group-item-g">
+                    <div class="info-group-item-title">
+                        <span class="info-required">{{bitian}}</span> <span>生育证号</span>
+                    </div>
+                    <div class="info-group-item-input">
+                        <input  class="{{validate}}" type="text"/>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="{{huiyuanxianshi}}"  >
+    <div class="info-title-container">
+        <div class="info-title">会员信息</div>
+        <div class="info-line">
+            <hr />
+        </div>
+    </div>
+    <div class="hospital-info-content form-inline" style="padding-top: 15px;">
+        <div class="info-group info-group-horizontal" style="margin-left: 4px;">
+            <ul class="info-group-list list-unstyled">
+                {{# setpagefield("10010400464")}}
+                <li class="{{xianshi}} li_90">
+                    <div class="info-group-item-title">
+                        <span class="info-required">{{bitian}}</span> <span>卡号</span>
+                    </div>
+                    <div class="info-group-item-input">
+                        <input  class="{{validate}}  key_90 inListInput" data-key="key_90" name="vaa02" id="vaa02" type="text"  readonly="readonly" value="0"/>
+                    </div>
+                </li>
+                {{# setpagefield("10010400464")}}
+                <li class="{{xianshi}} li_91">
+                    <div class="info-group-item-title">
+                        <span class="info-required">{{bitian}}</span>  <span>基本余额</span>
+                    </div>
+                    <div class="info-group-item-input">
+                        <input  class="{{validate}}  key_91 inListInput" data-key="key_91" name="vbu14" id="vbu14" type="text"  readonly="readonly" value="0"/>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>

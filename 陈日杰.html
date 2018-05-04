@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+
+    <script src="js/jquery-1.7.1.js" type="text/javascript" charset="utf-8"></script>
+</head>
+<body>
+<input type="text" id="oText">
+<button>dianwo</button>
+<script>
+    $(function(){
+        debugger;
+        var data=[{"id":21793,"account_id":10000,"child_id":10028,"child_name":"crj","package":"10","amount":100},{"id":21841,"account_id":10000,"child_id":10060,"child_name":"客户2","package":"10","amount":200},{"id":21849,"account_id":10000,"child_id":10052,"child_name":"客户","package":"10","amount":1200},{"id":21853,"account_id":10000,"child_id":10056,"child_name":"客户1","package":"10","amount":118},{"id":21865,"account_id":10000,"child_id":10104,"child_name":"客户13","package":"10","amount":1},{"id":21869,"account_id":10000,"child_id":10116,"child_name":"客户14","package":"10","amount":1},{"id":21873,"account_id":10000,"child_id":10128,"child_name":"客户17","package":"10","amount":1},{"id":21877,"account_id":10000,"child_id":10132,"child_name":"客户18","package":"10","amount":1},{"id":21885,"account_id":10000,"child_id":10144,"child_name":"客户21","package":"10","amount":1},{"id":21889,"account_id":10000,"child_id":10148,"child_name":"客户22","package":"10","amount":1},{"id":21897,"account_id":10000,"child_id":10092,"child_name":"客户10","package":"10","amount":600}]
+       countId(data);
+        function countId(data){
+//            debugger;
+//            var count={};
+//            var countnum={};
+//            for(var i=0;i<data.length;i++){
+//                var arr=0;
+//                if(count[data[i].child_id]){
+//                    count[data[i].child_id]++;
+//                    data[i].sort=0;
+//                    continue;
+//                }
+//                count[data[i].child_id]=1;
+//                countnum[data[i].child_id]=i;
+//
+//
+//            };
+//            for(var key in countnum) {
+//                data[countnum[key]].sort=count[key];
+//            }
+            var sorted = data.sort(function(child_id, package) {
+                const first = child_id.child_id - package.child_id;
+                if (first !== 0) {
+                    return first;
+                }
+
+                return child_id.package - package.package;
+            });
+
+        console.log(sorted);
+
+
+        }
+        function compare(property){//json数组对象通过某一个字段排序方法
+            return function(a,b){
+                var value1 = a[property];
+                var value2 = b[property];
+                return value1 - value2;
+            }
+        }
+
+
+
+
+    })
+</script>
+</body>
+</html>

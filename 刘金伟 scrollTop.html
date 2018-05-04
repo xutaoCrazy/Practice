@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .showBoxContent{padding-top:17px; overflow: hidden;}
+        .showBoxContent .icon-ziyuan{color:#c4c4c4;margin:20px 28px 0 18px;}
+        .showBoxContent .log{width:120px;height:56px;border:solid 1px #ddd;}
+        .showBoxContent .row{padding-top:15px;}
+        .showBoxContent .row:nth-child(even) .icon-ziyuan{color:#ff7900;}
+        .showBoxContent .row .rowLeft{padding-bottom:17px;margin-right:45px;width:465px;height:58px;}
+        .showBoxContent .row .rowLeft  .introduce{padding-left:15px;}
+        .showBoxContent .row .rowLeft  .introduce p {font-size:16px;color:#333;margin:2px 0 10px 0;}
+    </style>
+    <script src="js/jquery-1.7.1.js" type="text/javascript" charset="utf-8"></script>
+    <script>
+        $(function(){
+            debugger;
+            var scrollTop = document.documentElement.scrollTop || window.pageYOffset || document.body.scrollTop;
+            var area =document.getElementById('scroll1');
+            var con1 = document.getElementById('showBoxContentA');
+            var con2 = document.getElementById('showBoxContentB');
+            con2.innerHTML=con1.innerHTML;
+            console.log(con1.scrollHeight);
+            console.log(con1.offsetHeight);
+            function scrollUp(){
+                debugger;
+                if(area.scrollTop>=con1.scrollHeight){
+                    console.log(area.scrollTop);
+                    area.scrollTop=0;
+                }else{
+                    area.scrollTop++;
+                    //console.log('area.scrollTop='+area.scrollTop);
+                }
+
+            }
+
+            var time = 30;
+            var mytimer=setInterval(scrollUp,time);
+
+            area.onmouseover=function(){
+                clearInterval(mytimer);
+            }
+            area.onmouseout=function(){
+                mytimer=setInterval(scrollUp,time);
+            }
+        })
+    </script>
+
+</head>
+<body>
+<div id="scroll1" class="scroll1" style="overflow: hidden;width:1150px;height:364px;">
+    <div id="showBoxContentA" class="showBoxContent" >
+
+        <div class="row clearfix">
+            <i class="iconfont icon-ziyuan fl"></i>
+            <div class="rowLeft fl clearfix">
+
+                <div class="log fl"><img src="../assets/img/indexLogo/cai-logo/1_qixin.jpg" alt=""></div>
+                <div class="introduce fl">
+                    <p>陕西奇鑫地矿建设工程有限公司 </p>
+                    <img src="../assets/img/indexLogo/sym_03.png" alt="">
+                    <label for="">企业资质：</label><span>二级</span>
+
+                    <img src="../assets/img/indexLogo/sym_05.png" alt="" style="margin-left:80px">
+                    <label for="">地址：</label><span>陕西 西安</span>
+                </div>
+            </div>
+            <i class="iconfont icon-ziyuan fl"></i>
+            <div class="rowLeft fl clearfix">
+                <div class="log fl"><img src="../assets/img/indexLogo/cai-logo/2_junhui.jpg" alt=""></div>
+                <div class="introduce fl">
+                    <p>山东军辉建设集团有限公司 </p>
+                    <img src="../assets/img/indexLogo/sym_03.png" alt="">
+                    <label for="">企业资质：</label><span>一级</span>
+
+                    <img src="../assets/img/indexLogo/sym_05.png" alt="" style="margin-left:80px">
+                    <label for="">地址：</label><span>陕西 西安</span>
+                </div>
+            </div>
+        </div>
+        <div class="row clearfix">
+            <i class="iconfont icon-ziyuan fl"></i>
+            <div class="rowLeft fl clearfix">
+
+                <div class="log fl"><img src="../assets/img/indexLogo/cai-logo/3_yongyi.jpg" alt=""></div>
+                <div class="introduce fl">
+                    <p>西安永夷建设工程有限公司 </p>
+                    <img src="../assets/img/indexLogo/sym_03.png" alt="">
+                    <label for="">企业资质：</label><span>二级</span>
+
+                    <img src="../assets/img/indexLogo/sym_05.png" alt="" style="margin-left:80px">
+                    <label for="">地址：</label><span>陕西 西安</span>
+                </div>
+            </div>
+            <i class="iconfont icon-ziyuan fl"></i>
+            <div class="rowLeft fl clearfix">
+                <div class="log fl"><img src="../assets/img/indexLogo/cai-logo/4_changcheng.jpg" alt=""></div>
+                <div class="introduce fl">
+                    <p>中航长城大地建工集团有限公司 </p>
+                    <img src="../assets/img/indexLogo/sym_03.png" alt="">
+                    <label for="">企业资质：</label><span>一级</span>
+
+                    <img src="../assets/img/indexLogo/sym_05.png" alt="" style="margin-left:80px">
+                    <label for="">地址：</label><span>陕西 西安</span>
+                </div>
+            </div>
+        </div>
+        <div class="row clearfix">
+            <i class="iconfont icon-ziyuan fl"></i>
+            <div class="rowLeft fl clearfix">
+
+                <div class="log fl"><img src="../assets/img/indexLogo/cai-logo/5_mingtai.jpg" alt=""></div>
+                <div class="introduce fl">
+                    <p>陕西明泰工程有限公司 </p>
+                    <img src="../assets/img/indexLogo/sym_03.png" alt="">
+                    <label for="">企业资质：</label><span>一级</span>
+
+                    <img src="../assets/img/indexLogo/sym_05.png" alt="" style="margin-left:80px">
+                    <label for="">地址：</label><span>陕西 西安</span>
+                </div>
+            </div>
+            <i class="iconfont icon-ziyuan fl"></i>
+            <div class="rowLeft fl clearfix">
+                <div class="log fl"><img src="../assets/img/indexLogo/cai-logo/6_lantian.jpg" alt=""></div>
+                <div class="introduce fl">
+                    <p>西安蓝天建设工程有限公司 </p>
+                    <img src="../assets/img/indexLogo/sym_03.png" alt="">
+                    <label for="">企业资质：</label><span>一级</span>
+
+                    <img src="../assets/img/indexLogo/sym_05.png" alt="" style="margin-left:80px">
+                    <label for="">地址：</label><span>陕西 西安</span>
+                </div>
+            </div>
+        </div>
+        <div class="row clearfix">
+            <i class="iconfont icon-ziyuan fl"></i>
+            <div class="rowLeft fl clearfix">
+
+                <div class="log fl"><img src="../assets/img/indexLogo/cai-logo/7_youse.jpg" alt=""></div>
+                <div class="introduce fl">
+                    <p>中国有色金属工业西安岩土工程有限公司 </p>
+                    <img src="../assets/img/indexLogo/sym_03.png" alt="">
+                    <label for="">企业资质：</label><span>一级</span>
+
+                    <img src="../assets/img/indexLogo/sym_05.png" alt="" style="margin-left:80px">
+                    <label for="">地址：</label><span>陕西 西安</span>
+                </div>
+            </div>
+            <i class="iconfont icon-ziyuan fl"></i>
+            <div class="rowLeft fl clearfix">
+                <div class="log fl"><img src="../assets/img/indexLogo/cai-logo/8_xinyu.jpg" alt=""></div>
+                <div class="introduce fl">
+                    <p>陕西星宇市政工程有限公司 </p>
+                    <img src="../assets/img/indexLogo/sym_03.png" alt="">
+                    <label for="">企业资质：</label><span>二级</span>
+
+                    <img src="../assets/img/indexLogo/sym_05.png" alt="" style="margin-left:80px">
+                    <label for="">地址：</label><span>陕西 西安</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="row clearfix">
+            <i class="iconfont icon-ziyuan fl"></i>
+            <div class="rowLeft fl clearfix">
+
+                <div class="log fl"><img src="../assets/img/indexLogo/cai-logo/9_jiangong.jpg" alt=""></div>
+                <div class="introduce fl">
+                    <p>广西建工集团第一建筑工程有限责任公司 </p>
+                    <img src="../assets/img/indexLogo/sym_03.png" alt="">
+                    <label for="">企业资质：</label><span>特级</span>
+
+                    <img src="../assets/img/indexLogo/sym_05.png" alt="" style="margin-left:80px">
+                    <label for="">地址：</label><span>陕西 西安</span>
+                </div>
+            </div>
+            <i class="iconfont icon-ziyuan fl"></i>
+            <div class="rowLeft fl clearfix">
+                <div class="log fl"><img src="../assets/img/indexLogo/cai-logo/10_yangling.jpg" alt=""></div>
+                <div class="introduce fl">
+                    <p>陕西杨凌绿锦天成工程有限公司 </p>
+                    <img src="../assets/img/indexLogo/sym_03.png" alt="">
+                    <label for="">企业资质：</label><span>二级</span>
+
+                    <img src="../assets/img/indexLogo/sym_05.png" alt="" style="margin-left:80px">
+                    <label for="">地址：</label><span>陕西 杨凌</span>
+                </div>
+            </div>
+        </div>
+        <div class="row clearfix">
+            <i class="iconfont icon-ziyuan fl"></i>
+            <div class="rowLeft fl clearfix">
+
+                <div class="log fl"><img src="../assets/img/indexLogo/cai-logo/11_baoji.jpg" alt=""></div>
+                <div class="introduce fl">
+                    <p>宝鸡章华建筑工程有限公司 </p>
+                    <img src="../assets/img/indexLogo/sym_03.png" alt="">
+                    <label for="">企业资质：</label><span>二级</span>
+
+                    <img src="../assets/img/indexLogo/sym_05.png" alt="" style="margin-left:80px">
+                    <label for="">地址：</label><span>陕西 宝鸡</span>
+                </div>
+            </div>
+            <i class="iconfont icon-ziyuan fl"></i>
+            <div class="rowLeft fl clearfix">
+                <div class="log fl"><img src="../assets/img/indexLogo/cai-logo/12_xinchang.jpg" alt=""></div>
+                <div class="introduce fl">
+                    <p>陕西鑫昌建设工程有限责任公司 </p>
+                    <img src="../assets/img/indexLogo/sym_03.png" alt="">
+                    <label for="">企业资质：</label><span>一级</span>
+
+                    <img src="../assets/img/indexLogo/sym_05.png" alt="" style="margin-left:80px">
+                    <label for="">地址：</label><span>陕西 西安</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="row clearfix">
+            <i class="iconfont icon-ziyuan fl"></i>
+            <div class="rowLeft fl clearfix">
+
+                <div class="log fl"><img src="../assets/img/indexLogo/cai-logo/13_jiangongGui.jpg" alt=""></div>
+                <div class="introduce fl">
+                    <p>贵州建工集团第七建筑工程有限责任公司 </p>
+                    <img src="../assets/img/indexLogo/sym_03.png" alt="">
+                    <label for="">企业资质：</label><span>一级</span>
+
+                    <img src="../assets/img/indexLogo/sym_05.png" alt="" style="margin-left:80px">
+                    <label for="">地址：</label><span>陕西 西安</span>
+                </div>
+            </div>
+            <i class="iconfont icon-ziyuan fl"></i>
+            <div class="rowLeft fl clearfix">
+                <div class="log fl"><img src="../assets/img/indexLogo/cai-logo/14_shanjian.jpg" alt=""></div>
+                <div class="introduce fl">
+                    <p>陕西建工第二建设集团有限公司 </p>
+                    <img src="../assets/img/indexLogo/sym_03.png" alt="">
+                    <label for="">企业资质：</label><span>一级</span>
+
+                    <img src="../assets/img/indexLogo/sym_05.png" alt="" style="margin-left:80px">
+                    <label for="">地址：</label><span>陕西 宝鸡</span>
+                </div>
+            </div>
+        </div>
+        <div class="row clearfix">
+            <i class="iconfont icon-ziyuan fl"></i>
+            <div class="rowLeft fl clearfix">
+
+                <div class="log fl"><img src="../assets/img/indexLogo/cai-logo/15_sxjz.jpg" alt=""></div>
+                <div class="introduce fl">
+                    <p>陕西九洲建设工程有限公司 </p>
+                    <img src="../assets/img/indexLogo/sym_03.png" alt="">
+                    <label for="">企业资质：</label><span>二级</span>
+
+                    <img src="../assets/img/indexLogo/sym_05.png" alt="" style="margin-left:80px">
+                    <label for="">地址：</label><span>陕西 西安</span>
+                </div>
+            </div>
+            <i class="iconfont icon-ziyuan fl"></i>
+            <div class="rowLeft fl clearfix">
+                <div class="log fl"><img src="../assets/img/indexLogo/cai-logo/16_sxhb.jpg" alt=""></div>
+                <div class="introduce fl">
+                    <p>陕西华邦圣泰建设有限公司 </p>
+                    <img src="../assets/img/indexLogo/sym_03.png" alt="">
+                    <label for="">企业资质：</label><span>二级</span>
+
+                    <img src="../assets/img/indexLogo/sym_05.png" alt="" style="margin-left:80px">
+                    <label for="">地址：</label><span>陕西 韩城</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="row clearfix">
+            <i class="iconfont icon-ziyuan fl"></i>
+            <div class="rowLeft fl clearfix">
+
+                <div class="log fl"><img src="../assets/img/indexLogo/cai-logo/17-sxzy.jpg" alt=""></div>
+                <div class="introduce fl">
+                    <p>陕西中洋建设工程有限公司 </p>
+                    <img src="../assets/img/indexLogo/sym_03.png" alt="">
+                    <label for="">企业资质：</label><span>一级</span>
+
+                    <img src="../assets/img/indexLogo/sym_05.png" alt="" style="margin-left:80px">
+                    <label for="">地址：</label><span>陕西 西安</span>
+                </div>
+            </div>
+            <i class="iconfont icon-ziyuan fl"></i>
+            <div class="rowLeft fl clearfix">
+                <div class="log fl"><img src="../assets/img/indexLogo/cai-logo/18-sxyt.jpg" alt=""></div>
+                <div class="introduce fl">
+                    <p>陕西岳霆建设工程有限公司 </p>
+                    <img src="../assets/img/indexLogo/sym_03.png" alt="">
+                    <label for="">企业资质：</label><span>二级</span>
+
+                    <img src="../assets/img/indexLogo/sym_05.png" alt="" style="margin-left:80px">
+                    <label for="">地址：</label><span>陕西 西咸</span>
+                </div>
+            </div>
+        </div>
+        <div class="row clearfix">
+            <i class="iconfont icon-ziyuan fl"></i>
+            <div class="rowLeft fl clearfix">
+
+                <div class="log fl"><img src="../assets/img/indexLogo/cai-logo/19-sxld.jpg" alt=""></div>
+                <div class="introduce fl">
+                    <p>陕西朗第建设有限责任公司 </p>
+                    <img src="../assets/img/indexLogo/sym_03.png" alt="">
+                    <label for="">企业资质：</label><span>二级</span>
+
+                    <img src="../assets/img/indexLogo/sym_05.png" alt="" style="margin-left:80px">
+                    <label for="">地址：</label><span>陕西 西安</span>
+                </div>
+            </div>
+            <i class="iconfont icon-ziyuan fl"></i>
+            <div class="rowLeft fl clearfix">
+                <div class="log fl"><img src="../assets/img/indexLogo/cai-logo/20-sxys.jpg" alt=""></div>
+                <div class="introduce fl">
+                    <p>陕西永生路桥工程有限公司 </p>
+                    <img src="../assets/img/indexLogo/sym_03.png" alt="">
+                    <label for="">企业资质：</label><span>二级</span>
+
+                    <img src="../assets/img/indexLogo/sym_05.png" alt="" style="margin-left:80px">
+                    <label for="">地址：</label><span>陕西 西安</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="row clearfix">
+            <i class="iconfont icon-ziyuan fl"></i>
+            <div class="rowLeft fl clearfix">
+
+                <div class="log fl"><img src="../assets/img/indexLogo/cai-logo/21-sxxx.jpg" alt=""></div>
+                <div class="introduce fl">
+                    <p>陕西西希建设工程投资有限公司 </p>
+                    <img src="../assets/img/indexLogo/sym_03.png" alt="">
+                    <label for="">企业资质：</label><span>二级</span>
+
+                    <img src="../assets/img/indexLogo/sym_05.png" alt="" style="margin-left:80px">
+                    <label for="">地址：</label><span>陕西 西安</span>
+                </div>
+            </div>
+            <i class="iconfont icon-ziyuan fl"></i>
+            <div class="rowLeft fl clearfix">
+                <div class="log fl"><img src="../assets/img/indexLogo/cai-logo/22-sxds.jpg" alt=""></div>
+                <div class="introduce fl">
+                    <p>陕西鼎昇建筑工程有限公司 </p>
+                    <img src="../assets/img/indexLogo/sym_03.png" alt="">
+                    <label for="">企业资质：</label><span>二级</span>
+
+                    <img src="../assets/img/indexLogo/sym_05.png" alt="" style="margin-left:80px">
+                    <label for="">地址：</label><span>陕西 西安</span>
+                </div>
+            </div>
+        </div>
+        <div class="row clearfix">
+            <i class="iconfont icon-ziyuan fl"></i>
+            <div class="rowLeft fl clearfix">
+
+                <div class="log fl"><img src="../assets/img/indexLogo/cai-logo/23-sxth.jpg" alt=""></div>
+                <div class="introduce fl">
+                    <p>陕西天豪科技发展有限公司 </p>
+                    <img src="../assets/img/indexLogo/sym_03.png" alt="">
+                    <label for="">企业资质：</label><span>二级</span>
+
+                    <img src="../assets/img/indexLogo/sym_05.png" alt="" style="margin-left:80px">
+                    <label for="">地址：</label><span>陕西 西安</span>
+                </div>
+            </div>
+            <i class="iconfont icon-ziyuan fl"></i>
+            <div class="rowLeft fl clearfix">
+                <div class="log fl"><img src="../assets/img/indexLogo/cai-logo/24-xacs.jpg" alt=""></div>
+                <div class="introduce fl">
+                    <p>陕西长嘉建筑工程有限公司 </p>
+                    <img src="../assets/img/indexLogo/sym_03.png" alt="">
+                    <label for="">企业资质：</label><span>二级</span>
+
+                    <img src="../assets/img/indexLogo/sym_05.png" alt="" style="margin-left:80px">
+                    <label for="">地址：</label><span>陕西 西安</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="row clearfix">
+            <i class="iconfont icon-ziyuan fl"></i>
+            <div class="rowLeft fl clearfix">
+
+                <div class="log fl"><img src="../assets/img/indexLogo/cai-logo/25-sxcj.jpg" alt=""></div>
+                <div class="introduce fl">
+                    <p>陕西长嘉建筑工程有限公司 </p>
+                    <img src="../assets/img/indexLogo/sym_03.png" alt="">
+                    <label for="">企业资质：</label><span>二级</span>
+
+                    <img src="../assets/img/indexLogo/sym_05.png" alt="" style="margin-left:80px">
+                    <label for="">地址：</label><span>陕西 西安</span>
+                </div>
+            </div>
+            <i class="iconfont icon-ziyuan fl"></i>
+            <div class="rowLeft fl clearfix">
+                <div class="log fl"><img src="../assets/img/indexLogo/cai-logo/26-sxyz.jpg" alt=""></div>
+                <div class="introduce fl">
+                    <p>陕西雅筑建设工程有限公司 </p>
+                    <img src="../assets/img/indexLogo/sym_03.png" alt="">
+                    <label for="">企业资质：</label><span>二级</span>
+
+                    <img src="../assets/img/indexLogo/sym_05.png" alt="" style="margin-left:80px">
+                    <label for="">地址：</label><span>陕西 西安</span>
+                </div>
+            </div>
+        </div>
+        <div class="row clearfix">
+            <i class="iconfont icon-ziyuan fl"></i>
+            <div class="rowLeft fl clearfix">
+
+                <div class="log fl"><img src="../assets/img/indexLogo/cai-logo/27-scry.jpg" alt=""></div>
+                <div class="introduce fl">
+                    <p>四川瑞源建筑工程有限公司 </p>
+                    <img src="../assets/img/indexLogo/sym_03.png" alt="">
+                    <label for="">企业资质：</label><span>一级</span>
+
+                    <img src="../assets/img/indexLogo/sym_05.png" alt="" style="margin-left:80px">
+                    <label for="">地址：</label><span>陕西 西安</span>
+                </div>
+            </div>
+            <i class="iconfont icon-ziyuan fl"></i>
+            <div class="rowLeft fl clearfix">
+                <div class="log fl"><img src="../assets/img/indexLogo/cai-logo/28-sxyy.jpg" alt=""></div>
+                <div class="introduce fl">
+                    <p>陕西永业建筑工程有限公司 </p>
+                    <img src="../assets/img/indexLogo/sym_03.png" alt="">
+                    <label for="">企业资质：</label><span style="margin-right: 23px;">总承包二级</span>
+
+                    <img src="../assets/img/indexLogo/sym_05.png" alt="" style="margin-left:14px">
+                    <label for="">地址：</label><span>陕西 西安</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="row clearfix">
+            <i class="iconfont icon-ziyuan fl"></i>
+            <div class="rowLeft fl clearfix">
+
+                <div class="log fl"><img src="../assets/img/indexLogo/cai-logo/29-jsgy.jpg" alt=""></div>
+                <div class="introduce fl">
+                    <p>江苏广宇建设集团有限公司陕西分公司 </p>
+                    <img src="../assets/img/indexLogo/sym_03.png" alt="">
+                    <label for="">企业资质：</label><span>一级</span>
+
+                    <img src="../assets/img/indexLogo/sym_05.png" alt="" style="margin-left:80px">
+                    <label for="">地址：</label><span>陕西 西安</span>
+                </div>
+            </div>
+            <i class="iconfont icon-ziyuan fl"></i>
+            <div class="rowLeft fl clearfix">
+                <div class="log fl"><img src="../assets/img/indexLogo/cai-logo/30-sxmr.jpg" alt=""></div>
+                <div class="introduce fl">
+                    <p>陕西明瑞建设工程有限公司 </p>
+                    <img src="../assets/img/indexLogo/sym_03.png" alt="">
+                    <label for="">企业资质：</label><span>二级</span>
+
+                    <img src="../assets/img/indexLogo/sym_05.png" alt="" style="margin-left:80px">
+                    <label for="">地址：</label><span>陕西 西安</span>
+                </div>
+            </div>
+        </div>
+        <div class="row clearfix">
+            <i class="iconfont icon-ziyuan fl"></i>
+            <div class="rowLeft fl clearfix">
+
+                <div class="log fl"><img src="../assets/img/indexLogo/cai-logo/31-sxqh.jpg" alt=""></div>
+                <div class="introduce fl">
+                    <p>陕西秦鸿建设集团有限公司 </p>
+                    <img src="../assets/img/indexLogo/sym_03.png" alt="">
+                    <label for="">企业资质：</label><span>二级</span>
+
+                    <img src="../assets/img/indexLogo/sym_05.png" alt="" style="margin-left:80px">
+                    <label for="">地址：</label><span>陕西 西安</span>
+                </div>
+            </div>
+            <i class="iconfont icon-ziyuan fl"></i>
+            <div class="rowLeft fl clearfix">
+                <div class="log fl"><img src="../assets/img/indexLogo/cai-logo/32-sxjs.jpg" alt=""></div>
+                <div class="introduce fl">
+                    <p>陕西金珊建筑工程有限公司 </p>
+                    <img src="../assets/img/indexLogo/sym_03.png" alt="">
+                    <label for="">企业资质：</label><span>二级</span>
+
+                    <img src="../assets/img/indexLogo/sym_05.png" alt="" style="margin-left:80px">
+                    <label for="">地址：</label><span>陕西 西安</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="row clearfix">
+            <i class="iconfont icon-ziyuan fl"></i>
+            <div class="rowLeft fl clearfix">
+
+                <div class="log fl"><img src="../assets/img/indexLogo/cai-logo/33-hslq.jpg" alt=""></div>
+                <div class="introduce fl">
+                    <p>华山路桥集团有限公司 </p>
+                    <img src="../assets/img/indexLogo/sym_03.png" alt="">
+                    <label for="">企业资质：</label><span>特级</span>
+
+                    <img src="../assets/img/indexLogo/sym_05.png" alt="" style="margin-left:80px">
+                    <label for="">地址：</label><span>陕西 西安</span>
+                </div>
+            </div>
+            <i class="iconfont icon-ziyuan fl"></i>
+            <div class="rowLeft fl clearfix">
+                <div class="log fl"><img src="../assets/img/indexLogo/cai-logo/34-sxhs.jpg" alt=""></div>
+                <div class="introduce fl">
+                    <p>陕西海山路桥工程有限责任公司 </p>
+                    <img src="../assets/img/indexLogo/sym_03.png" alt="">
+                    <label for="">企业资质：</label><span>二级</span>
+
+                    <img src="../assets/img/indexLogo/sym_05.png" alt="" style="margin-left:80px">
+                    <label for="">地址：</label><span>陕西 周至</span>
+                </div>
+            </div>
+        </div>
+        <div class="row clearfix">
+            <i class="iconfont icon-ziyuan fl"></i>
+            <div class="rowLeft fl clearfix">
+
+                <div class="log fl"><img src="../assets/img/indexLogo/cai-logo/35-sxhj.jpg" alt=""></div>
+                <div class="introduce fl">
+                    <p>陕西恒久建设工程有限公司  </p>
+                    <img src="../assets/img/indexLogo/sym_03.png" alt="">
+                    <label for="">企业资质：</label><span>一级</span>
+
+                    <img src="../assets/img/indexLogo/sym_05.png" alt="" style="margin-left:80px">
+                    <label for="">地址：</label><span>陕西 西安</span>
+                </div>
+            </div>
+            <i class="iconfont icon-ziyuan fl"></i>
+            <div class="rowLeft fl clearfix">
+                <div class="log fl"><img src="../assets/img/indexLogo/cai-logo/36-sxhd.jpg" alt=""></div>
+                <div class="introduce fl">
+                    <p>陕西鸿鼎建设工程有限公司 </p>
+                    <img src="../assets/img/indexLogo/sym_03.png" alt="">
+                    <label for="">企业资质：</label><span>二级</span>
+
+                    <img src="../assets/img/indexLogo/sym_05.png" alt="" style="margin-left:80px">
+                    <label for="">地址：</label><span>陕西 西安</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="row clearfix">
+            <i class="iconfont icon-ziyuan fl"></i>
+            <div class="rowLeft fl clearfix">
+
+                <div class="log fl"><img src="../assets/img/indexLogo/cai-logo/37-htjs.jpg" alt=""></div>
+                <div class="introduce fl">
+                    <p>海天建设集团有限公司西安分公司 </p>
+                    <img src="../assets/img/indexLogo/sym_03.png" alt="">
+                    <label for="">企业资质：</label><span>一级</span>
+
+                    <img src="../assets/img/indexLogo/sym_05.png" alt="" style="margin-left:80px">
+                    <label for="">地址：</label><span>陕西 西安</span>
+                </div>
+            </div>
+            <i class="iconfont icon-ziyuan fl"></i>
+            <div class="rowLeft fl clearfix">
+                <div class="log fl"><img src="../assets/img/indexLogo/cai-logo/38-qyjs.jpg" alt=""></div>
+                <div class="introduce fl">
+                    <p>七冶建设集团有限责任公司陕西分公司 </p>
+                    <img src="../assets/img/indexLogo/sym_03.png" alt="">
+                    <label for="">企业资质：</label><span>一级</span>
+
+                    <img src="../assets/img/indexLogo/sym_05.png" alt="" style="margin-left:80px">
+                    <label for="">地址：</label><span>陕西 西安</span>
+                </div>
+            </div>
+        </div>
+        <div class="row clearfix">
+            <i class="iconfont icon-ziyuan fl"></i>
+            <div class="rowLeft fl clearfix">
+
+                <div class="log fl"><img src="../assets/img/indexLogo/cai-logo/39-sxwl.jpg" alt=""></div>
+                <div class="introduce fl">
+                    <p>陕西五龙实业集团有限公司 </p>
+                    <img src="../assets/img/indexLogo/sym_03.png" alt="">
+                    <label for="">企业资质：</label><span>一级</span>
+
+                    <img src="../assets/img/indexLogo/sym_05.png" alt="" style="margin-left:80px">
+                    <label for="">地址：</label><span>陕西 西安</span>
+                </div>
+            </div>
+            <i class="iconfont icon-ziyuan fl"></i>
+            <div class="rowLeft fl clearfix">
+                <div class="log fl"><img src="../assets/img/indexLogo/cai-logo/40-sxhy.jpg" alt=""></div>
+                <div class="introduce fl">
+                    <p>陕西华业建设工程有限公司 </p>
+                    <img src="../assets/img/indexLogo/sym_03.png" alt="">
+                    <label for="">企业资质：</label><span>一级</span>
+
+                    <img src="../assets/img/indexLogo/sym_05.png" alt="" style="margin-left:80px">
+                    <label for="">地址：</label><span>陕西 西安</span>
+                </div>
+            </div>
+        </div>
+
+
+
+
+        <div class="row clearfix">
+            <i class="iconfont icon-ziyuan fl"></i>
+            <div class="rowLeft fl clearfix">
+
+                <div class="log fl"><img src="../assets/img/indexLogo/cai-logo/41-sxqy.jpg" alt=""></div>
+                <div class="introduce fl">
+                    <p>陕西庆元建设工程有限公司 </p>
+                    <img src="../assets/img/indexLogo/sym_03.png" alt="">
+                    <label for="">企业资质：</label><span>二级</span>
+
+                    <img src="../assets/img/indexLogo/sym_05.png" alt="" style="margin-left:80px">
+                    <label for="">地址：</label><span>陕西 西安</span>
+                </div>
+            </div>
+            <i class="iconfont icon-ziyuan fl"></i>
+            <div class="rowLeft fl clearfix">
+                <div class="log fl"><img src="../assets/img/indexLogo/cai-logo/42-sxwh.jpg" alt=""></div>
+                <div class="introduce fl">
+                    <p>陕西万豪建筑工程有限公司 </p>
+                    <img src="../assets/img/indexLogo/sym_03.png" alt="">
+                    <label for="">企业资质：</label><span>一级</span>
+
+                    <img src="../assets/img/indexLogo/sym_05.png" alt="" style="margin-left:80px">
+                    <label for="">地址：</label><span>陕西 西安</span>
+                </div>
+            </div>
+        </div>
+        <div class="row clearfix">
+            <i class="iconfont icon-ziyuan fl"></i>
+            <div class="rowLeft fl clearfix">
+
+                <div class="log fl"><img src="../assets/img/indexLogo/cai-logo/43-zmd.jpg" alt=""></div>
+                <div class="introduce fl">
+                    <p>中煤地建设有限公司 </p>
+                    <img src="../assets/img/indexLogo/sym_03.png" alt="">
+                    <label for="">企业资质：</label><span>一级</span>
+
+                    <img src="../assets/img/indexLogo/sym_05.png" alt="" style="margin-left:80px">
+                    <label for="">地址：</label><span>陕西 西安</span>
+                </div>
+            </div>
+            <i class="iconfont icon-ziyuan fl"></i>
+            <div class="rowLeft fl clearfix">
+                <div class="log fl"><img src="../assets/img/indexLogo/cai-logo/44-sxhf.jpg" alt=""></div>
+                <div class="introduce fl">
+                    <p>陕西恒发建设工程有限公司 </p>
+                    <img src="../assets/img/indexLogo/sym_03.png" alt="">
+                    <label for="">企业资质：</label><span>一级</span>
+
+                    <img src="../assets/img/indexLogo/sym_05.png" alt="" style="margin-left:80px">
+                    <label for="">地址：</label><span>陕西 西安</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="row clearfix">
+            <i class="iconfont icon-ziyuan fl"></i>
+            <div class="rowLeft fl clearfix">
+
+                <div class="log fl"><img src="../assets/img/indexLogo/cai-logo/45-bjjs.jpg" alt=""></div>
+                <div class="introduce fl">
+                    <p>宝鸡建设集团有限公司第二分公司 </p>
+                    <img src="../assets/img/indexLogo/sym_03.png" alt="">
+                    <label for="">企业资质：</label><span>一级</span>
+
+                    <img src="../assets/img/indexLogo/sym_05.png" alt="" style="margin-left:80px">
+                    <label for="">地址：</label><span>陕西 宝鸡</span>
+                </div>
+            </div>
+            <i class="iconfont icon-ziyuan fl"></i>
+            <div class="rowLeft fl clearfix">
+                <div class="log fl"><img src="../assets/img/indexLogo/cai-logo/46-sxjf.jpg" alt=""></div>
+                <div class="introduce fl">
+                    <p>陕西巨峰建设有限公司 </p>
+                    <img src="../assets/img/indexLogo/sym_03.png" alt="">
+                    <label for="">企业资质：</label><span>一级</span>
+
+                    <img src="../assets/img/indexLogo/sym_05.png" alt="" style="margin-left:80px">
+                    <label for="">地址：</label><span>陕西 西安</span>
+                </div>
+            </div>
+        </div>
+        <div class="row clearfix">
+            <i class="iconfont icon-ziyuan fl"></i>
+            <div class="rowLeft fl clearfix">
+
+                <div class="log fl"><img src="../assets/img/indexLogo/cai-logo/47-sxad.jpg" alt=""></div>
+                <div class="introduce fl">
+                    <p>陕西安大建筑工程有限公司 </p>
+                    <img src="../assets/img/indexLogo/sym_03.png" alt="">
+                    <label for="">企业资质：</label><span>一级</span>
+
+                    <img src="../assets/img/indexLogo/sym_05.png" alt="" style="margin-left:80px">
+                    <label for="">地址：</label><span>陕西 西安</span>
+                </div>
+            </div>
+            <i class="iconfont icon-ziyuan fl"></i>
+            <div class="rowLeft fl clearfix">
+                <div class="log fl"><img src="../assets/img/indexLogo/cai-logo/48-xaxh.jpg" alt=""></div>
+                <div class="introduce fl">
+                    <p>陕西兴汉建筑工程有限公司 </p>
+                    <img src="../assets/img/indexLogo/sym_03.png" alt="">
+                    <label for="">企业资质：</label><span>一级</span>
+
+                    <img src="../assets/img/indexLogo/sym_05.png" alt="" style="margin-left:80px">
+                    <label for="">地址：</label><span>陕西 汉中</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="row clearfix">
+            <i class="iconfont icon-ziyuan fl"></i>
+            <div class="rowLeft fl clearfix">
+
+                <div class="log fl"><img src="../assets/img/indexLogo/cai-logo/49-zyjt.jpg" alt=""></div>
+                <div class="introduce fl">
+                    <p>陕西省中业交通建筑工程有限公司 </p>
+                    <img src="../assets/img/indexLogo/sym_03.png" alt="">
+                    <label for="">企业资质：</label><span>一级</span>
+
+                    <img src="../assets/img/indexLogo/sym_05.png" alt="" style="margin-left:80px">
+                    <label for="">地址：</label><span>陕西 西安</span>
+                </div>
+            </div>
+            <i class="iconfont icon-ziyuan fl"></i>
+            <div class="rowLeft fl clearfix">
+                <div class="log fl"><img src="../assets/img/indexLogo/cai-logo/50-yljg.jpg" alt=""></div>
+                <div class="introduce fl">
+                    <p>杨凌金圭建筑工程有限责任公司 </p>
+                    <img src="../assets/img/indexLogo/sym_03.png" alt="">
+                    <label for="">企业资质：</label><span>二级</span>
+
+                    <img src="../assets/img/indexLogo/sym_05.png" alt="" style="margin-left:80px">
+                    <label for="">地址：</label><span>陕西 杨凌</span>
+                </div>
+            </div>
+        </div>
+        <div class="row clearfix">
+            <i class="iconfont icon-ziyuan fl"></i>
+            <div class="rowLeft fl clearfix">
+
+                <div class="log fl"><img src="../assets/img/indexLogo/cai-logo/51-sxdh.jpg" alt=""></div>
+                <div class="introduce fl">
+                    <p>陕西鼎航建设工程有限公司 </p>
+                    <img src="../assets/img/indexLogo/sym_03.png" alt="">
+                    <label for="">企业资质：</label><span>一级</span>
+
+                    <img src="../assets/img/indexLogo/sym_05.png" alt="" style="margin-left:80px">
+                    <label for="">地址：</label><span>陕西 西安</span>
+                </div>
+            </div>
+            <i class="iconfont icon-ziyuan fl"></i>
+            <div class="rowLeft fl clearfix">
+                <div class="log fl"><img src="../assets/img/indexLogo/cai-logo/52-sxqa.jpg" alt=""></div>
+                <div class="introduce fl">
+                    <p>陕西秦安建设工程有限公司 </p>
+                    <img src="../assets/img/indexLogo/sym_03.png" alt="">
+                    <label for="">企业资质：</label><span>一级</span>
+
+                    <img src="../assets/img/indexLogo/sym_05.png" alt="" style="margin-left:80px">
+                    <label for="">地址：</label><span>陕西 西安</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div id="showBoxContentB" class="showBoxContent"></div>
+</div>
+</body>
+</html>

@@ -1,0 +1,509 @@
+<%@ page contentType="text/html;charset=UTF-8"%>
+<%@ include file="/jsp/common/taglibs.jsp"%>
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="${host}/regex/validationEngine.jquery.css"/>
+    <link rel="stylesheet" href="${host}/css/member/member_card_management1.css" />
+    <link rel="stylesheet" href="${host}/css/member/associator-management.css" />
+    <script type="text/javascript" src="${host}/js/member/ajax_Encapsulation.js" charset="utf-8"></script>
+    <title>会员卡登记</title>
+</head>
+<body>
+<form action="" id="cardMode_form">
+    <input type="hidden" id="state" name="state"  value="0">
+    <input type="hidden" id="vaa01" name="vaa01" />
+    <input type="hidden" id="vaa02" name="vaa02" />
+    <input type="hidden" id="vaa03" name="vaa03" />
+    <input type="hidden" id="vaa04" name="vaa04" />
+    <input type="hidden" id="abbrp" name="abbrp" />
+    <input type="hidden" id="abbrw" name="abbrw" />
+    <input type="hidden" id="abw02" name="abw02" value="男"/>
+    <!--                  <input type="hidden" id="bdp02" name="bdp02" /> -->
+    <input type="hidden" id="vbu01a" name="vbu01a" />
+    <input type="hidden" id="vbu07" name="vbu07" value="1"/>
+    <input type="hidden" id="baq01a" name="baq01a" />
+    <input type="hidden" id="vbu17" name="vbu17" />
+    <input type="hidden" id="ack02" name="ack02" />
+    <input type="hidden" id="vbu19" name="vbu19" />
+    <input type="hidden" id="vbu21" name="vbu21" value="1" />
+    <input type="hidden" id="bce01a" name="bce01a" />
+    <input type="hidden" id="bce03a" name="bce03a" />
+    <input type="hidden" id="clearvaa1" name="clearvaa1" />
+    <input type="hidden" id="iak05" name="iak05" />
+    <input type="hidden" id="vbu01" name="vbu01" />
+    <input type="hidden" id="baq03a" name="baq03a" />
+
+    <!-- VCB1 -->
+    <input type="hidden" id="vcb01" name="vcb01" />
+    <input type="hidden" id="vcb02" name="vcb02" />
+    <input type="hidden" id="vcb03" name="vcb03" />
+    <input type="hidden" id="vcb05" name="vcb05" />
+    <input type="hidden" id="deviceid" name="deviceid" />
+    <input type="hidden" id="bce01" name="bce01" />
+    <input type="hidden" id="vcb12" name="vcb12" value="2"/>
+    <input type="hidden" id="vcb16" name="vcb16" />
+
+    <!-- 操作用户 -->
+    <input type="hidden" id="empid" name="empid" />
+    <input type="hidden" id="empno" name="empno" />
+    <input type="hidden" id="empname" name="empname" />
+
+    <!-- VBL1 -->
+    <input type="hidden" id="vbl04" name="vbl04" value="5" />
+    <input type="hidden" id="faf01" name="faf01" value="0"/>
+    <input type="hidden" id="vbl12c" name="vbl12c" />
+    <input type="hidden" id="vbl05" name="vbl05" value="0"/>
+
+    <input type="hidden" id="vbu01b" name="vbu01b" />
+    <!--会员登记开始-->
+    <div id="Memberdengji">
+        <!--会员登记切换  -->
+        <div id="mengqiehuan">
+            <span class="member menuDownLine">会员</span>
+            <span class="member">会员列表</span>
+        </div>
+        <!--内容 -->
+        <div  id="memberhuine">
+            <!--会员内容切换-->
+            <div  class="menber_01  cuaeofd">
+                <!-- 界面设置 -->
+                <div class="member_02">
+                    <!--  <span>界面设置</span> -->
+                </div>
+                <div  class="member_03">
+
+                    <!--界面设置组合-->
+                    <div class="shezhidiv">
+                        <!--界面设置第一个div-->
+
+                        <div class="meber01">
+                            <!--医保信息-->
+                            <!--会员信息-->
+                            <div class="huiyuanmensge" id="huiyujkd">
+                                <div class="info-title-container">
+                                    <span class="info-title">会员基本信息</span>
+                                    <span class="info-line"><hr></span>
+
+                                </div>
+
+                                <div class="huiyuanJIben">
+                                    <!--会员检索-->
+                                    <ul class="list-unstyled search-ass" id="jiansuoHUIyuai">
+                                        <li>
+                                            <label>会员刷卡</label>
+                                            <input type="text"   id="creditcard"  name="creditcard" style="width: 250px;"   placeholder="请刷会员卡"/>
+                                        </li>
+                                    </ul>
+                                    <!-- 身份证号码-->
+                                    <div class="ipt-btn" style="margin-bottom: 10px;margin-left: 6px;">
+                                        <span>身份证号码</span><div class="inline  form-group has-feedback form-group-content" style="width: 178px;"><input type="text" placeholder="请输入或刷居民身份证" onkeyup="this.value=this.value.replace(/\D/g,'')" onblur="idCardNoUtil.checkIdCardNo(this.value);" class="form-control form-control-ipt"><span class="glyphicon glyphicon-remove glyphicon-remove-btn form-control-feedback hidden"></span></div><button type="button" class="btn btn-green">读取身份证</button>
+                                    </div>
+
+
+
+                                    <!--基本信息内容 -->
+
+                                    <div class="associator-base-info-ul" id="huiyuan-infop">
+                                        <ul class="list-unstyled lf">
+                                            <li>
+                                                <label class="font-red">姓名</label>
+                                                <input type="text"  id="vaa05" name="vaa05" class="validate[required]"/>
+                                            </li>
+                                            <li>
+                                                <label class="font-red">性别</label>
+                                                <select name="abw01" id="abw01" class="validate[required]" style="width:160px;">
+                                                    <option value="1">男</option>
+                                                    <option value="2">女</option>
+                                                    <option value="0">未知</option>
+
+                                                </select>
+                                            </li>
+
+
+                                            <li>
+                                                <label class="font-red">出生日期</label>
+                                                <input type="text"  id="vaa12"  name="vaa12"  class="layer-date laydate-icon validate[required]"   style="width:160px;">
+                                            </li>
+
+                                            <li>
+                                                <label class="font-red">病人类别</label>
+                                                <select name="bdp02" id="bdp02"  class="validate[required]" style="width: 160px;">
+                                                </select>
+                                            </li>
+
+                                            <!-- 开始 -->
+                                            <li>
+                                                <label>民族</label>
+                                                <select name="abq02" id="abq02" style="width:160px;">
+                                                    <option value="1">汉族</option>
+                                                </select>
+                                            </li>
+                                            <li>
+                                                <label>既往病史</label>
+                                                <input type="text"  name="vaa64" id="vaa64" />
+                                            </li>
+                                            <li>
+                                                <label>职业</label>
+                                                <input type="text"    name="att02" id="att02"/>
+                                            </li>
+
+                                            <li>
+                                                <label >工作单位</label>
+                                                <input type="text" name="vaa47" id="vaa47" />
+                                            </li>
+
+
+                                        </ul>
+                                        <ul class="list-unstyled lf leixingxu">
+                                            <li>
+                                                <label class="font-red">会员类型</label>
+                                                <select name="vbu08" id="vbu08"  class="validate[required]" style="width:160px;">
+                                                </select>
+                                            </li>
+                                            <li>
+                                                <label class="font-red">移动电话</label>
+                                                <input type="text"  id="vaa35" name="vaa35" class="validate[required]"/>
+                                            </li>
+                                            <li>
+                                                <label class="font-red">年龄</label>
+                                                <input type="number"   id="vaa10" name="vaa10" style="width:70px !important;"  oninput="getBirthDayByAge(this);"    class="validate[required]" />
+                                                <select name="aau01" id="aau01" style="width:85px !important;margin-left: 4px;" onchange="getBirthDayByAge();" >
+                                                    <option value="Y">岁</option>
+                                                    <option value="M">月</option>
+                                                    <option value="W">周</option>
+                                                    <option value="D">天</option>
+                                                    <option value="H">小时</option>
+                                                    <option value="N">分</option>
+                                                </select>
+                                            </li>
+                                            <li>
+                                                <label class="font-red">病人费别</label>
+                                                <input type="text" id="abc02" name="abc02" readonly="readonly">
+                                            </li>
+                                            <!-- 开始 -->
+                                            <li>
+                                                <label>婚姻状况</label>
+                                                <select name="ack01" id="ack01" style="width: 160px;">
+                                                    <option value="9">其他</option>
+                                                    <option value="1">未婚</option>
+                                                    <option value="2">已婚</option>
+                                                    <option value="3">丧偶</option>
+                                                    <option value="4">离婚</option>
+                                                </select>
+                                            </li>
+                                            <li>
+                                                <label>药物过敏史</label>
+                                                <input type="text"  name="vaa62" id="vaa62"/>
+                                            </li>
+                                            <!-- 											                              <li> -->
+                                            <!-- 												                            <label>联系电话</label> -->
+                                            <!-- 												                            <input type="text"  name="vaa34" id="vaa34"/> -->
+                                            <!-- 											                             </li> -->
+                                            <li>
+                                                <label >通讯地址</label>
+                                                <input type="text"  name="vaa33" id="vaa33"/>
+                                            </li>
+
+
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="huiyuanmensge">
+
+                                    <div class="info-title-container">
+                                        <span class="info-title">监护人基本信息</span>
+                                        <span class="info-line"><hr></span>
+
+                                    </div>
+                                    <ul class="list-unstyled lf" id="jianhuDFG">
+                                        <li>
+                                            <label>监护人姓名</label>
+                                            <input type="text"   name="vaa39" id="vaa39"/>
+                                        </li>
+                                        <li>
+                                            <label>与患者关系</label>
+                                            <input type="text"  name="vaa41" id="vaa41"/>
+                                        </li>
+                                        <li>
+                                            <label>联系电话</label>
+                                            <input type="text"  name="vaa43" id="vaa43"/>
+                                        </li>
+                                        <li>
+                                            <label>联系地址</label>
+                                            <input type="text"  name="vaa42" id="vaa42"/>
+                                        </li>
+
+                                    </ul>
+                                </div>
+
+
+                            </div><!--会员信息结束 -->
+
+
+                        </div>
+
+                        <!--界面设置第二个div-->
+                        <div class="meber01">
+                            <div class="huiyuanmensge" id="jieHUi">
+
+                                <div class="info-title-container">
+                                    <span class="info-title">会员医保信息</span>
+                                    <span class="info-line"><hr></span>
+
+                                </div>
+
+                                <div>
+                                    <div class="ipt-btn" style="margin-bottom: 10px;margin-left: 6px;">
+                                        <span>医保卡号码</span><div class="inline  form-group has-feedback form-group-content" style="width: 178px;"><input type="text" placeholder="请刷医保卡" onkeyup="this.value=this.value.replace(/\D/g,'')" onblur="idCardNoUtil.checkIdCardNo(this.value);" class="form-control form-control-ipt"><span class="glyphicon glyphicon-remove glyphicon-remove-btn form-control-feedback hidden"></span></div><button type="button" class="btn btn-green">读取医保卡</button>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="huiyuanmensge">
+
+                                <div class="info-title-container">
+                                    <span class="info-title">会员账号</span>
+                                    <span class="info-line"><hr></span>
+
+                                </div>
+
+
+                                <!--会员内容-->
+
+                                <div class="associator-number-ul" id="startDivnei">
+                                    <ul class="list-unstyled">
+                                        <li>
+                                            <label>账号</label>
+                                            <input type="text" id="vbu03"  name="vbu03" readonly="readonly"/>
+                                        </li>
+                                        <li>
+                                            <label>业务员</label>
+                                            <input type="text" id="vbu11"  name="vbu11"  class="drop-toggle-input YWtable local-input"/>
+                                        </li>
+                                        <li>
+                                            <label>基本余额</label>
+                                            <input type="text" id="vbu14"  name="vbu14" readonly="readonly" value="0" />
+                                        </li>
+                                        <li>
+                                            <label>赠送余额</label>
+                                            <input type="number" id="vbu15"  name="vbu15"  class="validate[min[0]]" value="0"/>
+                                        </li>
+                                        <li>
+                                            <label>积分余额</label>
+                                            <input type="text" id="vbu30"  name="vbu30" readonly="readonly"/>
+                                        </li>
+                                        <li>
+                                            <label>押金保证金</label>
+                                            <input type="number" id="vbu16"  name="vbu16"  value="0.00"/>
+                                        </li>
+                                        <li>
+                                            <label>创建日期</label>
+                                            <input type="text" id="vbu23"  name="vbu23" readonly="readonly"/>
+                                        </li>
+                                        <li>
+                                            <label class="font-red">有效日期</label>
+                                            <input type="text" id="vbu22"  name="vbu22" readonly="readonly"/>
+                                        </li>
+                                        <li>
+                                            <label>介绍人</label>
+                                            <input type="text" id="vbu01bex"  name="vbu01bex"  class="drop-toggle-input JStable local-input"/>
+                                        </li>
+                                        <li>
+                                            <label>备注</label>
+                                            <input type="text" id="vbu28"  name="vbu28"  />
+                                        </li>
+
+
+                                    </ul>
+                                </div>
+                            </div>
+                            <!--发卡信息-->
+                            <div class="huiyuanmensge">
+
+                                <div class="info-title-container">
+                                    <span class="info-title">发卡信息</span>
+                                    <span class="info-line"><hr></span>
+
+                                </div>
+                                <ul class="list-inline" id="huiyuankahao">
+                                    <li class="a01">
+                                        <label>卡号</label>
+                                        <input type="text" class="font-red"  id="vcb04"  name="vcb04" readonly="readonly"/>
+                                    </li>
+                                    <li class="a02">
+                                        <label>发卡人</label>
+                                        <input type="text"  id="bce03"  name="bce03" readonly="readonly" value="管理员"/>
+                                    </li>
+                                    <li class="a01">
+                                        <label>有效日期</label>
+                                        <input type="text"  id="vcb17"  name="vcb17" class="layer-date laydate-icon" value="" onclick="laydate({istime: true, format: 'YYYY-MM-DD'}).skin('spring')" readonly="readonly" style="width:160px;">
+                                    </li>
+                                    <li class="a02">
+                                        <label>创建日期</label>
+                                        <input type="text"   id="vcb15"  name="vcb15" readonly="readonly" value="2015-07-24"/>
+                                    </li>
+                                </ul>
+
+                            </div>
+                            <div class="huiyuanmensge" >
+
+                                <div class="info-title-container">
+                                    <span class="info-title">账号密码</span>
+                                    <span class="info-line"><hr></span>
+                                </div>
+                                <ul class="list-inline" id="pashuiyuan" style="height:50px">
+                                    <li>
+                                        <label>新密码</label>
+                                        <input type="password"  id="newword" name="newword" />
+                                    </li>
+                                    <li class="newHUi">
+                                        <label>确认密码</label>
+                                        <input type="password"  name="vbu09" id="vbu09" />
+                                    </li>
+                                </ul>
+
+                            </div>
+
+                            <!-- 					 	              充值方式 -->
+                            <!-- 					 	               <div class="huiyuanmensge"> -->
+
+                            <!-- 					 	                         <div class="info-title-container"> -->
+                            <!-- 					 	                           <span class="info-title">充值</span> -->
+                            <!-- 					 	                           <span class="info-line"><hr></span> -->
+                            <!-- 					 	                         </div> -->
+
+                            <!-- 					 	                         <ul class="list-inline"  id="chongzhihu"> -->
+                            <!-- 										               <li> -->
+                            <!-- 											                    <label>支付方式</label> -->
+                            <!-- 											                    <select name="vbl15" id="vbl15"> -->
+                            <!-- 											                      <option id="aao02"></option> -->
+                            <!-- 											                    </select> -->
+                            <!-- 											                </li> -->
+                            <!-- 											                <li> -->
+                            <!-- 											                    <label>支付金额</label> -->
+                            <!-- 											                    <input type="number" id="vbl13d" name="vbl13d" class="validate[min[0]]" value="0.00"/> -->
+                            <!-- 											                </li> -->
+                            <!-- 											                <li> -->
+                            <!-- 											                    <label>基本账户</label> -->
+                            <!-- 											                    <input type="number" id="vbl13" name="vbl13" value="0.00"/> -->
+                            <!-- 											                </li> -->
+                            <!-- 											                <li> -->
+                            <!-- 											                    <label>押金</label> -->
+                            <!-- 											                    <input type="number" id="vbl13c" name="vbl13c" readonly="readonly" value="0.00"/> -->
+                            <!-- 											                </li> -->
+                            <!-- 											                <li> -->
+                            <!-- 											                    <label>赠送账户</label> -->
+                            <!-- 											                    <input type="number" id="vbl13a" name="vbl13a" class="validate[min[0]]"/> -->
+                            <!-- 											                </li> -->
+                            <!-- 											                <li> -->
+                            <!-- 											                    <label>积分账户</label> -->
+                            <!-- 											                    <input type="number" id="vbl13b" name="vbl13b" class="validate[min[0]]" /> -->
+                            <!-- 											                </li> -->
+                            <!-- 											                <li> -->
+                            <!-- 											                    <label>充值备注</label> -->
+                            <!-- 											                    <input type="text" id="vbl12" name="vbl12"/> -->
+                            <!-- 											                </li> -->
+                            <!-- 										         </ul> -->
+                            <!-- 					 	               </div> -->
+
+                        </div><!--界面设置第二个div结束-->
+                        <!--界面设置第三个div-->
+                        <div class="meber01">
+
+                        </div>
+
+                    </div>
+
+                    <div id="footerhui">
+                        <button type="button" class="btn btn-green" onclick="javascript:saveUpdateCard();">确定</button>
+                    </div>
+                </div>
+
+            </div>
+
+            <!--会员列表切换-->
+            <!--会员列表切换-->
+            <div  id="menber_huiyuan  hidden" >
+                <div class="middle-table  cuaeofd hidden">
+                    <div class="main-content-table" id="main-tabel-content0" style="width:100%">
+                        <div class="main-table-container" style="width:100%;">
+                            <table id="member_management_middele_table" class="table table-striped table-border table-hover pointer" style="width:100%;">
+
+                            </table>
+                        </div>
+                    </div>
+                    <div class="main-content-page">
+                        <div class="page-statistics">
+                            <span></span>
+                        </div>
+                        <div class="page-content" id="pg">
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+</form>
+</body>
+
+
+
+<script src="${host}/js/member/member_register.js"></script>
+<script src="${host}/js/member/birthAge.js"></script>
+<script type="text/javascript" src="${host}/js/member/payment.js" charset="utf-8"></script>
+<script src="${host}/js/member/register_save.js"></script>
+<script type="text/javascript" src="${host}/js/member/xzbrhuiyuan.js" charset="utf-8"></script>
+
+<script>
+    $(document).ready(function(){
+        jQuery('#cardMode_form').validationEngine('attach', {
+            promptPosition: 'topLeft',		//提示信息的位置，可设置为：'topRight', 'topLeft', 'bottomRight', 'bottomLeft', 'centerRight', 'centerLeft', 'inline'
+            validationEventTrigger: 'keyup blur',	//触发验证的事件
+            binded: false,						//是否绑定即时验证
+            scroll: false, 					//屏幕自动滚动到第一个验证不通过的位置
+            autoHidePrompt: true,            	//是否自动隐藏提示信息
+            autoHideDelay: 1000
+        });
+        $("select").select2({
+            language:"zn-CN"
+        });
+        $("#newword").on('keyup',function(){
+            if($(this).val()){
+                if(!$("#vbu09").hasClass("validate[required]")){
+                    $("#vbu09").addClass("validate[required]");
+                }
+            }
+        })
+        $("#vbu09").on('keyup',function(){
+            if($(this).val()){
+                if(!$("#newword").hasClass("validate[required]")){
+                    $("#newword").addClass("validate[required]");
+                }
+            }
+        })
+        laydate({
+            elem: '#vaa12',
+            format: 'YYYY-MM-DD hh:mm:ss', // 分隔符可以任意定义，该例子表示只显示年月
+            festival: true, //显示节日
+            choose: function(datas){ //选择日期完毕的回调
+                var obj=$("#vaa12");
+                yearDef(obj);
+            }
+        });
+
+    });
+
+</script>
+
+</html>

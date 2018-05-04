@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+
+       document.onmousedown=function() {
+           debugger;
+           if (event.button == 1) {
+               alert("left")
+           }
+           if (event.button == 2) {
+
+               alert("right")
+           }
+       }
+        document.onkeydown=function()
+        {
+            alert(event.keyCode);
+        }
+
+
+       if(e && e.keyCode == 13 && $("#ykSelect").is(":focus") == true){
+           $("#dpa1xinzengyaofangtable1 tbody").find(".checkTr").trigger("click");
+       }else if(e && e.keyCode == 38 && $("#ykSelect").is(":focus") == true){
+           if($("#dpa1xinzengyaofangtable1 tbody").find(".checkTr").prev().hasClass("jqgfirstrow") == true){
+               return
+           }else{
+               var checkIndex = $("#dpa1xinzengyaofangtable1 tbody").find(".checkTr").index();
+               $("#dpa1xinzengyaofangtable1 tbody tr").removeClass("checkTr");
+               $("#dpa1xinzengyaofangtable1 tbody tr").eq(checkIndex-1).addClass("checkTr");
+           }
+       }else if(e && e.keyCode == 40 && $("#ykSelect").is(":focus") == true){
+           var checkIndex = $("#dpa1xinzengyaofangtable1 tbody").find(".checkTr").index();
+           $("#dpa1xinzengyaofangtable1 tbody tr").removeClass("checkTr");
+           $("#dpa1xinzengyaofangtable1 tbody tr").eq(checkIndex+1).addClass("checkTr");
+       }
+
+       $(parameter3s+" tbody tr").eq(1).addClass("checkTr");
+    </script>
+</head>
+<body>
+
+</body>
+</html>

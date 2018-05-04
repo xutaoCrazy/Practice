@@ -1,0 +1,806 @@
+<%@ page language="java" pageEncoding="UTF-8" contentType="text/html; charset=UTF-8"%>
+<%@include file="common.jsp"%>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="${host}/css/operating_hocuss.css"/>
+    <script src="${host}/js.base/icheck/icheck.js"></script>
+
+</head>
+<body>
+<%--手术麻醉--%>
+<div id="hocussBox_01">
+    <%--左边盒子--%>
+    <div id="hocussLeft">
+        <%--呼叫病人导航栏--%>
+        <div class="hocussHu_01">
+            <button  type="button" class="hujiao btn btn-main btn-syscontrol" id="hj">呼叫病人</button>
+            <button  type="button" class="mazui btn btn-main btn-syscontrol" id="dy">麻醉记录单</button>
+            <span hidden="true"><select name="osselect" id="osselect"></select></span>
+            <!-- <div class="mazui btn btn-main">
+                <button type="button" class="btn btn-yellow btn-syscontrol dytzd" id="dy"><span class="glyphicon glyphicon-print"></span>麻醉记录单</button>
+                <button type="button" class="btn btn-yellow btn-syscontrol dytzd dropdown-toggle" data-toggle="dropdown" style="padding-right: 5px;">
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" role="menu">
+                    <li id="printview">
+                        <a href="javascript:void(0)">打印预览</a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)">手术站打印</a>
+                    </li>
+                    <li style="padding-left: 10px;padding-right: 10px;" id="dy_li">
+                        <select name="osselect" id="osselect"></select>
+                    </li>
+                </ul>
+            </div> -->
+        </div>
+        <div class="allhocuss">
+            <%--所有手术的安排--%>
+            <div class="allhocuss_01">
+                <span class="allhocussSpan_01   suoyou tab-active shoushi" style="cursor:hand">所有手术</span>
+                <span  class="allhocussSpan_02 suoyou shoushi" style="cursor:hand">我的已安排手术</span>
+                <!--   <i class="allhocussi"></i> -->
+            </div>
+            <div class="allhocussap">
+                <%--所有的手术安排--%>
+                <div class="allhocussap_01">
+                    <div class="allhocussap_01Left">
+                        <input type="text" placeholder="输入门诊号/住院号/姓名/拼音" class="allhocussap_01leftInput" id="ltext"/>
+
+                        <div class="inputPop">
+                            <label class="inputlable">开始时间</label>
+                            <input type="text" id="beginDate" name="beginDate" style="width:151px;height:30px;" class="layer-date laydate-icon" value="" onclick="laydate({istime: true, format: 'YYYY-MM-DD'}).skin('spring')">
+                        </div>
+                        <div class="inputPop">
+                            <label class="inputlable">结束时间</label>
+                            <input type="text" id="endDate" name="endDate" style="width:151px;height:30px;" class="layer-date laydate-icon" value="" onclick="laydate({istime: true, format: 'YYYY-MM-DD'}).skin('spring')">
+                        </div>
+                        <div class="inputPop">
+                            <label class="inputlableSh">手术室</label>
+                            <select class="js-example-basic-single " style="width:151px;height:25px!important;" id="operatingRoom">
+                            </select>
+                        </div>
+                        <div class="inputPop">
+                            <label class="inputlableSh3">来源</label>
+                            <select class="js-example-basic-single1 " style="width:151px;height:25px!important;" id="acf01">
+                                <option value="0">全院</option>
+                                <option value="1">门诊</option>
+                                <option value="2">住院</option>
+                            </select>
+                        </div>
+                        <div class="inputPop">
+                            <label class="inputlable">手术状态</label>
+                            <select class="js-example-basic-single1 " style="width:151px;height:25px!important;" id="vat04">
+                                <option value="1">所有状态</option>
+                                <option value="2">安排</option>
+                                <option value="3">手术中</option>
+                                <option value="4">完成</option>
+                            </select>
+                        </div>
+
+                    </div>
+
+                    <div class="allhocussap_01Right">
+                        <button class="btn btn-main chaxunall" style="width:31px;height:190px;!important;" id="osSearch">查<br>询</button>
+                    </div>
+                </div>
+                <%--我的已安排手术--%>
+                <!-- <div class="allhocussap_01">
+
+                </div> -->
+
+            </div>
+            <div class="table-shou">
+                <div class="JiTai now-position"><span id="osnum" style="color:#0494d3;"  class="jiacu"></span></div>
+                <div id="table-shou-1">
+
+                    <div id="olistshoushu">
+
+
+                        <div id="osList" class="shoushuHUanzhe"></div>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+    <%--右边盒子--%>
+    <div id="hocussRight">
+        <%--左边头部--%>
+        <div class="hocussRightAge">
+            <div>
+                <label>姓名</label>
+                <b>:</b>
+                <span class="hocussRight jiacu" id="vaa05"></span>
+            </div>
+            <div>
+                <label>性别</label>
+                <b>:</b>
+                <span class="hocussRight jiacu" id="abw02"></span>
+            </div>
+            <div>
+                <label>年龄</label>
+                <b>:</b>
+                <span class="hocussRight jiacu" id="vaa10"></span>
+            </div>
+            <div>
+                <label>血型</label>
+                <b>:</b>
+                <span class="hocussRight jiacu" id="abl02"></span>
+            </div>
+
+        </div>
+        <div class="hocussStart">
+            <%--麻醉开始--%>
+            <div class="hocussStart_01 hocussStart_01ma chashoushu">
+                <label>麻醉开始</label>
+                    <span>
+
+                        <input type="text" id="vat14" name="vat14" style="width:100%;height:30px;" class="layer-date laydate-icon" value="" onclick="laydate({istime: true, format: 'MM-DD hh:mm:ss'}).skin('spring')">
+
+                    </span>
+
+            </div>
+            <%--手术插管--%>
+            <div class="hocussStart_01 chashoushu">
+                <label>手术插管</label>
+                    <span>
+                        <input type="text" id="vat46" name="vat46" style="width:100%;height:30px;" class="layer-date laydate-icon" value="" onclick="laydate({istime: true, format: 'MM-DD hh:mm:ss'}).skin('spring')">
+
+                    </span>
+
+            </div>
+            <%--手术开始--%>
+            <div class="hocussStart_01 chashoushu">
+                <label>手术开始</label>
+                    <span>
+                        <input type="text" id="vat09" name="vat09" style="width:100%;height:30px;" class="layer-date laydate-icon" value="" onclick="laydate({istime: true, format: 'MM-DD hh:mm:ss'}).skin('spring')">
+
+                    </span>
+
+            </div>
+            <%--手术结束--%>
+            <div class="hocussStart_01 chashoushu">
+                <label>手术结束</label>
+                    <span>
+                        <input type="text" id="vat10" name="vat10" style="width:100%;height:30px;" class="layer-date laydate-icon" value="" onclick="laydate({istime: true, format: 'MM-DD hh:mm:ss'}).skin('spring')">
+
+                    </span>
+
+            </div>
+            <%--手术拔管--%>
+            <div class="hocussStart_01 chashoushu">
+                <label>手术拔管</label>
+                    <span>
+                        <input type="text" id="vat47" name="vat47" style="width:100%;height:30px;" class="layer-date laydate-icon" value="" onclick="laydate({istime: true, format: 'MM-DD hh:mm:ss'}).skin('spring')">
+
+                    </span>
+
+            </div>
+            <%--麻醉结束--%>
+            <div class="hocussStart_01 chashoushu">
+                <label>麻醉结束</label>
+                    <span>
+                        <input type="text" id="vat15" name="vat15" style="width:100%;height:30px;" class="layer-date laydate-icon" value="" onclick="laydate({istime: true, format: 'MM-DD hh:mm:ss'}).skin('spring')">
+
+                    </span>
+
+            </div>
+            <div class="hocussStart_01" id="savebao">
+
+
+                <button class="btn btn-main saveBtn btn-syscontrol" id="saveBtn">保存</button>
+
+
+            </div>
+
+        </div>
+        <div class="hocussJiben">
+            <ul class="hocussJibenUl">
+                <li class="tab-active shoushi"></li>
+                <li   class="shoushi" >基本信息查看</li>
+                <li   class="shoushi" >查看电子病历</li>
+                <li   class="shoushi" >术前</li>
+                <li   class="shoushi" >术中</li>
+                <li   class="shoushi" >术后</li>
+                <li   class="shoushi" >计费信息</li>
+
+            </ul>
+
+            <!--  <i class="moveYIdong"></i> -->
+
+        </div>
+
+        <div class="hocussContent">
+            <!--手术时间记录-->
+            <div class="hocussContent1 " style="top:8px">
+                术中信息
+            </div>
+
+            <%-- 查看基本信息--%>
+            <div class="hocussContent1 hidden">
+                <%--术者基本信息--%>
+                <div class="hocussContentAS">
+                    <div class="hocussContentShu_01">
+                        <label>术者基本信息</label>
+                        <i></i>
+                    </div>
+                    <%--术者基本信息--%>
+                    <div class="hocussContentShu_02">
+                        <%--术者信息--%>
+                        <div class="hocussContentShu_02_left">
+                            <%--科室一下部分--%>
+                            <div class="hocussContentShu_02_left_01" style="height:100%">
+                                <div class="keshi_01">
+                                    <label>科室:</label>
+                                    <span id="bck03" class="jiacu"></span>
+                                </div>
+                                <div class="keshi_01">
+                                    <label>手术号:</label>
+                                    <span id="vat01"  class="jiacu"></span>
+                                </div>
+                                <div class="keshi_01">
+                                    <label>门诊号:</label>
+                                    <span id="vaa03"  class="jiacu"></span>
+                                </div>
+                                <div class="keshi_01">
+                                    <label>申请人:</label>
+                                    <span id="bce03a"  class="jiacu"></span>
+                                </div>
+                                <div class="keshi_01">
+                                    <label>部位:</label>
+                                    <span id="bjy02"  class="jiacu"></span>
+                                </div>
+                                <div class="keshi_01">
+                                    <label>麻醉类型:</label>
+                                    <span id="aci02"  class="jiacu"></span>
+                                </div>
+
+                            </div>
+                            <%--床号一下部分--%>
+                            <div class="hocussContentShu_02_right_01" style="height:100%;">
+                                <div class="keshi_01">
+                                    <label>床号:</label>
+                                    <span id="bcq04b"  class="jiacu"></span>
+                                </div>
+                                <div class="keshi_01">
+                                    <label>来源:</label>
+                                    <span id="vaf04"  class="jiacu"></span>
+                                </div>
+                                <div class="keshi_01">
+                                    <label>住院号:</label>
+                                    <span id="vaa04"  class="jiacu"></span>
+                                </div>
+                                <div class="keshi_01">
+                                    <label>申请科室:</label>
+                                    <span id="bck03b"  class="jiacu"></span>
+                                </div>
+                                <div class="keshi_01">
+                                    <label>拟施麻醉:</label>
+                                    <span id="mbbx05"  class="jiacu"></span>
+                                </div>
+
+
+                            </div>
+                        </div>
+                        <%--术者病患判断表个框--%>
+                        <div class="hocussContentShu_02_Right">
+                            <%--术前诊断--%>
+                            <div class="shuqian_01" id="opeart_footer-shuqian">
+                                <div class="shuqian_div01">
+                                    <label>术前诊断:</label>
+                                </div>
+                                <div class="shuqian_div02" id="opeart_footer-shuqian01">
+                                    <table class="shuqianTable" id="opeart_footer_table1">
+
+
+                                    </table>
+                                </div>
+                            </div>
+                            <%--拟施手术--%>
+                            <div class="shuqian_01">
+                                <div class="shuqian_div01">
+                                    <label>拟施手术:</label>
+                                </div>
+                                <div class="shuqian_div02" id="opeart_footer-shuqian02">
+                                    <table class="shuqianTable" id="opeart_footer_table2">
+
+                                    </table>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <%--手术安排信息--%>
+                <div class="hocussContentAS" id="shoushuanpaiid">
+                    <div class="hocussContentShu_01">
+                        <label>手术安排信息</label>
+                        <i></i>
+                    </div>
+                    <%--术者基本信息--%>
+                    <div class="hocussContentShu_02" style="height:229px;">
+                        <%--术者信息--%>
+                        <div class="hocussContentShu_02_left shoushuanpai">
+                            <%--科室一下部分--%>
+                            <div class="hocussContentShu_02_left_01" id="docrorzhixing">
+                                <div class="keshi_01">
+                                    <label>执行时间:</label>
+                                    <span id="vat08"  class="jiacu"></span>
+                                </div>
+                                <div class="keshi_01">
+                                    <label>主刀医师:</label>
+                                    <span  class="jiacu" id="doctor1"></span>
+                                </div>
+                                <div class="keshi_01">
+                                    <label>麻醉医师:</label>
+                                    <span  class="jiacu" id="doctor2"></span>
+                                </div>
+                                <div class="keshi_01">
+                                    <label>巡回护士:</label>
+                                    <span  class="jiacu" id="doctor3"></span>
+                                </div>
+
+
+                            </div>
+                            <%--床号一下部分--%>
+                            <div class="hocussContentShu_02_right_01" id="docrorshou">
+                                <div class="keshi_01">
+                                    <label>手术间:</label>
+                                    <span id="bee03"  class="jiacu"></span>
+                                </div>
+                                <div class="keshi_01">
+                                    <label>助手医师:</label>
+                                    <span  class="jiacu" id="doctor4"></span>
+                                </div>
+                                <div class="keshi_01">
+                                    <label>洗手护士:</label>
+                                    <span  class="jiacu" id="doctor5"></span>
+                                </div>
+                                <div class="keshi_01">
+                                    <label>器械护士:</label>
+                                    <span  class="jiacu" id="doctor6"></span>
+                                </div>
+
+
+
+                            </div>
+                            <div class="hocussContentShu_02_right_01">
+                                <div class="keshi_01">
+                                    <label>台次:</label>
+                                    <span id="vat51"  class="jiacu"></span>
+                                </div>
+
+
+
+
+
+
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+            <%--电子病历--%>
+            <div class="hocussContent1 hidden" style="left:5px;">
+                <div class="dianzi">
+                    <!--   <button class="btn btn-main btn-syscontrol" id="basy">病案首页</button>
+                      <button class="btn btn-main btn-syscontrol" id="yzjl">医嘱记录</button>
+                      <button class="btn btn-main btn-syscontrol" id="zyfy">住院费用</button>
+                      <button class="btn btn-main btn-syscontrol" id="bljl">病历记录</button>
+                      <button class="btn btn-main btn-syscontrol" id="hljl">护理记录</button>
+                      <button class="btn btn-main btn-syscontrol" id="mzjl">门诊历次就诊医嘱记录</button>
+                      <button class="btn btn-main btn-syscontrol" id="tjbg">体检报告</button>
+                      <button class="btn btn-main btn-syscontrol" id="jcbg">检查报告</button>
+                      <button class="btn btn-main btn-syscontrol" id="wxztx">危险值提醒</button> -->
+
+                    <ul>
+                        <li id="basy" class="tab-active">病案首页</li>
+                        <li id="yzjl">医嘱记录</li>
+                        <li id="zyfy">住院费用</li>
+                        <li id="bljl">病历记录</li>
+                        <li id="hljl">护理记录</li>
+                        <li id="mzjl">门诊历次就诊医嘱记录</li>
+                        <li id="tjbg">体检报告</li>
+                        <li id="jcbg">检查报告</li>
+                        <li id="wxztx">危险值提醒</li>
+                    </ul>
+                </div>
+                <div style="width:99%;height: 91%; overflow: auto;border: solid 1px #e4e4e4; margin-right: 30px;" id="mrsmember">
+                    <div id="iframeText" style="width:99%;height: 100%; overflow: auto;">
+
+                    </div>
+                </div>
+            </div>
+            <%--术前--%>
+            <div class="hocussContent1  hidden">
+                <div class="hocussContentAS">
+                    <div class="hocussContentShu_01 shouMa_01">
+                        <label>手术</label>
+                        <i></i>
+                    </div>
+                    <%--手术--%>
+                    <div class="hocussContentShu_02">
+                        <%--手术左边--%>
+                        <div class="hocussContentShu_02">
+                            <div class="hocussContentShu_02_left">
+                                <%--手术级别--%>
+                                <div class="hocussContentShu_02_left_01">
+                                    <!-- 术前键盘事件1 -->
+                                    <div class="keshi_01 shouRight li_1">
+                                        <label class="ShouJ_01">手术级别:</label>
+			                                                <span>
+					                                            <select class="js-example-basic-single key_1" data-key="key_1" style="width:151px;height:25px !important;" id="sdvl">
+                                                                </select>
+			                                                </span>
+                                    </div>
+                                    <!-- 术前键盘事件2 -->
+                                    <div class="keshi_01 shouRight li_2">
+                                        <label class="ShouJ_01 shouDay">手术前准备天数:</label>
+				                                        <span>
+				                                        	<input type="number" class="key_2" data-key="key_2" id="vat38" min="0" value="0" style="width:115px !important;height:28px !important;border:solid 1px #d8d8d8;"/>
+				                                        </span>
+                                    </div>
+                                    <!-- 术前键盘事件3 -->
+                                    <div class="keshi_01 shouRight li_3">
+                                        <label class="ShouJ_01">手术部位:</label>
+						                                        <span>
+						                                            <select class="js-example-basic-single key_3" data-key="key_3" style="width:151px;height:25px !important;" id="bjy01s">
+                                                                    </select>
+						                                        </span>
+                                    </div>
+                                    <!-- 术前键盘事件4 -->
+                                    <div class="keshi_01 shouRight li_4">
+                                        <label class="ShouJ_01">切口等级:</label>
+				                                        <span>
+				                                            <select class="js-example-basic-single key_4" data-key="key_4"style="width:151px;height:25px !important;" id="qdvl">
+                                                            </select>
+				                                        </span>
+                                    </div>
+                                    <!--术前键盘事件5-->
+                                    <div class="keshi_01 shouRight li_5">
+                                        <label class="ShouJ_01">污染手术:</label>
+                                        <span>
+                                            <select class="js-example-basic-single key_5" data-key="key_5" style="width:151px;height:25px !important;" id="vat26">
+                                                <option value=''>--请选择--</option>
+                                                <option value='艾滋病'>艾滋病</option>
+                                                <option value='乙肝'>乙肝</option>
+                                                <option value='丙肝'>丙肝</option>
+                                                <option value='梅毒'>梅毒</option>
+                                            </select>
+                                        </span>
+                                    </div>
+                                </div>
+                                <%--择期手术--%>
+                                <div class="hocussContentShu_02_right_01 zeqi_01">
+                                    <!-- 术前键盘事件6 -->
+                                    <div class="keshi_01 shouRight li_6">
+                                        <label class="ShouJ_01">择期手术:</label>
+                                    <span>
+                                        <select class="js-example-basic-single key_6" data-key="key_6" style="width:122px;height:25px !important;" id="zdvl">
+                                        </select>
+                                    </span>
+                                    </div>
+                                    <!-- 术前键盘事件7 -->
+                                    <div class="keshi_01 shouRight ">
+                                        <label class="ShouJ_01">术前进食:</label>
+						                                    <span class="shuYes xuYEs">
+						                                            <label class="label-normal shuNo"><input value="1"  type="radio" name="vat43">是</label>
+						                                            <label class="label-normal shuNo"><input value="0" checked="checked" type="radio" name="vat43">否</label>
+						                                    </span>
+                                    </div>
+                                    <!-- 术前键盘事件8 -->
+                                    <div class="keshi_01 shouRight li_7">
+                                        <label class="ShouJ_01">手术体位:</label>
+                                    <span>
+                                        <select class="js-example-basic-single key_7" data-key="key_7" style="width:122px;height:25px !important;" id="vat44">
+                                            <option value=''>--请选择--</option>
+                                            <option value='仰卧'>仰卧</option>
+                                            <option value='俯卧'>俯卧</option>
+                                            <option value='左右侧卧'>左右侧卧</option>
+                                            <option value='截石位'>截石位</option>
+                                            <option value='屈氏位'>屈氏位</option>
+                                        </select>
+                                    </span>
+                                    </div>
+
+                                    <!-- 术前键盘事件9 -->
+                                    <div class="keshi_01 shouRight li_8">
+                                        <label class="ShouJ_01">愈合等级:</label>
+                                    <span>
+                                        <select class="js-example-basic-single key_8" data-key="key_8" style="width:122px;height:25px !important;" id="ydvl">
+                                        </select>
+                                    </span>
+                                    </div>
+                                    <!--术前键盘事件10  -->
+                                    <div class="keshi_01 shouRight ">
+                                        <label class="ShouJ_01">感染手术:</label>
+                                                    <span class="shuYes">
+                                                         <label class="label-normal shuNo"><input name="vat25" type="radio" value="1">是</label>
+                                                         <label class="label-normal shuNo"><input name="vat25" checked="checked" type="radio" value="0">否</label>
+                                                    </span>
+                                    </div>
+
+                                </div>
+                                <div class="shuqian_01 shuqiankuang">
+                                    <div class="shuqian_div01">
+                                        <label>术前情况<br>特殊：</label>
+                                    </div>
+                                    <div class="shuqian_div02">
+                                        <textarea class="shuqian_02Input" id="vat50"></textarea>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="hocussContentShu_02_Right kuangqian">
+                                <%--术前手术--%>
+                                <div class="shuqian_01 shuqian_02">
+                                    <div class="shuqian_div01">
+                                        <label>实施手术:</label>
+                                    </div>
+                                    <div class="shuqian_div02 gaibianjiu">
+                                        <table class="shuqianTable  shizhen" id="opeart_footer_table3">
+                                            <thead>
+                                            <tr>
+                                                <th style="height:27px;">主要诊断</th>
+                                                <th style="height:27px;">诊断描述</th>
+                                                <th style="width:30px;height:27px">
+
+                                                </th>
+                                            </tr>
+
+                                            </thead>
+                                            <tbody>
+                                            <tr class="shuqianTrtd">
+                                                <td style="height:27px;">
+                                                    <select class="js-example-basic-single vav03" style="width:134px;height:25px; border:none!important;">
+                                                        <option value=''></option>
+                                                        <option value='1'>主手术</option>
+                                                        <option value='0'>附加手术</option>
+                                                    </select>
+                                                </td>
+                                                <td style="height:27px;">
+                                                    <div class="shuq_01">
+                                                        <input type="text"  class="shuqianhui" placeholder="请输入名称/拼音"  onkeydown="searchAddTab(this,event)"/>
+                                                        <input type="text" class="bbx01" hidden="true"/>
+                                                    </div>
+                                                </td>
+                                                <td style="height:27px;width:30px;">
+                                                    <span class="glyphicon glyphicon-trash deletecolor" onclick="delBBX(this)"></span>
+                                                </td>
+                                            </tr>
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <%--手术右边--%>
+
+                    </div>
+                    <%--手术麻醉--%>
+                    <div class="hocussContentAS" id="Surgical">
+                        <div class="hocussContentShu_01 shouMa_01">
+                            <label>麻醉</label>
+                            <i></i>
+                        </div>
+                        <div class="hocussContentShu_02 shouma_01F">
+                            <div class="keshi_01 asa_01">
+                                <label class="ShouJ_01 ASAFen">ASA分级:</label>
+                                        <span>
+                                            <select class="js-example-basic-single " style="width:151px;height:25px !important;" id="bjx1">
+                                            </select>
+                                        </span>
+                            </div>
+                            <div class="shuqian_01">
+                                <div class="shuqian_div01">
+                                    <label>麻醉前用药:
+                                    </label>
+                                </div>
+                                <div class="shuqian_div02">
+                                    <textarea class="shuqian_02Input" id="vat45"></textarea>
+
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+            <!--  -->
+            <div class="hocussContent1 hidden" style="top:8px">
+                术中信息
+            </div>
+            <%--术后--%>
+
+            <div class="hocussContent1 hidden" style="top:8px;left:-23px;">
+
+                <!--  <div class="hocussContent1 hidden" style="top:8px"> -->
+
+                <div class="hocussContentAS ShuNo">
+                    <div class="keshi_01 shuhouBI">
+                        <label class="ShouJ_01">术后去向:</label>
+                                        <span>
+                                            <select class="js-example-basic-single " style="width:151px;height:25px !important;" id="vat48">
+                                                <option value=''>--请选择--</option>
+                                                <option value='pacu'>PACU</option>
+                                                <option value='icu'>ICU</option>
+                                                <option value='病房'>病房</option>
+                                                <option value='门/急诊观察'>门/急诊观察</option>
+                                                <option value='返家'>返家</option>
+                                            </select>
+                                        </span>
+                    </div>
+                    <div class="keshi_01 shuhouBI">
+                        <label class="ShouJ_01">术后镇痛:</label>
+                                        <span>
+                                            <select class="js-example-basic-single " style="width:151px;height:25px !important;" id="vat49">
+                                                <option value=''>--请选择--</option>
+                                                <option value='pcia'>PCIA</option>
+                                                <option value='pace'>PCEA</option>
+                                            </select>
+                                        </span>
+                    </div>
+                    <div class="shuqian_01  shuhouBI ">
+                        <div class="shuqian_div01 shiWIdth">
+                            <label>术后诊断:</label>
+                        </div>
+                        <div class="shuqian_div02 shiShu_01 dhuf">
+                            <table class="shuqianTable zhuyaomiao " id="opeart_footer_table4">
+                                <thead>
+                                <tr>
+                                    <th style="height:27px;">主要诊断</th>
+                                    <th style="height:27px;">诊断描述</th>
+                                    <th style="width:30px;height:27px">
+
+                                    </th>
+                                </tr>
+
+                                </thead>
+                                <tbody>
+                                <tr class="shuqianTrtd">
+                                    <td style="height:27px; width:151px;line-height:29px;"> <label class="label-normal shuNo"><input type="checkbox" class="vao15"></label> </td>
+                                    <td style="height:27px;width:151px;">
+                                        <div class="shuq_02">
+                                            <input type="text" class="shouhouhui" placeholder="请输入名称/拼音"  onkeydown="searchCAM1(this,event)"/>
+                                            <input tyoe="text" class="cam01" hidden="true"/>
+                                            <input tyoe="text" class="cam03" hidden="true"/>
+                                        </div>
+                                    </td>
+                                    <td style="height:27px;width:30px;line-height:29px;">
+                                        <span class="glyphicon glyphicon-trash deletecolor" onclick="delCAM1(this)"></span>
+                                    </td>
+                                </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <%--计费信息--%>
+            <div class="hocussContent1 hocussContentjizhang hidden container projects" id="jifeicontain">
+                <div class="JIfei">
+                    <div class="jifei1">
+                        <button class="btn btn-main btn-syscontrol" id="accounting_btn"  onclick="accountWindow()">计费</button>
+                        <button class="btn btn-main btn-syscontrol" id="write_off_btn" onclick="deleteAccount()">销账</button>
+                    </div>
+                </div>
+                <div class="TabelJifei" style="height:46%;width:101%;overflow:auto" id="TabelJifei_01">
+                    <!--   <div class="main-content-table">
+                          <div class="main-table-container"> -->
+                    <table id="opeart_footer_table" class="table table-striped table-border table-hover" style="width:100%;">
+                    </table>
+                    <!--  </div>
+                 </div> -->
+                </div>
+
+
+
+
+                <div style="height:46%;overflow:auto;width:101%;" id="cost_info_table_listKL" class="docrXUr">
+                    <table id="cost_info_table_list" class="table table-striped table-border table-hover" style="width:100%;">
+
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="msgDiv" hidden="true"></div>
+
+
+
+
+<div id="incident">
+
+
+    <div class="incident_01">
+        <div class="incident_01_left">
+            <span>事件列表</span>
+            <div class="incident_01_tabel">
+                <tabel></tabel>
+
+            </div>
+
+        </div>
+        <div class="incident_01_right">
+            <div class="incident_01">
+                <label>事件名称</label>
+					<span>
+
+						<input type="text" />
+					</span>
+
+
+            </div>
+            <div class="incident_01">
+                <label>事件名称</label>
+					<span>
+
+						<input type="number" />
+					</span>
+
+
+            </div>
+            <div class="incident_01">
+                <label>事件名称</label>
+					<span>
+
+						<input type="text" style="width:60%;height:30px;" class="layer-date laydate-icon"  onclick="laydate({istime: true, format: 'MM-DD hh:mm:ss'}).skin('spring')">
+					</span>
+
+
+            </div>
+
+
+
+        </div>
+
+    </div>
+
+    <div class="incident_02">
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+<script type="text/javascript" src="${host}/js/operating_hocuss.js"></script>
+<!-- 刷卡读卡 -->
+<script src="${host }/onehismq/js/activemq_onehis.js"></script>
+<script src="${host }/onehismq/js/ajax_Encapsulation.js"></script>
+<script src="${host }/onehismq/js/amq_jquery_adapter.js"></script>
+<script src="${host }/onehismq/js/amq.js"></script>
+<script src="${host }/onehismq/js/credit_card.js"></script>
+<script src="${host }/onehismq/js/jquery.json-2.2.js"></script>
+<script src="${host }/onehismq/js/member_card_out.js"></script>
+<script src="${host }/onehismq/js/print.js"></script>
+<script src="${host }/onehismq/radio/msgradio.js"></script>
+
+</html>
